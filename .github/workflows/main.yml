@@ -51,7 +51,7 @@ jobs:
             # You can target a repository in a different organization
             # to the issue
             project-url: https://github.com/orgs/CSC394-FoodTeam/projects/2
-            github-token: ${{ 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 }}
+            github-token: ${{ secrets.WORKFLOW }}
             labeled: bug, enhancement, wontfix
             label-operator: OR
             
@@ -70,7 +70,7 @@ jobs:
         - uses: actions/add-to-project@RELEASE_VERSION
           with:
             project-url: https://github.com/orgs/CSC394-FoodTeam/projects/2
-            github-token: ${{ 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 }}
+            github-token: ${{ secrets.WORKFLOW }}
             labeled: needs-review
             label-operator: AND
   

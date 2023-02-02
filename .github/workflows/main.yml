@@ -52,7 +52,7 @@ jobs:
             # to the issue
             project-url: https://github.com/orgs/CSC394-FoodTeam/projects/2
             github-token: ${{ secrets.WORKFLOW }}
-            labeled: bug, enhancement, wontfix
+            labeled: bug, enhancement
             label-operator: OR
             
   name: Add needs-review and size/XL pull requests to projects

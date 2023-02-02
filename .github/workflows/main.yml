@@ -33,3 +33,44 @@ jobs:
 
 - name: Add To GitHub projects
   uses: actions/add-to-project@v0.4.0
+  
+  name: Add bugs and features to project
+
+  on:
+    issues:
+      types:
+        - opened
+
+  jobs:
+    add-to-project:
+      name: Add issue/feature to project
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/add-to-project@RELEASE_VERSION
+          with:
+            # You can target a repository in a different organization
+            # to the issue
+            project-url: https://github.com/orgs/CSC394-FoodTeam/projects/2
+            github-token: ${{ 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 }}
+            labeled: bug, enhancement, wontfix
+            label-operator: OR
+            
+  name: Add needs-review and size/XL pull requests to projects
+  
+  on:
+    pull_request:
+      types:
+        - labeled
+  
+  jobs:
+    add-to-project:
+      name: Add issue to project
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/add-to-project@RELEASE_VERSION
+          with:
+            project-url: https://github.com/orgs/CSC394-FoodTeam/projects/2
+            github-token: ${{ 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 }}
+            labeled: needs-review
+            label-operator: AND
+  

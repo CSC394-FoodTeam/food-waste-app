@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'taproot.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'localhost',
+        'NAME': 'postgres',
         'USER': 'postgres',
         'PASSWORD': '6uFoL8bosJv6!9afq7sG',
         'HOST': '0.0.0.0',

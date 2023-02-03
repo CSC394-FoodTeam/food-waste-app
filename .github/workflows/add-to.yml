@@ -1,4 +1,7 @@
 name: Add To GitHub projects
+uses: actions/add-to-project@v0.4.0
+
+name: Add bugs and features to project
 
 on:
   issues:
@@ -18,7 +21,9 @@ jobs:
           github-token: ${{ secrets.WORKFLOW }}
           labeled: bug, enhancement
           label-operator: OR
-          
+
+name: Add needs-review and size/XL pull requests to projects
+
 on:
   pull_request:
     types:
@@ -26,12 +31,10 @@ on:
 
 jobs:
   add-to-project:
-    name: Add needs-review and size/XL pull requests to projects
+    name: Add issue to project
     runs-on: ubuntu-latest
     steps:
       - uses: actions/add-to-project@RELEASE_VERSION
         with:
           project-url: https://github.com/orgs/CSC394-FoodTeam/projects/2
           github-token: ${{ secrets.WORKFLOW }}
-          labeled: needs-review
-          label-operator: AND

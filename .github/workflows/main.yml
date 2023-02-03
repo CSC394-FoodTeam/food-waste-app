@@ -4,6 +4,7 @@ on: [push]
 
 jobs:
   build:
+    name: python test
 
     runs-on: ubuntu-latest
     strategy:

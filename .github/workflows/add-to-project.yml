@@ -7,18 +7,21 @@ on:
 
 jobs:
   add-to-project:
-    name: Add issue/feature to project
+    name: Add to project
+    
     runs-on: ubuntu-latest
+    
     steps:
-      - name: Add bugs and features to project
       - uses: actions/add-to-project@RELEASE_VERSION
+      - name: Add bugs and features to project
         with:
           project-url: https://github.com/orgs/CSC394-FoodTeam/projects/2
           github-token: ${{ secrets.WORKFLOW }}
           labeled: bug, enhancement
           label-operator: OR
-      - name: Add needs-review and size/XL pull requests to projects
-      - uses: actions/add-to-project@RELEASE_VERSION
+      - name: Add needs-review and pull requests to projects
         with:
           project-url: https://github.com/orgs/CSC394-FoodTeam/projects/2
           github-token: ${{ secrets.WORKFLOW }}
+          labeled: needs-review, invalid
+          label-operator: OR

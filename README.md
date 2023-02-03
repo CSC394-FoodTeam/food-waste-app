@@ -1,4 +1,5 @@
 Food Waste App
+[![Python package](https://github.com/CSC394-FoodTeam/food-waste-app/actions/workflows/main.yml/badge.svg)](https://github.com/CSC394-FoodTeam/food-waste-app/actions/workflows/main.yml)
 =============
 **CSC 394 - Group 7**
 

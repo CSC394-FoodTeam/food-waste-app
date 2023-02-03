@@ -1,7 +1,4 @@
 name: Add To GitHub projects
-uses: actions/add-to-project@v0.4.0
-
-name: Add bugs and features to project
 
 on:
   issues:
@@ -22,8 +19,6 @@ jobs:
           labeled: bug, enhancement
           label-operator: OR
           
-name: Add needs-review and size/XL pull requests to projects
-
 on:
   pull_request:
     types:
@@ -31,7 +26,7 @@ on:
 
 jobs:
   add-to-project:
-    name: Add issue to project
+    name: Add needs-review and size/XL pull requests to projects
     runs-on: ubuntu-latest
     steps:
       - uses: actions/add-to-project@RELEASE_VERSION

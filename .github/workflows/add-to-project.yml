@@ -1,4 +1,4 @@
-name: Add bugs and features to project
+name: Add to GitHub project
 
 on:
   issues:
@@ -10,11 +10,15 @@ jobs:
     name: Add issue/feature to project
     runs-on: ubuntu-latest
     steps:
+      - name: Add bugs and features to project
       - uses: actions/add-to-project@RELEASE_VERSION
         with:
-          # You can target a repository in a different organization
-          # to the issue
           project-url: https://github.com/orgs/CSC394-FoodTeam/projects/2
           github-token: ${{ secrets.WORKFLOW }}
           labeled: bug, enhancement
           label-operator: OR
+      - name: Add needs-review and size/XL pull requests to projects
+      - uses: actions/add-to-project@RELEASE_VERSION
+        with:
+          project-url: https://github.com/orgs/CSC394-FoodTeam/projects/2
+          github-token: ${{ secrets.WORKFLOW }}

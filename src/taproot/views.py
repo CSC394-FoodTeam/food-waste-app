@@ -21,13 +21,12 @@ oauth.register(
 def index(request):
     return render(
         request,
-        'index.html',
+        'base.html',
         context={
             'session': request.session.get('user'),
             'pretty': json.dumps(request.session.get('user'), indent=4),
         },
     )
-
 
 def callback(request):
     token = oauth.auth0.authorize_access_token(request)

@@ -2,20 +2,94 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Home | Taproot</title>
+    <title>Welcome | Taproot</title>
+    <style>
+        body {
+            background-color: #212121;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        
+        a {
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        #profileDropDown, h1 {
+            color: #617ac4;
+        }
+        
+        #qsLogoutBtn, #qsLoginBtn {
+            background-color: #617ac4;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            padding: 8px 16px;
+        }
+        
+        pre {
+            background-color: #fff;
+            border: 1px solid #617ac4;
+            border-radius: 4px;
+            color: #212121;
+            padding: 16px;
+            margin-top: 16px;
+            white-space: pre-wrap;
+        }
+        
+        img {
+            border-radius: 50%;
+            height: 100px;
+            margin-bottom: 16px;
+            width: 100px;
+        }
+    </style>
 </head>
 
 <body>
+    <img src="https://avatars.githubusercontent.com/u/124204103?s=200&v=4.png" alt="Logo">
+
+    <!-- This page will render if user is authenticated by Auth0 -->
+
     {% if session %}
-    <h1>Welcome {{session.userinfo.name}}!</h1>
+    <h1>Welcome {{session.userinfo.nickname}}!</h1>
     <p><a href="{% url 'logout' %}" id="qsLogoutBtn">Logout</a></p>
-    <div>
-        <pre>{{pretty}}</pre>
+    <div style="text-align: left; border-radius: 5px; border: px solid #617ac4; padding: 5px;">
+        <pre style="color: #617ac4;">{{pretty}}</pre>
+        <form action="" method="post">
+            
+            {% csrf_token %} 
+            <label for="item_name">Item Name:</label>
+            <input type="text" id="item_name" name="item_name" required>
+
+            <!-- Add item category -->
+
+            <label for="item_category">Item Category:</label>
+            <select id="item_category" name="item_category" required>
+            <option value="">Select a Category</option>
+            <option value="Pantry">Pantry</option>
+            <option value="Fridge">Fridge</option>
+            </select>
+
+            <!-- Add expiry date -->
+
+            <label for="item_exp_date">Expiration Date:</label>
+            <input type="date" id="item_exp_date" name="item_exp_date" required>
+                <input type="submit" value="Add Item">
+
+        </form>
     </div>
+
+    <!-- This will page will render as long as the user isn't authenticated  -->
+
     {% else %}
-    <h1 id="profileDropDown">Welcome Guest</h1>
+    <h1 id="profileDropDown">Welcome Guest</h1> 
     <p><a href="{% url 'login' %}" id="qsLoginBtn">Login</a></p>
     {% endif %}
+
 </body>
 
 </html>
+
+

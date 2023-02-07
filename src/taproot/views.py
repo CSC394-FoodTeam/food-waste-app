@@ -12,7 +12,7 @@ oauth.register(
     client_id=settings.AUTH0_CLIENT_ID,
     client_secret=settings.AUTH0_CLIENT_SECRET,
     client_kwargs={
-        'scope': 'openid email',
+        'scope': 'openid profile email',
     },
     server_metadata_url=f'https://{settings.AUTH0_DOMAIN}/.well-known/openid-configuration',
 )

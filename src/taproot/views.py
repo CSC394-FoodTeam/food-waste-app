@@ -5,6 +5,10 @@ from django.shortcuts import redirect, render, redirect
 from django.urls import reverse
 from urllib.parse import quote_plus, urlencode
 
+from django.views.generic.list import ListView
+
+from .models import *
+
 oauth = OAuth()
 
 oauth.register(
@@ -53,3 +57,7 @@ def logout(request):
             quote_via=quote_plus,
         ),
     )
+
+class ItemList(ListView):
+    model = PantryItem
+    template_name = 'base.html'

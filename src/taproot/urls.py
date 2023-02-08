@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from . import views
+from .views import ItemList
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,6 +24,6 @@ urlpatterns = [
     path('login', views.login, name='login'),
     path('logout', views.logout, name='logout'),
     path('callback', views.callback, name='callback'),
-    # path('profile', view.profile, name='profile')
+    path('', ItemList.as_view(), name='items')
 
 ]

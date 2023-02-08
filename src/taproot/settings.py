@@ -115,7 +115,7 @@ AUTH0_CLIENT_ID = config('AUTH0_CLIENT_ID')
 AUTH0_CLIENT_SECRET = config('AUTH0_CLIENT_SECRET')
 
 
-# AUTH_USER_MODEL = 'taproot.User'
+AUTH_USER_MODEL = 'taproot.User'
 
 
 # Internationalization

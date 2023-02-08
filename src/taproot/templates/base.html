@@ -86,6 +86,20 @@
     {% else %}
     <h1 id="profileDropDown">Welcome Guest</h1> 
     <p><a href="{% url 'login' %}" id="qsLoginBtn">Login</a></p>
+    <h1>Item List</h1>
+
+        <table>
+            <tr>
+                <th>Item</th>
+            </tr>
+            {% for item in object_list %}
+            <tr>
+                <td>{{item.title}}</td>
+            </tr>
+            {% empty %}
+            <h3>No items in list</h3>
+            {% endfor %}
+        </table>
     {% endif %}
 
 </body>

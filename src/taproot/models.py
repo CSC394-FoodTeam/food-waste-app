@@ -43,7 +43,7 @@ class FridgeItem(models.Model):
     quantity = models.IntegerField()
 
 
-class Recipes(models.Model):
+class Recipe(models.Model):
     name = models.CharField(max_length=100)
     ingredients = models.TextField()
     instructions = models.TextField()

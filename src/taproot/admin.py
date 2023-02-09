@@ -1,6 +1,6 @@
 from django.contrib.auth.admin import admin, UserAdmin
 
-from .models import User, Recipes, PantryItem, FridgeItem
+from .models import User, Recipe, PantryItem, FridgeItem
 from .forms import PantryItemForm, FridgeItemForm
 
 
@@ -13,4 +13,4 @@ admin.site.register(FridgeItem)
 class FridgeItemAdmin(admin.ModelAdmin):
     form = FridgeItemForm
 
-admin.site.register(Recipes)
+admin.site.register(Recipe)

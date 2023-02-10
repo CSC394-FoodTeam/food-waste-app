@@ -26,7 +26,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -115,7 +115,7 @@ AUTH0_CLIENT_ID = config('AUTH0_CLIENT_ID')
 AUTH0_CLIENT_SECRET = config('AUTH0_CLIENT_SECRET')
 
 
-# AUTH_USER_MODEL = 'taproot.User'
+AUTH_USER_MODEL = 'taproot.User'
 
 
 # Internationalization

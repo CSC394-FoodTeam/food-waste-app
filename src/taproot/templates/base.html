@@ -56,29 +56,24 @@
     <h1>Welcome {{session.userinfo.nickname}}!</h1>
     <p><a href="{% url 'logout' %}" id="qsLogoutBtn">Logout</a></p>
     <div style="text-align: left; border-radius: 5px; border: px solid #617ac4; padding: 5px;">
-        <pre style="color: #617ac4;">{{pretty}}</pre>
-        <form action="" method="post">
-            
-            {% csrf_token %} 
-            <label for="item_name">Item Name:</label>
-            <input type="text" id="item_name" name="item_name" required>
+        <!-- <pre style="color: #617ac4;">{{pretty}}</pre> -->
 
-            <!-- Add item category -->
+        <!-- {% for i in name %} -->
 
-            <label for="item_category">Item Category:</label>
-            <select id="item_category" name="item_category" required>
-            <option value="">Select a Category</option>
-            <option value="Pantry">Pantry</option>
-            <option value="Fridge">Fridge</option>
-            </select>
+        <h1>{{ i.ingredients }}</h1>
 
-            <!-- Add expiry date -->
+        <h6>
 
-            <label for="item_exp_date">Expiration Date:</label>
-            <input type="date" id="item_exp_date" name="item_exp_date" required>
-                <input type="submit" value="Add Item">
+            {{ i.category }}
 
-        </form>
+        </h6>
+
+        <p>{{ instructions }}</p>
+
+        <p>{{ image }}</p>
+
+        <!-- {% endfor %} -->
+
     </div>
 
     <!-- This will page will render as long as the user isn't authenticated  -->

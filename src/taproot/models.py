@@ -1,10 +1,14 @@
 from django.db import models
-from django.contrib.auth.models import Group
+from django.contrib.auth.models import AbstractUser
 
-class User(models.Model):
-    groups = models.ManyToManyField(Group, related_name='taproot_user_profiles')
-    nickname = models.CharField(max_length=30)
-    email = models.EmailField(unique=True, primary_key=True)
+from django.conf import settings
+
+class User(AbstractUser):
+
+    email = models.EmailField(primary_key=True, max_length=254, verbose_name='email address', default='welcome@example.com', unique=True)
+    class Meta:
+        verbose_name = 'user'
+        verbose_name_plural = 'users'
 
 class PantryItem(models.Model):
     PANTRY_TYPES=[
@@ -17,11 +21,14 @@ class PantryItem(models.Model):
         ('7','Oil and Vinegars'),
         ('8','Sweeteners')
     ]
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='pantry_items')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     item_name = models.CharField(max_length=100)
     category = models.CharField(max_length=20,choices=PANTRY_TYPES, unique=True)
     expiry_date = models.DateField()
     quantity = models.IntegerField()
+
+    def __str__(self):
+        return self.item_name
 
 
 class FridgeItem(models.Model):
@@ -36,16 +43,22 @@ class FridgeItem(models.Model):
         ('8','Snacks'),
         ('9','Beverages')
     ]
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='fridge_items')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     item_name = models.CharField(max_length=100)
     category = models.CharField(max_length=20,choices=FRIDGE_TYPES, unique=True)
     expiry_date = models.DateField()
     quantity = models.IntegerField()
 
+    def __str__(self):
+        return self.item_name
 
-class Recipes(models.Model):
+
+class Recipe(models.Model):
     name = models.CharField(max_length=100)
     ingredients = models.TextField()
     instructions = models.TextField()
     category = models.CharField(max_length=50)
     image = models.ImageField(upload_to='recipe_images/')
+
+    def __str__(self):
+        return self.name

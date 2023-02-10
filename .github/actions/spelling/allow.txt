@@ -10,11 +10,9 @@ cdnjs
 cloudflare
 djangoproject
 fff
-fridgeitem
 howto
 img
 Lconf
-pantryitem
 passwordless
 postgresql
 psycopg
@@ -24,3 +22,4 @@ typeof
 userinfo
 workflows
 yml
+rgba

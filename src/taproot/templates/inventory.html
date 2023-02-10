@@ -11,24 +11,12 @@
         background-color: #212121;
         color: #fff;
         font-family: Arial, sans-serif;
-        text-align: Left;
+        text-align: left;
     }
     
     a {
         color: #fff;
         text-decoration: none;
-    }
-    
-    #profileDropDown, h1 {
-        color: #617ac4;
-    }
-    
-    #qsLogoutBtn, #qsLoginBtn {
-        background-color: #617ac4;
-        border: none;
-        border-radius: 4px;
-        color: #fff;
-        padding: 8px 16px;
     }
     
     pre {
@@ -53,25 +41,29 @@
 
 
 <body>
+    <h1>Inventory</h1>
+
     
     {% for i in recipes %}
+    
+    
+    <h2>{{ i.name}}</h2>
+    
+    <h6>
+        {{i.email}}
+    </h6>
+    
+    <div style="text-align: left; border-radius: 5px; padding: 5px;">
+    <p>
+        {{ i.ingredients }}
+    </p>
+    </div>
 
-
-  <h1>{{ i.name}}</h1>
-
-  <h6>
-    {{i.email}}
-  </h6>
-
-   <p>
-    {{ i.ingredients }}
-   </p>
-
-  <img src>'{{ i.image }}'>
-
-  <p>{{ i.category}}</p>
-
-  {% endfor %}
+    <img src>'{{ i.image }}'>
+    
+    <p>{{ i.category}}</p>
+    
+    {% endfor %}
 
 </body>
 

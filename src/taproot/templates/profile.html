@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>Profile | Taproot</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     body {
         background-color: #212121;
@@ -40,6 +40,7 @@
 
 <body>
     {% if session %}
+    {{session}}
     <h1>Profile</h1>
     <div style="text-align: left; border-radius: 5px; border: px solid #617ac4; padding: 5px;">
     <pre style="color: #617ac4;">{{pretty}}</pre>

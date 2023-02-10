@@ -6,7 +6,7 @@
     <style>
         body {
             background-color: #212121;
-            color: #fff;
+            color: rgb(97, 122, 196);
             font-family: Arial, sans-serif;
             text-align: center;
         }
@@ -79,9 +79,33 @@
     <!-- This will page will render as long as the user isn't authenticated  -->
 
     {% else %}
-    <h1 id="profileDropDown">Welcome Guest</h1> 
-    <p><a href="{% url 'login/' %}" id="qsLoginBtn">Login</a></p>
+    <h1 id="profileDropDown">Welcome to Taproot</h1> 
+    <div id="goal-wrap">
+        <p>"Our goal is to provide the necessary tools and knowledge so that every household can help reduce our collective food waste footprint. One food at a time."</p>
+      </div>
+      
+      <style>
+        #goalContainer {
+          text-align: center;
+          font-size: 1.2em;
+          margin-top: 50px;
+        }
+      
+        #goalText {
+          font-weight: bold;
+          color: #333;
+        }
+      
+        #goal-wrap {
+          width: 500px;
+          margin: 0 auto;
+          background-color: rgb(38, 20, 71);
+          padding: 20px;
+          border: 1px solid rgba(0, 0, 0, 0.486);
+        }
+      </style>
 
+    <p><a href="{% url 'login' %}" id="qsLoginBtn">Login</a></p>
     {% endif %}
 
 </body>

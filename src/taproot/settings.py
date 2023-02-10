@@ -117,6 +117,10 @@ AUTH0_CLIENT_SECRET = config('AUTH0_CLIENT_SECRET')
 AUTH_USER_MODEL = 'taproot.User'
 
 
+LOGIN_URL = 'login/'
+LOGIN_REDIRECT_URL = '/'
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 

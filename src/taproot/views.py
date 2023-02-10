@@ -51,6 +51,16 @@ def index(request):
 
 #         return render(request, 'taproot/base.html', context)
 
+def profile(request):
+    return render(
+        request,
+        'profile.html',
+        context={
+            'session': request.session.get('user'),
+            'pretty': json.dumps(request.session.get('user'), indent=4),
+        },
+    )
+
 
 def callback(request):
     token = oauth.auth0.authorize_access_token(request)

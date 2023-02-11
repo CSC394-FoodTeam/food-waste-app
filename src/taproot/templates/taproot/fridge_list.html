@@ -1,0 +1,23 @@
+
+{% block content %}
+<h2>Fridge Items</h2>
+<a href="{% url 'fridgecreate' %}"><button class="btn">Add Fridge Item</button></a>
+<table id="fridge_item">
+  <tr>
+    <th>  User  </th>
+    <th>  Item  </th>
+    <th>  Category  </th>
+    <th>  Expiry Date </th>
+    <th>  Quantity  </th>
+  </tr>
+  {% for fridge in fridgeitem_list %}
+  <tr>
+      <td>  {{ fridge.user }} </td>
+      <td>  {{ fridge.item_name }}  </td>
+      <td>  {{ fridge.category }} </td>
+      <td>  {{ fridge.expiry_date }}  </td>
+      <td>  {{ fridge.quantity }} </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

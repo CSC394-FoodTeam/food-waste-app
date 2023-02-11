@@ -27,4 +27,9 @@ urlpatterns = [
     path('profile', views.profile, name='profile'),
     path('inventory', RecipeListView.as_view(), name='inventory'),
 
+    ###
+    path('fridge/create', views.FridgeTestCreate.as_view(), name= "fridgecreate"),
+    path("fridge/list", views.FridgeList.as_view(), name = "fridgelist")
+    ###
+
 ]

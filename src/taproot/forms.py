@@ -26,3 +26,9 @@ class FridgeItemForm(forms.ModelForm):
             'category': forms.CheckboxSelectMultiple(),
             'item_name': forms.TextInput(attrs={'class' : 'input', 'placeholder' : 'Write something'}),
         }
+###
+class FridgeTestForm(forms.ModelForm):
+    class Meta:
+        model = FridgeItem
+        fields = ["user", "item_name", "category", "expiry_date", "quantity"]
+###

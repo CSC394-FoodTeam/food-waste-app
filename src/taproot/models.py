@@ -4,7 +4,7 @@ from django.contrib.auth.models import AbstractUser
 from django.conf import settings
 
 class User(AbstractUser):
-
+    
     email = models.EmailField(primary_key=True, max_length=254, verbose_name='email address', default='welcome@example.com', unique=True)
     class Meta:
         verbose_name = 'user'
@@ -51,6 +51,11 @@ class FridgeItem(models.Model):
 
     def __str__(self):
         return self.item_name
+    
+    ###
+    def get_absolute_url(self):
+        return "list"
+    ###
 
 
 class Recipe(models.Model):
@@ -62,3 +67,6 @@ class Recipe(models.Model):
 
     def __str__(self):
         return self.name
+
+class Test(models.Model):
+    name = models.CharField(max_length=20)

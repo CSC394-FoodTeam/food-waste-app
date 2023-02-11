@@ -4,7 +4,10 @@ from django.conf import settings
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from urllib.parse import quote_plus, urlencode
-
+###
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.views.generic import ListView
+###
 from .models import *
 from .forms import *
 
@@ -129,3 +132,13 @@ class RecipeListView(View):
             'recipes': recipes
         }
         return render(request, 'inventory.html', context)
+
+###
+class FridgeTestCreate(CreateView):
+    model = FridgeItem
+    template_name = 'fridge_item_creation.html'
+    form_class = FridgeTestForm
+
+class FridgeList(ListView):
+    model = FridgeItem
+###

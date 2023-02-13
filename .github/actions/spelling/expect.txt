@@ -1,2 +1,11 @@
 fridgeitem
 pantryitem
+fridgecreate
+fridgedelete
+fridgelist
+fridgeupdate
+geeksforgeeks
+pantrycreate
+pantrydelete
+pantrylist
+pantryupdate

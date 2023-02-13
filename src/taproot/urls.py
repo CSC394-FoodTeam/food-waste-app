@@ -24,6 +24,20 @@ urlpatterns = [
     path('login', views.login, name='login/'),
     path('logout', views.logout, name='logout'),
     path('callback', views.callback, name='callback'),
+    path('profile', views.profile, name='profile'),
     path('inventory', RecipeListView.as_view(), name='inventory'),
+
+    ###
+    #path('fridge/create', views.FridgeTestCreate.as_view(), name= "fridgecreate"),
+    path('fridgecreate/', views.fridgeCreate, name= "fridgecreate"),
+    path("fridgelist/", views.fridge, name = "fridgelist"),
+    path("fridgeupdate/<item_name>/", views.updateFridge, name = "fridgeupdate"),
+    path("fridgedelete/<item_name>/", views.fridgeDelete, name = "fridgedelete"),
+
+    path("pantrycreate/", views.pantryCreate, name = "pantrycreate"),
+    path("pantrylist/", views.pantry, name = "pantrylist"),
+    path("pantryupdate/<item_name>/", views.updatePantry, name = "pantryupdate"),
+    path("pantrydelete/<item_name>/", views.pantryDelete, name = "pantrydelete"),
+    ###
 
 ]

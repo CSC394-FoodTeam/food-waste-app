@@ -1,8 +1,11 @@
+<!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="utf-8" />
-    <title>Welcome | Taproot</title>
+  <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Home | Taproot</title>
+
     <style>
         body {
             background-color: #212121;
@@ -20,8 +23,32 @@
             color: #617ac4;
         }
         
-        #qsLogoutBtn, #qsLoginBtn {
+        #qsLogoutBtn, #qsLoginBtn, #qsProfileBtn {
             background-color: #617ac4;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            padding: 8px 16px;
+        }
+
+        #qsInventoryBtn {
+            background-color: #6dc461;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            padding: 8px 16px;
+        }
+
+        #qsFridgeBtn {
+            background-color: #6dc461;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            padding: 8px 16px;
+        }
+
+        #qsPantryBtn {
+            background-color: #6dc461;
             border: none;
             border-radius: 4px;
             color: #fff;
@@ -55,30 +82,23 @@
     {% if session %}
     <h1>Welcome {{session.userinfo.nickname}}!</h1>
     <p><a href="{% url 'logout' %}" id="qsLogoutBtn">Logout</a></p>
-    <div style="text-align: left; border-radius: 5px; border: px solid #617ac4; padding: 5px;">
-        <!-- <pre style="color: #617ac4;">{{pretty}}</pre> -->
 
-        <!-- {% for i in name %} -->
+    <div style="padding: 1px;"></div>
+    <p><a href="{% url 'profile' %}" id="qsProfileBtn">Profile</a></p>
 
-        <h1>{{ i.ingredients }}</h1>
+    <div style="padding: 1px;"></div>
+    <p><a href="{% url 'inventory' %}" id="qsInventoryBtn">Inventory</a></p>
 
-        <h6>
+    <div style="padding: 1px;"></div>
+    <p><a href="{% url 'fridgelist' %}" id="qsFridgeBtn">Open Fridge</a></p>
 
-            {{ i.category }}
-
-        </h6>
-
-        <p>{{ instructions }}</p>
-
-        <p>{{ image }}</p>
-
-        <!-- {% endfor %} -->
-
-    </div>
+    <div style="padding: 1px;"></div>
+    <p><a href="{% url 'pantrylist' %}" id="qsPantryBtn">Open Pantry</a></p>
 
     <!-- This will page will render as long as the user isn't authenticated  -->
 
     {% else %}
+    <title>Welcome | Taproot</title>
     <h1 id="profileDropDown">Welcome to Taproot</h1> 
     <div id="goal-wrap">
         <p>"Our goal is to provide the necessary tools and knowledge so that every household can help reduce our collective food waste footprint. One food at a time."</p>
@@ -104,7 +124,7 @@
           border: 1px solid rgba(0, 0, 0, 0.486);
         }
       </style>
-
+    <div style="padding: 5px;"></div>
     <p><a href="{% url 'login/' %}" id="qsLoginBtn">Login</a></p>
     {% endif %}
 

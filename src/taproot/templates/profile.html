@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Inventory | Taproot</title>
+  <title>Profile | Taproot</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     body {
@@ -20,7 +20,7 @@
     }
     
     pre {
-        background-color: #fff;
+        background-color: #251448;
         border: 1px solid #617ac4;
         border-radius: 4px;
         color: #212121;
@@ -38,32 +38,15 @@
 </style>
 </head>
 
-
-
 <body>
-    <h1>Inventory</h1>
-
-    
-    {% for i in recipes %}
-    
-    
-    <h2>{{ i.name}}</h2>
-    
-    <h6>
-        {{i.email}}
-    </h6>
-    
-    <div style="text-align: left; border-radius: 5px; padding: 5px;">
-    <p>
-        {{ i.ingredients }}
-    </p>
+    {% if session %}
+    {{session}}
+    <h1>Profile</h1>
+    <div style="text-align: left; border-radius: 5px; border: px solid #617ac4; padding: 5px;">
+    <pre style="color: #617ac4;">{{pretty}}</pre>
     </div>
 
-    <img src>'{{ i.image }}'>
-    
-    <p>{{ i.category}}</p>
-    
-    {% endfor %}
+    {% endif %}
 
 </body>
 

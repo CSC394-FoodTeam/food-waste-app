@@ -7,6 +7,7 @@ from urllib.parse import quote_plus, urlencode
 ###
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic import ListView
+from django.shortcuts import (get_object_or_404,render, HttpResponseRedirect)
 ###
 from .models import *
 from .forms import *
@@ -103,7 +104,7 @@ class FridgeListView(View):
         context = {
             'f_items': items
             }
-        return render(request, 'base.html', context)
+        return render(request, 'taproot/fridgeitem_list.html', context)
 
 class PantryListView(View):
 
@@ -117,7 +118,8 @@ class PantryListView(View):
         context = {
             'p_items': items
         }
-        return render(request, 'base.html', context)
+        #return render(request, 'base.html', context)
+        return render(request, 'taproot/pantryitem_list.html', context)
 
 class RecipeListView(View):
 
@@ -134,11 +136,105 @@ class RecipeListView(View):
         return render(request, 'inventory.html', context)
 
 ###
-class FridgeTestCreate(CreateView):
-    model = FridgeItem
-    template_name = 'fridge_item_creation.html'
-    form_class = FridgeTestForm
+##/Fridge/##
+#@method_decorator(login_required)
+def fridgeCreate(request):
+    form = FridgeTestForm()
+    if request.method == 'POST':
+        form = FridgeTestForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("/fridgelist")
+    context={'form' : form}
+    return render(request, 'fridge_item_creation.html', context)
+
+#@method_decorator(login_required)
+def updateFridge(request, item_name):
+    context = {}
+    obj = get_object_or_404(FridgeItem, item_name = item_name)
+    form = FridgeTestForm(request.POST or None, instance = obj)
+    if form.is_valid():
+        form.save()
+        #return HttpResponseRedirect("/" + item_name)
+        return HttpResponseRedirect("/fridgelist/")
+
+    context['form'] = form
+    return render(request, 'fridgeupdate_view.html', context)
+
+#@method_decorator(login_required)
+def fridgeDelete(request, item_name):
+    context = {}
+    obj = get_object_or_404(FridgeItem, item_name = item_name)
+    
+    if request.method == "POST":
+        obj.delete()
+        return HttpResponseRedirect("/fridgelist/")
+    
+    return render(request, "fridgedelete_view.html", context)
+
+#@method_decorator(login_required)
+def fridge(request):
+    fridge = FridgeItem.objects.all()
+
+    return render(request, 'taproot/fridgeitem_list.html', {'fridge' : fridge})
+##/Fridge/##
+##/Pantry/##
+
+#@method_decorator(login_required)
+def pantryCreate(request):
+    form = PantryTestForm()
+    if request.method == 'POST':
+        form = PantryTestForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("/pantrylist/")
+    context={'form' : form}
+    return render(request, 'pantry_item_creation.html', context)
+
+#@method_decorator(login_required)
+def updatePantry(request, item_name):
+    context = {}
+    obj = get_object_or_404(PantryItem, item_name = item_name)
+    form = PantryTestForm(request.POST or None, instance = obj)
+    if form.is_valid():
+        form.save()
+        #return HttpResponseRedirect("/" + item_name)
+        return HttpResponseRedirect("/pantrylist/")
+
+    context['form'] = form
+    return render(request, 'pantryupdate_view.html', context)
+
+#@method_decorator(login_required)
+def pantryDelete(request, item_name):
+    context = {}
+    obj = get_object_or_404(PantryItem, item_name = item_name)
+    
+    if request.method == "POST":
+        obj.delete()
+        return HttpResponseRedirect("/pantrylist/")
+    
+    return render(request, "pantrydelete_view.html", context)
+
+#@method_decorator(login_required)
+def pantry(request):
+    pantry = PantryItem.objects.all()
+
+    return render(request, 'taproot/pantryitem_list.html', {'pantry' : pantry})
+##/Pantry/##
+#class FridgeTestCreate(CreateView):
+   # model = FridgeItem
+   # template_name = 'fridge_item_creation.html'
+   # form_class = FridgeTestForm
+
+class PantryCreate(CreateView):
+    model = PantryItem
+    template_name = "pantry_item_create.html"
+    form_class = PantryTestForm
 
 class FridgeList(ListView):
     model = FridgeItem
+
+class PantryList(ListView):
+    model = PantryItem
+
 ###

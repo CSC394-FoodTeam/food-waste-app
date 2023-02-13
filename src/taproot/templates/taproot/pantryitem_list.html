@@ -38,6 +38,22 @@
             color: #fff;
             padding: 8px 16px;
         }
+
+        #qsPantryUpdateBtn {
+            background-color: #617ac4;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            padding: 2px 16px;
+        }
+
+        #qsPantryDeleteBtn {
+            background-color: #c11d1d;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            padding: 2px 16px;
+        }
         
         pre {
             background-color: #fff;
@@ -57,10 +73,28 @@
         }
     </style>
 </head>
+
 {% block content %}
-<form action="" method="POST">
-    {% csrf_token %}
-    {{ form }}#
-    <input type="submit" value="Add to Fridge"/>
-  </form>
+<h2>Pantry Items</h2>
+<a href="{% url 'pantrycreate' %}"><button class="btn">Add Pantry Item</button></a>
+<table class= "table">
+  <tr>
+    <th>  User  </th>
+    <th>  Item  </th>
+    <th>  Category  </th>
+    <th>  Expiry Date </th>
+    <th>  Quantity  </th>
+  </tr>
+  {% for i in pantry %}
+  <tr>
+      <td>  {{ i.user }} </td>
+      <td>  {{ i.item_name }}  </td>
+      <td>  {{ i.category }} </td>
+      <td>  {{ i.expiry_date }}  </td>
+      <td>  {{ i.quantity }} </td>
+      <td><a href="{% url 'pantryupdate' i.item_name %}" id = 'qsPantryUpdateBtn'>Update</a></td>
+      <td><a href="{% url 'pantrydelete' i.item_name %}" id = 'qsPantryDeleteBtn'>Delete</a></td>
+  </tr>
+  {% endfor %}
+</table>
 {% endblock %}

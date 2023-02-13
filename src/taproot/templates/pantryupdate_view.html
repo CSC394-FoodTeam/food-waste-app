@@ -57,10 +57,12 @@
         }
     </style>
 </head>
-{% block content %}
-<form action="" method="POST">
-    {% csrf_token %}
-    {{ form }}#
-    <input type="submit" value="Add to Fridge"/>
-  </form>
-{% endblock %}
+<div class="main">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form }}
+ 
+        <input type="submit" value="Update">
+    </form>
+ 
+</div>

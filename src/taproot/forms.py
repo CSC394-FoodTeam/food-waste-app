@@ -9,7 +9,7 @@ class PantryItemForm(forms.ModelForm):
 
     class Meta:
         model = PantryItem
-        fields = ['category']
+        fields = ["user",'category', 'item_name', "expiry_date", "quantity"]
         widgets = {
             'category': forms.CheckboxSelectMultiple(),
             'item_name': forms.TextInput(attrs={'class' : 'input', 'placeholder' : 'Write something'}),
@@ -21,7 +21,7 @@ class FridgeItemForm(forms.ModelForm):
 
     class Meta:
         model = FridgeItem
-        fields = ['category', 'item_name']
+        fields = ["user",'category', 'item_name', "expiry_date", "quantity"]
         widgets = {
             'category': forms.CheckboxSelectMultiple(),
             'item_name': forms.TextInput(attrs={'class' : 'input', 'placeholder' : 'Write something'}),
@@ -30,5 +30,10 @@ class FridgeItemForm(forms.ModelForm):
 class FridgeTestForm(forms.ModelForm):
     class Meta:
         model = FridgeItem
+        fields = ["user", "item_name", "category", "expiry_date", "quantity"]
+
+class PantryTestForm(forms.ModelForm):
+    class Meta:
+        model = PantryItem
         fields = ["user", "item_name", "category", "expiry_date", "quantity"]
 ###

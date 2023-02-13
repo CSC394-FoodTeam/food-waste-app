@@ -12,40 +12,44 @@ class User(AbstractUser):
 
 class PantryItem(models.Model):
     PANTRY_TYPES=[
-        ('1','Grains'),
-        ('2','Canned Foods'),
-        ('3','Baking Supplies'),
-        ('4','Spices'),
-        ('5','Snacks'),
-        ('6','Sauces'),
-        ('7','Oil and Vinegars'),
-        ('8','Sweeteners')
+        ('Grains','Grains'),
+        ('Canned Foods','Canned Foods'),
+        ('Baking Supplies','Baking Supplies'),
+        ('Spices','Spices'),
+        ('Snacks','Snacks'),
+        ('Sauces','Sauces'),
+        ('Oil and Vinegars','Oil and Vinegars'),
+        ('Sweeteners','Sweeteners')
     ]
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    item_name = models.CharField(max_length=100)
-    category = models.CharField(max_length=20,choices=PANTRY_TYPES, unique=True)
+    item_name = models.CharField(primary_key=True, max_length=100) #added primary key == True
+    category = models.CharField(max_length=20,choices=PANTRY_TYPES, unique=False)
     expiry_date = models.DateField()
     quantity = models.IntegerField()
 
     def __str__(self):
         return self.item_name
 
+    ###
+    #def get_absolute_url(self):
+        #return "list"
+    ###
 
 class FridgeItem(models.Model):
     FRIDGE_TYPES= [
-        ('1','Fruits'),
-        ('2','Vegetables'),
-        ('3','Grains'),
-        ('4','Dairy'),
-        ('5','Meat'),
-        ('6','Seafood'),
-        ('7','Dessert'),
-        ('8','Snacks'),
-        ('9','Beverages')
+        ('Fruits','Fruits'),
+        ('Vegetables','Vegetables'),
+        ('Grains','Grains'),
+        ('Dairy','Dairy'),
+        ('Meat','Meat'),
+        ('Seafood','Seafood'),
+        ('Dessert','Dessert'),
+        ('Snacks','Snacks'),
+        ('Beverages','Beverages')
     ]
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    item_name = models.CharField(max_length=100)
-    category = models.CharField(max_length=20,choices=FRIDGE_TYPES, unique=True)
+    item_name = models.CharField(primary_key=True, max_length=100) #added primary key == True
+    category = models.CharField(max_length=20,choices=FRIDGE_TYPES,unique=False)   #throws Integrity error when same category exists in table
     expiry_date = models.DateField()
     quantity = models.IntegerField()
 
@@ -53,8 +57,8 @@ class FridgeItem(models.Model):
         return self.item_name
     
     ###
-    def get_absolute_url(self):
-        return "list"
+    #def get_absolute_url(self):
+        #return "list"
     ###
 
 

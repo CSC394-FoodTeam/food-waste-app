@@ -85,9 +85,10 @@
       <td>  {{ i.category }} </td>
       <td>  {{ i.expiry_date }}  </td>
       <td>  {{ i.quantity }} </td>
-      <td>
-        
-      </td>
+      
+        <td><a href="{% url 'fridgeupdate' i.item_name %}" id = 'qsFridgeUpdateBtn'>Update</a></td>
+      <td><a href="{% url 'fridgedelete' i.item_name %}" id = 'qsFridgeDeleteBtn'>Delete</a></td>
+      
     </tr>
   {% endfor %}
 </table>

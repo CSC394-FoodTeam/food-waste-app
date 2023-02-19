@@ -1,4 +1,5 @@
-{% extends 'main.html' %}
+{%include 'main.html'%}
+
 
 <head>
     <meta charset="utf-8" />
@@ -60,7 +61,7 @@
 </head>
 
 
-<body>
+
 <!--bootstrap NavBar-->
 
 <!--end-->
@@ -70,7 +71,6 @@
 <button type="button" class="btn btn-light" href="{% url 'fridgecreate' %}">Add Fridge Item</button>
 <table class="table">
 <tr>
-  <th>  id  </th>
   <th>  User  </th>
   <th>  Item  </th>
   <th>  Category  </th>
@@ -79,15 +79,13 @@
 </tr>
 {% for i in fridge %}
   <tr>
-    <td>  {{ i.id }} </td>
     <td>  {{ i.user }} </td>
     <td>  {{ i.item_name }}  </td>
     <td>  {{ i.category }} </td>
     <td>  {{ i.expiry_date }}  </td>
     <td>  {{ i.quantity }} </td>
-    <td>
-      
-    </td>
+    <td><a href="{% url 'fridgeupdate' i.item_name %}" id = 'qsFridgeUpdateBtn'>Update</a></td>
+    <td><a href="{% url 'fridgedelete' i.item_name %}" id = 'qsFridgeDeleteBtn'>Delete</a></td>
   </tr>
 {% endfor %}
 </table>

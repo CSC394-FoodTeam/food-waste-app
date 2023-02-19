@@ -38,6 +38,7 @@ urlpatterns = [
     path("pantrylist/", views.pantry, name = "pantrylist"),
     path("pantryupdate/<item_name>/", views.updatePantry, name = "pantryupdate"),
     path("pantrydelete/<item_name>/", views.pantryDelete, name = "pantrydelete"),
+     path('faq/', views.faq, name='faq'),
     ###
 
 ]

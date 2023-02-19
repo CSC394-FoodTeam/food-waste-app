@@ -75,17 +75,47 @@
 </head>
 
 <body>
-    <img src="https://avatars.githubusercontent.com/u/124204103?s=200&v=4.png" alt="Logo">
 
     <!-- This page will render if user is authenticated by Auth0 -->
 
     {% if session %}
     
-    <h1>Welcome {{session.userinfo.nickname}}!</h1>
-    <p><a href="{% url 'logout' %}" id="qsLogoutBtn">Logout</a></p>
+    <!--NavBar-->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'index' %}">MyFoods</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Features</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'faq' %}">FAQ</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                ༼ つ ◕_◕ ༽つ
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+                <li><a class="dropdown-item" href="{% url 'inventory' %}">Recipe List</a></li>
+                <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!--NavBar end-->
 
-    <div style="padding: 1px;"></div>
-    <p><a href="{% url 'profile' %}" id="qsProfileBtn">Profile</a></p>
+    <img src="https://avatars.githubusercontent.com/u/124204103?s=200&v=4.png" alt="Logo"> 
+    <h1>Welcome {{session.userinfo.nickname}}!</h1>
 
     <!--Columns Test-->
     <div class="container px-4 text-center">

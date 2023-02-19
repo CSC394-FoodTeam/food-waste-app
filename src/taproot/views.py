@@ -221,6 +221,11 @@ def pantry(request):
 
     return render(request, 'pantryitem_list.html', {'pantry' : pantry})
 ##/Pantry/##
+
+##/FAQ/##
+def faq(request):
+    return render(request, 'faq.html')
+##/FAQ/##
 #class FridgeTestCreate(CreateView):
    # model = FridgeItem
    # template_name = 'fridge_item_creation.html'

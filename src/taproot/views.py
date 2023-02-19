@@ -54,6 +54,9 @@ def index(request):
 
 #         return render(request, 'taproot/base.html', context)
 
+def faq(request):
+    return render(request, 'faq.html')
+
 def profile(request):
     return render(
         request,

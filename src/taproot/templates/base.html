@@ -71,6 +71,12 @@
             margin-bottom: 16px;
             width: 100px;
         }
+
+        #qsFAQBtn {
+            padding: 100px;
+            float: left;
+        }
+
     </style>
 </head>
 
@@ -94,6 +100,9 @@
 
     <div style="padding: 1px;"></div>
     <p><a href="{% url 'pantrylist' %}" id="qsPantryBtn">Open Pantry</a></p>
+    
+    <div id="button-container" style="padding: 175px;">
+    <p><a href="{% url 'faq' %}" id="qsFAQBtn">FAQ</a></p> </div>
 
     <!-- This will page will render as long as the user isn't authenticated  -->
 
@@ -128,8 +137,7 @@
     <p><a href="{% url 'login/' %}" id="qsLoginBtn">Login</a></p>
     {% endif %}
 
+
 </body>
 
 </html>
-
-

@@ -39,5 +39,7 @@ urlpatterns = [
     path("pantryupdate/<item_name>/", views.updatePantry, name = "pantryupdate"),
     path("pantrydelete/<item_name>/", views.pantryDelete, name = "pantrydelete"),
     ###
+    #FAQ Page
+    path('faq/', views.faq, name='faq')
 
 ]

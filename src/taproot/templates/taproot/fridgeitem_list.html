@@ -1,38 +1,29 @@
-<!DOCTYPE html>
-<html>
+<!--Not used-->
 
   <head>
       <meta charset="utf-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      
     <title>Home | Taproot</title>
 
     <style>
         body {
             background-color: #212121;
-            color: rgb(97, 122, 196);
+            color: rgb(255, 255, 255);
             font-family: Arial, sans-serif;
             
         }
-        
+
+
         a {
             color: #fff;
             text-decoration: none;
         }
         
-        #profileDropDown, h1 {
-            color: #617ac4;
-        }
-        
-        #qsLogoutBtn, #qsLoginBtn, #qsProfileBtn {
-            background-color: #617ac4;
-            border: none;
-            border-radius: 4px;
-            color: #fff;
-            padding: 8px 16px;
-        }
 
         #qsFridgeUpdateBtn {
-            background-color: #617ac4;
+            background-color:None;
             border: none;
             border-radius: 4px;
             color: #fff;
@@ -40,10 +31,10 @@
         }
 
         #qsFridgeDeleteBtn {
-            background-color: #c11d1d;
-            border: none;
+            background-color: None;
+            
             border-radius: 4px;
-            color: #fff;
+            
             padding: 2px 16px;
         }
         
@@ -56,19 +47,27 @@
             margin-top: 16px;
             white-space: pre-wrap;
         }
-        
-        img {
-            border-radius: 50%;
-            height: 100px;
-            margin-bottom: 16px;
-            width: 100px;
+
+        .hstack {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          align-self: stretch;
         }
+
+
     </style>
 </head>
 
+
+<body>
+  <!--bootstrap NavBar-->
+  
+  <!--end-->
+
 {% block content %}
 <h2>Fridge Items</h2>
-<a href="{% url 'fridgecreate' %}"><button class="btn">Add Fridge Item</button></a>
+<button type="button" class="btn btn-light" href="{% url 'fridgecreate' %}">Add Fridge Item</button>
 <table class="table">
   <tr>
     <th>  id  </th>
@@ -86,8 +85,9 @@
       <td>  {{ i.category }} </td>
       <td>  {{ i.expiry_date }}  </td>
       <td>  {{ i.quantity }} </td>
-      <td><a href="{% url 'fridgeupdate' i.item_name %}" id = 'qsFridgeUpdateBtn'>Update</a></td>
-      <td><a href="{% url 'fridgedelete' i.item_name %}" id = 'qsFridgeDeleteBtn'>Delete</a></td>
+      <td>
+        
+      </td>
     </tr>
   {% endfor %}
 </table>

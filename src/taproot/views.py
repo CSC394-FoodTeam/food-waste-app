@@ -176,7 +176,7 @@ def fridgeDelete(request, item_name):
 def fridge(request):
     fridge = FridgeItem.objects.all()
 
-    return render(request, 'taproot/fridgeitem_list.html', {'fridge' : fridge})
+    return render(request, 'fridgeitem_list.html', {'fridge' : fridge})
 ##/Fridge/##
 ##/Pantry/##
 
@@ -219,7 +219,7 @@ def pantryDelete(request, item_name):
 def pantry(request):
     pantry = PantryItem.objects.all()
 
-    return render(request, 'taproot/pantryitem_list.html', {'pantry' : pantry})
+    return render(request, 'pantryitem_list.html', {'pantry' : pantry})
 ##/Pantry/##
 #class FridgeTestCreate(CreateView):
    # model = FridgeItem

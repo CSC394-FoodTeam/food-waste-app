@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from . import views
 from .views import RecipeListView
+from .views import bug_report
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -40,6 +41,9 @@ urlpatterns = [
     path("pantrydelete/<item_name>/", views.pantryDelete, name = "pantrydelete"),
     ###
     #FAQ Page
-    path('faq/', views.faq, name='faq')
+    path('faq/', views.faq, name='faq'),
+
+    path('bug_report/', views.bug_report, name='bug_report')
+
 
 ]

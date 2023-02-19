@@ -1,0 +1,42 @@
+{% block content %}
+<style> 
+    body {
+        background-color: #222;
+        color: #ddd;
+    }
+    
+    form label {
+        color: #ddd;
+    }
+    
+    form input,
+    form textarea {
+        background-color: #333;
+        border-color: #555;
+        color: #ddd;
+    }
+    
+    form input::placeholder,
+    form textarea::placeholder {
+        color: #aaa;
+    }
+    
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+    
+    .btn-primary:hover {
+        background-color: #0069d9;
+        border-color: #0062cc;
+    }
+    
+    .btn-primary:focus,
+    .btn-primary:active {
+        background-color: #0062cc;
+        border-color: #005cbf;
+    }
+    </style>
+    
+    <h2>Thank you for submitting a bug report</h2>
+{% endblock %}

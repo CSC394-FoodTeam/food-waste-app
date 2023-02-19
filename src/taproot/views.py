@@ -240,4 +240,13 @@ class FridgeList(ListView):
 class PantryList(ListView):
     model = PantryItem
 
+def bug_report(request):
+    if request.method == 'POST':
+        # Process form data
+        # Code here to save the bug report to our database
+        return render(request, 'bug_report_success.html')
+    else:
+        return render(request, 'bug_report.html')
+
+
 ###

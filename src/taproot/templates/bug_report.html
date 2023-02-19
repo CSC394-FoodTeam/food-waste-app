@@ -1,0 +1,56 @@
+{% block content %}
+<style> 
+body {
+    background-color: #222;
+    color: #ddd;
+}
+
+form label {
+    color: #ddd;
+}
+
+form input,
+form textarea {
+    background-color: #333;
+    border-color: #555;
+    color: #ddd;
+}
+
+form input::placeholder,
+form textarea::placeholder {
+    color: #aaa;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+.btn-primary:focus,
+.btn-primary:active {
+    background-color: #0062cc;
+    border-color: #005cbf;
+}
+</style>
+
+<div class="container">
+    <h2 class="text-center mb-5">Report a Bug</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="title" name="title" placeholder=" " required>
+            <label for="title">Title:</label>
+        </div>
+        <div class="form-floating mb-3">
+            <textarea class="form-control" id="description" name="description" placeholder=" " required></textarea>
+            <label for="description">Description:</label>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+</div>
+{% endblock %}

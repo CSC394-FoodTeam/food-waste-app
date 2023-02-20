@@ -92,6 +92,12 @@ def logout(request):
 #         return render(request, 'taproot/inventory.html', context)
 # 
 
+@login_required
+def fridge(request):
+    fridge = FridgeItem.objects.filter(user=request.user)
+
+    return render(request, 'home/fridge.html', {'fridge' : fridge})
+
 
 @login_required
 def fridgeCreate(request):
@@ -109,10 +115,11 @@ def fridgeCreate(request):
         form = FridgeItemForm()
 
     context={'form' : form}
-    return render(request, 'components/fridge_item_creation.html', context)
+    return render(request, 'components/fridgecreate_view.html', context)
+
 
 @login_required
-def updateFridge(request, item_name):
+def fridgeUpdate(request, item_name):
     context = {}
     obj = get_object_or_404(FridgeItem, item_name = item_name)
     form = FridgeItemForm(request.POST or None, instance = obj)
@@ -122,6 +129,7 @@ def updateFridge(request, item_name):
 
     context['form'] = form
     return render(request, 'components/fridgeupdate_view.html', context)
+
 
 @login_required
 def fridgeDelete(request, item_name):
@@ -136,16 +144,15 @@ def fridgeDelete(request, item_name):
     
     return render(request, 'components/fridgedelete_view.html', context=context)
 
+
+# <----- Fridge views above / Pantry views below ----->
+
+
 @login_required
-def fridge(request):
-    fridge = FridgeItem.objects.filter(user=request.user)
+def pantry(request):
+    pantry = PantryItem.objects.filter(user=request.user)
 
-    return render(request, 'home/fridgeitem_list.html', {'fridge' : fridge})
-##/Fridge/##
-##/Pantry/##
-
-
-
+    return render(request, 'home/pantry.html', {'pantry' : pantry})
 
 
 @login_required
@@ -164,10 +171,11 @@ def pantryCreate(request):
         form = PantryItemForm()
 
     context={'form' : form}
-    return render(request, 'components/pantry_item_creation.html', context)
+    return render(request, 'components/pantrycreate_view.html', context)
+
 
 @login_required
-def updatePantry(request, item_name):
+def pantryUpdate(request, item_name):
     context = {}
     obj = get_object_or_404(PantryItem, item_name = item_name)
     form = PantryItemForm(request.POST or None, instance = obj)
@@ -177,6 +185,7 @@ def updatePantry(request, item_name):
 
     context['form'] = form
     return render(request, 'components/pantryupdate_view.html', context)
+
 
 @login_required
 def pantryDelete(request, item_name):
@@ -191,11 +200,7 @@ def pantryDelete(request, item_name):
     
     return render(request, 'components/pantrydelete_view.html', context=context)
 
-@login_required
-def pantry(request):
-    pantry = PantryItem.objects.filter(user=request.user)
 
-    return render(request, 'home/pantryitem_list.html', {'pantry' : pantry})
 ##/Pantry/##
 #class FridgeTestCreate(CreateView):
    # model = FridgeItem

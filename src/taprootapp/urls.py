@@ -13,11 +13,11 @@ urlpatterns = [
 
     # ###
     path('fridgecreate/', views.fridgeCreate, name= "fridgecreate"),
-    path("fridgeupdate/<item_name>/", views.updateFridge, name = "fridgeupdate"),
+    path("fridgeupdate/<item_name>/", views.fridgeUpdate, name = "fridgeupdate"),
     path("fridgedelete/<item_name>/", views.fridgeDelete, name = "fridgedelete"),
 
     path("pantrycreate/", views.pantryCreate, name = "pantrycreate"),
-    path("pantryupdate/<item_name>/", views.updatePantry, name = "pantryupdate"),
+    path("pantryupdate/<item_name>/", views.pantryUpdate, name = "pantryupdate"),
     path("pantrydelete/<item_name>/", views.pantryDelete, name = "pantrydelete"),
     ###
 ]

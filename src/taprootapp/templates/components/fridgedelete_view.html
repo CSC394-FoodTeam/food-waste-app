@@ -4,8 +4,8 @@
   <head>
       <meta charset="utf-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Home | Taproot</title>
-
+    <title>Fridge | Taproot</title>
+    {% block title %}Fridge{% endblock %}
     <style>
         body {
             background-color: #212121;
@@ -38,6 +38,15 @@
             color: #fff;
             padding: 8px 16px;
         }
+
+        #qsNoBtn {
+            background-color: #e5e5e5;
+            border: none;
+            border-radius: 4px;
+            color: #000000;
+            padding: 8px 16px;
+    
+        }
         
         pre {
             background-color: #fff;
@@ -57,12 +66,13 @@
         }
     </style>
 </head>
-<div class="main">
+{% block content %}
     <form method="POST">
         {% csrf_token %}
-        {{ form }}
- 
-        <input type="submit" value="Update">
+        Do you want to delete {{ item_name }}?
+        <input type="submit" value="Yes" />
+        <a href="{% url 'fridgelist' %}">Cancel</a>
     </form>
- 
-</div>
+{% endblock %}
+</body>
+</html>

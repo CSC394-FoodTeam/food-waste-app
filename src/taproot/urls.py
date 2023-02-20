@@ -14,30 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from . import views
-from .views import RecipeListView
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name='index'),
-    path('login', views.login, name='login/'),
-    path('logout', views.logout, name='logout'),
-    path('callback', views.callback, name='callback'),
-    path('profile', views.profile, name='profile'),
-    path('inventory', RecipeListView.as_view(), name='inventory'),
-
-    ###
-    #path('fridge/create', views.FridgeTestCreate.as_view(), name= "fridgecreate"),
-    path('fridgecreate/', views.fridgeCreate, name= "fridgecreate"),
-    path("fridgelist/", views.fridge, name = "fridgelist"),
-    path("fridgeupdate/<item_name>/", views.updateFridge, name = "fridgeupdate"),
-    path("fridgedelete/<item_name>/", views.fridgeDelete, name = "fridgedelete"),
-
-    path("pantrycreate/", views.pantryCreate, name = "pantrycreate"),
-    path("pantrylist/", views.pantry, name = "pantrylist"),
-    path("pantryupdate/<item_name>/", views.updatePantry, name = "pantryupdate"),
-    path("pantrydelete/<item_name>/", views.pantryDelete, name = "pantrydelete"),
-    ###
-
+    path('', include('taprootapp.urls')),
+    path('', include('social_django.urls'))
 ]

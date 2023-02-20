@@ -9,3 +9,5 @@ pantrycreate
 pantrydelete
 pantrylist
 pantryupdate
+taprootapp
+kogeni

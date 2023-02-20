@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
   <head>
       <meta charset="utf-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -79,15 +78,11 @@
 
     <!-- This page will render if user is authenticated by Auth0 -->
 
-    {% if session %}
-    <h1>Welcome {{session.userinfo.nickname}}!</h1>
-    <p><a href="{% url 'logout' %}" id="qsLogoutBtn">Logout</a></p>
+    {% if user.is_authenticated %}
+    <h1>Welcome {{ user.username }}!</h1>
+    <p><a class="button is-primary" href="/logout/" id="qsLoginBtn">Logout</a></p>
 
-    <div style="padding: 1px;"></div>
-    <p><a href="{% url 'profile' %}" id="qsProfileBtn">Profile</a></p>
 
-    <div style="padding: 1px;"></div>
-    <p><a href="{% url 'inventory' %}" id="qsInventoryBtn">Inventory</a></p>
 
     <div style="padding: 1px;"></div>
     <p><a href="{% url 'fridgelist' %}" id="qsFridgeBtn">Open Fridge</a></p>
@@ -125,11 +120,8 @@
         }
       </style>
     <div style="padding: 5px;"></div>
-    <p><a href="{% url 'login/' %}" id="qsLoginBtn">Login</a></p>
+    <p><a class="button is-primary" href="/login/auth0" id="qsLogoutBtn">Login</a></p>
     {% endif %}
 
 </body>
-
 </html>
-
-

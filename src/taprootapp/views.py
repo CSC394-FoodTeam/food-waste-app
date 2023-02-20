@@ -19,6 +19,16 @@ from django.contrib.auth.decorators import login_required
 def index(request):
     return render(request,'home/base.html')
 
+
+@login_required
+def logout(request):
+    django_logout(request)
+    domain = settings.SOCIAL_AUTH_AUTH0_DOMAIN
+    client_id = settings.SOCIAL_AUTH_AUTH0_KEY
+    return_to = request.build_absolute_uri(reverse('index'))
+    return redirect(f'https://{domain}/v2/logout?client_id={client_id}&returnTo={return_to}')
+
+
 # def profile(request):
 #     user = request.user
 
@@ -36,15 +46,6 @@ def index(request):
 
 #     return render(request, 'profile.html')
 
-
-@login_required
-def logout(request):
-    django_logout(request)
-    domain = settings.SOCIAL_AUTH_AUTH0_DOMAIN
-    client_id = settings.SOCIAL_AUTH_AUTH0_KEY
-    # return_to = request.build_absolute_uri(reverse('index')) # this can be current domain
-    return_to = 'http://127.0.0.1:8000' # this can be current domain
-    return redirect(f'https://{domain}/v2/logout?client_id={client_id}&returnTo={return_to}')
 
 # These are fast and flexible class-based views (refer to inventory.html to see how they're rendered) |-->
 

@@ -10,3 +10,4 @@ pantrydelete
 pantrylist
 pantryupdate
 taprootapp
+kogeni

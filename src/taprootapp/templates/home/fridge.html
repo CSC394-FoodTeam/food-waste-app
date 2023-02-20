@@ -68,7 +68,6 @@
 
 {% block content %}
 <h2>Fridge Items</h2>
-<a href="{% url 'fridgecreate' %}"><button class="btn">Add Fridge Item</button></a>
 <table class="table">
   <tr>
     <th>  Item  </th>
@@ -77,14 +76,15 @@
     <th>  Quantity  </th>
   </tr>
   {% for i in fridge %}
-    <tr>
-      <td>  {{ i.item_name }}  </td>
-      <td>  {{ i.category }} </td>
-      <td>  {{ i.expiry_date }}  </td>
-      <td>  {{ i.quantity }} </td>
-      <td><a href="{% url 'fridgeupdate' i.item_name %}" id = 'qsFridgeUpdateBtn'>Update</a></td>
-      <td><a href="{% url 'fridgedelete' i.item_name %}" id = 'qsFridgeDeleteBtn'>Delete</a></td>
-    </tr>
+  <tr>
+    <td>  {{ i.item_name }}  </td>
+    <td>  {{ i.category }} </td>
+    <td>  {{ i.expiry_date }}  </td>
+    <td>  {{ i.quantity }} </td>
+    <td><a href="{% url 'fridgeupdate' i.item_name %}" id = 'qsFridgeUpdateBtn'>Update</a></td>
+    <td><a href="{% url 'fridgedelete' i.item_name %}" id = 'qsFridgeDeleteBtn'>Delete</a></td>
+  </tr>
   {% endfor %}
 </table>
+<a href="{% url 'fridgecreate' %}"><button class="btn">Add Fridge Item</button></a>
 {% endblock %}

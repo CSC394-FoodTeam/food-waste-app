@@ -76,23 +76,23 @@
 
 {% block content %}
 <h2>Pantry Items</h2>
-<a href="{% url 'pantrycreate' %}"><button class="btn">Add Pantry Item</button></a>
 <table class= "table">
-  <tr>
-    <th>  Item  </th>
-    <th>  Category  </th>
-    <th>  Expiry Date </th>
-    <th>  Quantity  </th>
-  </tr>
-  {% for i in pantry %}
-  <tr>
-      <td>  {{ i.item_name }}  </td>
-      <td>  {{ i.category }} </td>
-      <td>  {{ i.expiry_date }}  </td>
-      <td>  {{ i.quantity }} </td>
-      <td><a href="{% url 'pantryupdate' i.item_name %}" id = 'qsPantryUpdateBtn'>Update</a></td>
-      <td><a href="{% url 'pantrydelete' i.item_name %}" id = 'qsPantryDeleteBtn'>Delete</a></td>
-  </tr>
-  {% endfor %}
+    <tr>
+        <th>  Item  </th>
+        <th>  Category  </th>
+        <th>  Expiry Date </th>
+        <th>  Quantity  </th>
+    </tr>
+    {% for i in pantry %}
+    <tr>
+        <td>  {{ i.item_name }}  </td>
+        <td>  {{ i.category }} </td>
+        <td>  {{ i.expiry_date }}  </td>
+        <td>  {{ i.quantity }} </td>
+        <td><a href="{% url 'pantryupdate' i.item_name %}" id = 'qsPantryUpdateBtn'>Update</a></td>
+        <td><a href="{% url 'pantrydelete' i.item_name %}" id = 'qsPantryDeleteBtn'>Delete</a></td>
+    </tr>
+    {% endfor %}
 </table>
+<a href="{% url 'pantrycreate' %}"><button class="btn">Add Pantry Item</button></a>
 {% endblock %}

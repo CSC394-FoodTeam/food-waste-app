@@ -9,12 +9,14 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+TEMPLATE_DIR = os.path.join(BASE_DIR, 'taprootapp', 'templates')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 
 # Quick-start development settings - unsuitable for production
@@ -38,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'taprootapp',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +59,7 @@ ROOT_URLCONF = 'taproot.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATE_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -79,7 +83,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgres',
         'USER': 'postgres',
-        'PASSWORD': '6uFoL8bosJv6!9afq7sG',
+        'PASSWORD': config('POSTGRES_PASS'),
         'HOST': '0.0.0.0',
         'PORT': '5432',
     }
@@ -103,6 +107,32 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# Load Auth0 application settings into memory
+
+SOCIAL_AUTH_TRAILING_SLASH = False
+SOCIAL_AUTH_AUTH0_DOMAIN = config('AUTH0_DOMAIN')
+SOCIAL_AUTH_AUTH0_KEY = config('AUTH0_CLIENT_ID')
+SOCIAL_AUTH_AUTH0_SECRET = config('AUTH0_CLIENT_SECRET')
+SOCIAL_AUTH_AUTH0_SCOPE = [
+    'openid',
+    'profile',
+    'email'
+]
+
+
+AUTH_USER_MODEL = 'taprootapp.User'
+
+
+LOGIN_URL = 'login/auth0'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+
+AUTHENTICATION_BACKENDS = {
+    'social_core.backends.auth0.Auth0OAuth2',
+    'django.contrib.auth.backends.ModelBackend'
+}
 
 
 # Internationalization

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Profile | Taproot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+        background-color: #212121;
+        color: #fff;
+        font-family: Arial, sans-serif;
+        text-align: left;
+    }
+    
+    a {
+        color: #fff;
+        text-decoration: none;
+    }
+    
+    pre {
+        background-color: #251448;
+        border: 1px solid #617ac4;
+        border-radius: 4px;
+        color: #212121;
+        padding: 16px;
+        margin-top: 16px;
+        white-space: pre-wrap;
+    }
+    
+    img {
+        border-radius: 50%;
+        height: 100px;
+        margin-bottom: 16px;
+        width: 100px;
+    }
+</style>
+</head>
+
+{% extends 'base.html' %}
+
+{% block body %}
+    {{auth0_user.nickname}}
+{% endblock body %}
+    
+</html>

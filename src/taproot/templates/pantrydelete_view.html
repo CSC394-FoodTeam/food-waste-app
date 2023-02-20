@@ -15,7 +15,7 @@
     <form method="POST">
         {% csrf_token %}
         Are you want to delete this item ?
-        <button type="submit" class="btn btn-secondary">Yes</button>
-        <a class="btn btn-outline-secondary" href="{% url 'pantrylist' %}" role="button">Cancel</a>
+        <button type="submit" class="btn btn-primary">Yes</button>
+        <a class="btn btn-outline-warning" href="{% url 'pantrylist' %}" role="button">Cancel</a>
     </form>
 </div>

@@ -9,8 +9,7 @@
       <title>Home | Taproot</title>
     <style>
         body {
-            background-color: #212121;
-            color: rgb(97, 122, 196);
+            
             font-family: Arial, sans-serif;
             text-align: center;
         }
@@ -66,7 +65,12 @@
             white-space: pre-wrap;
         }
         
-        img {
+        img { 
+            height: 200px;
+            margin-bottom: 16px;
+            width: 100px;
+        }
+        #logo_placeholder {
             border-radius: 50%;
             height: 100px;
             margin-bottom: 16px;
@@ -114,7 +118,7 @@
     <!--NavBar-->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'index' %}">MyFoods</a>
+        <a class="navbar-brand" href="{% url 'index' %}">Taproot</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -145,7 +149,7 @@
     </nav>
     <!--NavBar end-->
 
-    <img src="https://raw.githubusercontent.com/CSC394-FoodTeam/food-waste-app/feature/bootstrap/src/media/recipe_images/Self-loving.gif" alt="Logo"> 
+    <img src="https://raw.githubusercontent.com/CSC394-FoodTeam/food-waste-app/feature/bootstrap/src/taproot/media/images/logo_placeholder.PNG" alt="Logo" id = "logo_placeholder"> 
     <!--<img src="https://avatars.githubusercontent.com/u/124204103?s=200&v=4.png" alt="Logo">-->
     <h1>Welcome {{session.userinfo.nickname}}!</h1>
 
@@ -155,7 +159,7 @@
         <div class="col">
           <!--fridge_card_start-->
           <div class="card" style="width: 18rem;">
-            <img src="https://avatars.githubusercontent.com/u/65238492?v=4" class="card-img-top" alt="fridge_image">
+            <img src="https://raw.githubusercontent.com/CSC394-FoodTeam/food-waste-app/feature/bootstrap/src/taproot/media/images/fridge_card.PNG" class="card-img-top" alt="fridge_image">
             <div class="text-bg-dark p-3">
               <h5 class="card-title">Add To Fridge</h5>
               <p class="card-text">Add or update your inventory that is in your fridge!</p>
@@ -167,7 +171,7 @@
         <div class="col">
           <!--pantry_card_start-->
           <div class="card" style="width: 18rem;">
-            <img src="https://avatars.githubusercontent.com/u/65238492?v=4" class="card-img-top" alt="fridge_image">
+            <img src="https://raw.githubusercontent.com/CSC394-FoodTeam/food-waste-app/feature/bootstrap/src/taproot/media/images/pantry_card.PNG" class="card-img-top" alt="fridge_image">
             <div class="text-bg-dark p-3">
             <h5 class="card-title">Add To Pantry</h5>
             <p class="card-text">Add or update your inventory that is in your pantry!</p>
@@ -179,11 +183,12 @@
         <div class="col">
           <!--card test-->
             <div class="card" style="width: 18rem;">
-              <img src="https://raw.githubusercontent.com/CSC394-FoodTeam/food-waste-app/feature/bootstrap/src/taproot/media/images/AdobeStock_447113528.png" class="card-img-top" alt="fridge_image">
+              <img src="https://raw.githubusercontent.com/CSC394-FoodTeam/food-waste-app/feature/bootstrap/src/taproot/media/images/recipe_card.PNG" class="card-img-top" alt="fridge_image">
               <div class="text-bg-dark p-3">
               <h5 class="card-title">View Recipes</h5>
-              <p class="card-text">View your favorite recipes that you saved!</p>
-              <a href="{% url 'inventory' %}" class="btn btn-outline-success">Open Recipe Book!</a>
+              <p class="card-text">View your favorite recipes that you saved! (Not Available)</p>
+              <!--<a href="{% url 'inventory' %}" class="btn btn-outline-success" disabled>Open Recipe Book!</a>-->
+              <button type="button" class="btn btn-outline-success" disabled>Open Recipe Book!</button>
             </div>
         </div>
   <!--end-->
@@ -235,6 +240,7 @@
  
     <!-- This will page will render as long as the user isn't authenticated  -->
     {% else %}
+    <img src="https://raw.githubusercontent.com/CSC394-FoodTeam/food-waste-app/feature/bootstrap/src/taproot/media/images/logo_placeholder.PNG" alt="Logo" id = "logo_placeholder"> 
     <title>Welcome | Taproot</title>
     <h1 id="profileDropDown">Welcome to Taproot</h1> 
     <div id="goal-wrap">

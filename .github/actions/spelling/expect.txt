@@ -9,3 +9,4 @@ pantrycreate
 pantrydelete
 pantrylist
 pantryupdate
+taprootapp

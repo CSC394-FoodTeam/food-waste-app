@@ -38,6 +38,14 @@
             color: #fff;
             padding: 8px 16px;
         }
+
+        #qsNoBtn {
+            background-color: #e5e5e5;
+            border: none;
+            border-radius: 4px;
+            color: #000000;
+            padding: 8px 16px;
+        }
         
         pre {
             background-color: #fff;
@@ -57,10 +65,11 @@
         }
     </style>
 </head>
-{% block content %}
-<form action="" method="POST">
-    {% csrf_token %}
-    {{ form }}#
-    <input type="submit" value="Add to Fridge"/>
-  </form>
-{% endblock %}
+<div class="main">
+    <form method="POST">
+        {% csrf_token %}
+        Do you want to delete {{ item_name }}?
+        <input type="submit" value="Yes" />
+        <a href="{% url 'fridgelist' %}" id="qsNoBtn">Cancel</a>
+    </form>
+</div>

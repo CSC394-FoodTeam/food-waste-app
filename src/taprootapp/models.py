@@ -1,14 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-
 from django.conf import settings
 
 class User(AbstractUser):
-    
-    email = models.EmailField(primary_key=True, max_length=254, verbose_name='email address', default='welcome@example.com', unique=True)
-    class Meta:
-        verbose_name = 'user'
-        verbose_name_plural = 'users'
+    pass
 
 class PantryItem(models.Model):
     PANTRY_TYPES=[
@@ -30,10 +25,6 @@ class PantryItem(models.Model):
     def __str__(self):
         return self.item_name
 
-    ###
-    #def get_absolute_url(self):
-        #return "list"
-    ###
 
 class FridgeItem(models.Model):
     FRIDGE_TYPES= [

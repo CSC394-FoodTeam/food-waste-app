@@ -15,7 +15,7 @@ from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-TEMPLATE_DIR = os.path.join(BASE_DIR, 'taproot', 'templates')
+TEMPLATE_DIR = os.path.join(BASE_DIR, 'taprootapp', 'templates')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 
@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'taproot',
+    'taprootapp',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -109,16 +110,29 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Load Auth0 application settings into memory
 
-AUTH0_DOMAIN = config('AUTH0_DOMAIN')
-AUTH0_CLIENT_ID = config('AUTH0_CLIENT_ID')
-AUTH0_CLIENT_SECRET = config('AUTH0_CLIENT_SECRET')
+SOCIAL_AUTH_TRAILING_SLASH = False
+SOCIAL_AUTH_AUTH0_DOMAIN = config('AUTH0_DOMAIN')
+SOCIAL_AUTH_AUTH0_KEY = config('AUTH0_CLIENT_ID')
+SOCIAL_AUTH_AUTH0_SECRET = config('AUTH0_CLIENT_SECRET')
+SOCIAL_AUTH_AUTH0_SCOPE = [
+    'openid',
+    'profile',
+    'email'
+]
 
 
-AUTH_USER_MODEL = 'taproot.User'
+AUTH_USER_MODEL = 'taprootapp.User'
 
 
-LOGIN_URL = 'login/'
+LOGIN_URL = 'login/auth0'
 LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+
+AUTHENTICATION_BACKENDS = {
+    'social_core.backends.auth0.Auth0OAuth2',
+    'django.contrib.auth.backends.ModelBackend'
+}
 
 
 # Internationalization

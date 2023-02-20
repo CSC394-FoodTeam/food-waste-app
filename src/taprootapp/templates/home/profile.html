@@ -38,16 +38,10 @@
 </style>
 </head>
 
-<body>
-    {% if session %}
-    {{session}}
-    <h1>Profile</h1>
-    <div style="text-align: left; border-radius: 5px; border: px solid #617ac4; padding: 5px;">
-    <pre style="color: #617ac4;">{{pretty}}</pre>
-    </div>
+{% extends 'base.html' %}
 
-    {% endif %}
-
-</body>
-
+{% block body %}
+    {{auth0_user.nickname}}
+{% endblock body %}
+    
 </html>

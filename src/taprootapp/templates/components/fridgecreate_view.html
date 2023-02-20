@@ -2,9 +2,10 @@
 <html>
 
   <head>
-      <meta charset="utf-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Home | Taproot</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Fridge | Taproot</title>
+    {% block title %}Fridge{% endblock %}
 
     <style>
         body {
@@ -56,12 +57,15 @@
             width: 100px;
         }
     </style>
+
 </head>
-<div class="main">
-    <form method="POST">
-        {% csrf_token %}
-        Are you want to delete this item ?
-        <input type="submit" value="Yes" />
-        <a href="{% url 'fridgelist' %}">Cancel </a>
-    </form>
-</div>
+<body>
+{% block content %}
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Add to Fridge"/>
+  </form>
+{% endblock %}
+</body>
+</html>

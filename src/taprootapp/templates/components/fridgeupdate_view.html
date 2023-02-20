@@ -4,7 +4,7 @@
   <head>
       <meta charset="utf-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Home | Taproot</title>
+    <title>Fridge | Taproot</title>
 
     <style>
         body {
@@ -31,20 +31,12 @@
             padding: 8px 16px;
         }
 
-        #qsFridgeUpdateBtn {
-            background-color: #617ac4;
+        #qsInventoryBtn {
+            background-color: #6dc461;
             border: none;
             border-radius: 4px;
             color: #fff;
-            padding: 2px 16px;
-        }
-
-        #qsFridgeDeleteBtn {
-            background-color: #c11d1d;
-            border: none;
-            border-radius: 4px;
-            color: #fff;
-            padding: 2px 16px;
+            padding: 8px 16px;
         }
         
         pre {
@@ -64,31 +56,15 @@
             width: 100px;
         }
     </style>
-</head>
 
+</head>
+<body>
 {% block content %}
-<h2>Fridge Items</h2>
-<a href="{% url 'fridgecreate' %}"><button class="btn">Add Fridge Item</button></a>
-<table class="table">
-  <tr>
-    <th>  id  </th>
-    <th>  User  </th>
-    <th>  Item  </th>
-    <th>  Category  </th>
-    <th>  Expiry Date </th>
-    <th>  Quantity  </th>
-  </tr>
-  {% for i in fridge %}
-    <tr>
-      <td>  {{ i.id }} </td>
-      <td>  {{ i.user }} </td>
-      <td>  {{ i.item_name }}  </td>
-      <td>  {{ i.category }} </td>
-      <td>  {{ i.expiry_date }}  </td>
-      <td>  {{ i.quantity }} </td>
-      <td><a href="{% url 'fridgeupdate' i.item_name %}" id = 'qsFridgeUpdateBtn'>Update</a></td>
-      <td><a href="{% url 'fridgedelete' i.item_name %}" id = 'qsFridgeDeleteBtn'>Delete</a></td>
-    </tr>
-  {% endfor %}
-</table>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+    <input type="submit" value="Update">
+    </form>
 {% endblock %}
+</body>
+</html>

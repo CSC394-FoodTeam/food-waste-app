@@ -4,8 +4,8 @@
   <head>
       <meta charset="utf-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Home | Taproot</title>
-
+    <title>Pantry | Taproot</title>
+    {% block title %}Pantry{% endblock %}
     <style>
         body {
             background-color: #212121;
@@ -56,12 +56,15 @@
             width: 100px;
         }
     </style>
+
 </head>
-<div class="main">
-    <form method="POST">
+<body>
+{% block content %}
+    <form action="" method="POST">
         {% csrf_token %}
-        Are you want to delete this item ?
-        <input type="submit" value="Yes" />
-        <a href="{% url 'pantrylist' %}">Cancel </a>
-    </form>
-</div>
+        {{ form.as_p }}
+        <input type="submit" value="Add to Pantry"/>
+  </form>
+{% endblock %}
+</body>
+</html>

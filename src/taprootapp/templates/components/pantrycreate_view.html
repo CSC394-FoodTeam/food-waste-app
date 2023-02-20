@@ -56,12 +56,14 @@
             width: 100px;
         }
     </style>
+
 </head>
+<body>
 {% block content %}
-<form action="" method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Add to Pantry"/>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Add to Pantry"/>
   </form>
 {% endblock %}
 </body>

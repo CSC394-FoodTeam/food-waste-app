@@ -79,7 +79,6 @@
 <a href="{% url 'pantrycreate' %}"><button class="btn">Add Pantry Item</button></a>
 <table class= "table">
   <tr>
-    <th>  User  </th>
     <th>  Item  </th>
     <th>  Category  </th>
     <th>  Expiry Date </th>
@@ -87,7 +86,6 @@
   </tr>
   {% for i in pantry %}
   <tr>
-      <td>  {{ i.user }} </td>
       <td>  {{ i.item_name }}  </td>
       <td>  {{ i.category }} </td>
       <td>  {{ i.expiry_date }}  </td>

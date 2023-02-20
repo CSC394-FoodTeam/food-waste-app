@@ -56,13 +56,15 @@
             width: 100px;
         }
     </style>
+
 </head>
-<div class="main">
-    <form method="POST">
+<body>
+{% block content %}
+    <form action="" method="POST">
         {% csrf_token %}
-        {{ form }}
- 
-        <input type="submit" value="Update">
+        {{ form.as_p }}
+    <input type="submit" value="Update">
     </form>
- 
-</div>
+{% endblock %}
+</body>
+</html>

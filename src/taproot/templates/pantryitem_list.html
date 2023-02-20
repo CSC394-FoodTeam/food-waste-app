@@ -75,7 +75,8 @@
 
 {% block content %}
 <h2>Pantry Items</h2>
-<a href="{% url 'pantrycreate' %}"><button class="btn">Add Pantry Item</button></a>
+<!--<a href="{% url 'pantrycreate' %}"><button class="btn">Add Pantry Item</button></a>-->
+<a class="btn btn-outline-light" href="{% url 'pantrycreate' %}" role="button">Add Pantry Item</a>
 <table class= "table">
   <tr>
     <th>  User  </th>
@@ -91,8 +92,8 @@
       <td>  {{ i.category }} </td>
       <td>  {{ i.expiry_date }}  </td>
       <td>  {{ i.quantity }} </td>
-      <td><a href="{% url 'pantryupdate' i.item_name %}" id = 'qsPantryUpdateBtn'>Update</a></td>
-      <td><a href="{% url 'pantrydelete' i.item_name %}" id = 'qsPantryDeleteBtn'>Delete</a></td>
+      <td><a class="btn btn-outline-primary" href="{% url 'pantryupdate' i.item_name %}" role="button">Update</a></td>
+      <td><a class="btn btn-outline-danger" href="{% url 'pantrydelete' i.item_name %}" role="button">Delete</a></td>
   </tr>
   {% endfor %}
 </table>

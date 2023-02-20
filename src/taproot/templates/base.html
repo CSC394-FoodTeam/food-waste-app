@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="en" data-bs-theme="dark"></html>
 <html>
 
   <head>
@@ -20,7 +21,7 @@
         }
         
         #profileDropDown, h1 {
-            color: #617ac4;
+            color: #ffffff;
         }
         
         #qsLogoutBtn, #qsLoginBtn, #qsProfileBtn {
@@ -80,6 +81,36 @@
 
     {% if session %}
     
+    <!--Toast Test
+    <button type="button" class="btn btn-primary" onclick="ToastFunction( )">Show live toast</button>
+
+    <div class="toast" role="alert" id = "FridgeNotification" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <strong class="me-auto">Notification</strong>
+        <small>  </small>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+        Item has been added to your Fridge.
+      </div>
+    </div>
+
+    <script>
+      var option = 
+      {
+        animation: true,
+       
+      };
+
+      function ToastFunction()
+      {
+        var toastHTMLElement = document.getElementById("FridgeNotification");
+        var toastElement = new bootstrap.Toast(toastHTMLElement, option);
+        toastElement.show()
+      }
+    </script>
+    Toast Test end-->
+
     <!--NavBar-->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
@@ -114,7 +145,8 @@
     </nav>
     <!--NavBar end-->
 
-    <img src="https://avatars.githubusercontent.com/u/124204103?s=200&v=4.png" alt="Logo"> 
+    <img src="https://raw.githubusercontent.com/CSC394-FoodTeam/food-waste-app/feature/bootstrap/src/media/recipe_images/Self-loving.gif" alt="Logo"> 
+    <!--<img src="https://avatars.githubusercontent.com/u/124204103?s=200&v=4.png" alt="Logo">-->
     <h1>Welcome {{session.userinfo.nickname}}!</h1>
 
     <!--Columns Test-->
@@ -127,7 +159,7 @@
             <div class="text-bg-dark p-3">
               <h5 class="card-title">Add To Fridge</h5>
               <p class="card-text">Add or update your inventory that is in your fridge!</p>
-              <a href="{% url 'fridgelist' %}" class="btn btn-success">Open Fridge!</a>
+              <a href="{% url 'fridgelist' %}" class="btn btn-outline-success">Open Fridge!</a>
             </div>
           </div>
           <!--fridge_card_end-->
@@ -139,7 +171,7 @@
             <div class="text-bg-dark p-3">
             <h5 class="card-title">Add To Pantry</h5>
             <p class="card-text">Add or update your inventory that is in your pantry!</p>
-            <a href="{% url 'pantrylist' %}" class="btn btn-success">Open Pantry!</a>
+            <a href="{% url 'pantrylist' %}" class="btn btn-outline-success">Open Pantry!</a>
           </div>
         </div>
         <!--pantry_card_end-->
@@ -151,7 +183,7 @@
               <div class="text-bg-dark p-3">
               <h5 class="card-title">View Recipes</h5>
               <p class="card-text">View your favorite recipes that you saved!</p>
-              <a href="{% url 'inventory' %}" class="btn btn-success">Open Recipe Book!</a>
+              <a href="{% url 'inventory' %}" class="btn btn-outline-success">Open Recipe Book!</a>
             </div>
         </div>
   <!--end-->
@@ -160,7 +192,7 @@
     </div>
     <!--end-->
 
-    <!--accordian test-->
+    <!--accordian test
     <div class="accordion" id="accordionExample">
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingOne">
@@ -199,7 +231,7 @@
           </div>
         </div>
       </div>
-    <!--end-->
+    end-->
  
     <!-- This will page will render as long as the user isn't authenticated  -->
     {% else %}

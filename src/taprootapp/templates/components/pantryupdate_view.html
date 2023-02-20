@@ -15,7 +15,7 @@
 {% block content %}
     <form action="" method="POST">
         {% csrf_token %}
-        {{ form }}
+        {{ form.as_p }}
         <button type="submit" class="btn btn-primary">Update Item</button>
         <a class="btn btn-outline-warning" href="{% url 'pantrylist' %}" role="button">Cancel</a>
     </form>

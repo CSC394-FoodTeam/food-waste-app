@@ -1,4 +1,4 @@
-{% extends 'main.html' %}
+{% extends 'components/main.html' %}
 
 
 {% block content %}
@@ -13,7 +13,7 @@
 
 <form action="" method="POST">
     {% csrf_token %}
-    {{ form }}
+    {{ form.as_p }}
     <!--<div class="vstack gap-2 col-md-5 mx-auto">-->
     
         <button type="submit" class="btn btn-primary">Put in Fridge</button>

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark"></html>
-<html>
   <head>
       <meta charset="utf-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      {% include 'bootstrap_code.html' %}
+
+      {% include 'components/bootstrap_code.html' %}
+      {% include 'components/navbar.html' %}
       <title>Home | Taproot</title>
     <style>
         body {
@@ -113,40 +114,6 @@
     </script>
     Toast Test end-->
 
-    <!--NavBar-->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'index' %}">Taproot</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Features</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'faq' %}">FAQ</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                ༼ つ ◕_◕ ༽つ
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
-                <li><a class="dropdown-item" href="{% url 'menu' %}">Recipe List</a></li>
-                <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <!--NavBar end-->
-
     <img src="https://raw.githubusercontent.com/CSC394-FoodTeam/food-waste-app/feature/bootstrap/src/taproot/media/images/logo_placeholder.PNG" alt="Logo" id = "logo_placeholder"> 
     <!--<img src="https://avatars.githubusercontent.com/u/124204103?s=200&v=4.png" alt="Logo">-->
     <h1>Welcome {{ user.username }}!</h1>
@@ -185,7 +152,6 @@
               <div class="text-bg-dark p-3">
               <h5 class="card-title">View Recipes</h5>
               <p class="card-text">View your favorite recipes that you saved! (Not Available)</p>
-              <!--<a href="{% url 'inventory' %}" class="btn btn-outline-success" disabled>Open Recipe Book!</a>-->
               <button type="button" class="btn btn-outline-success" disabled>Open Recipe Book!</button>
             </div>
         </div>
@@ -270,4 +236,3 @@
     {% endif %}
 
 </body>
-</html>

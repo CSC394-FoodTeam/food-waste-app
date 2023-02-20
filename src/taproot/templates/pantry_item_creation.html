@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html>
+{% extends 'main.html' %}
 
   <head>
       <meta charset="utf-8" />
@@ -61,6 +60,7 @@
 <form action="" method="POST">
     {% csrf_token %}
     {{ form }}
-    <input type="submit" value="Add to Pantry"/>
+    <button type="submit" class="btn btn-primary">Save Item</button>
+        <a class="btn btn-outline-warning" href="{% url 'pantrylist' %}" role="button">Cancel</a>
   </form>
 {% endblock %}

@@ -17,12 +17,7 @@ from django.contrib.auth.decorators import login_required
 
 
 def index(request):
-    return render(request,
-        'base.html',
-        context={
-            'session': request.user,
-        },
-    )
+    return render(request,'home/base.html')
 
 # def profile(request):
 #     user = request.user
@@ -96,14 +91,6 @@ def logout(request):
 #         }
 #         return render(request, 'taproot/inventory.html', context)
 # 
-def user_is_pantry_owner(user, item_id):
-    try:
-        return user.pantry_set.filter(id=item_id).exists()
-    except:
-        return False
-
-
-
 
 
 @login_required
@@ -122,7 +109,7 @@ def fridgeCreate(request):
         form = FridgeItemForm()
 
     context={'form' : form}
-    return render(request, 'fridge_item_creation.html', context)
+    return render(request, 'components/fridge_item_creation.html', context)
 
 @login_required
 def updateFridge(request, item_name):
@@ -134,7 +121,7 @@ def updateFridge(request, item_name):
         return HttpResponseRedirect('/fridgelist/')
 
     context['form'] = form
-    return render(request, 'fridgeupdate_view.html', context)
+    return render(request, 'components/fridgeupdate_view.html', context)
 
 @login_required
 def fridgeDelete(request, item_name):
@@ -147,13 +134,13 @@ def fridgeDelete(request, item_name):
 
     context={'item_name': item_name}
     
-    return render(request, 'fridgedelete_view.html', context=context)
+    return render(request, 'components/fridgedelete_view.html', context=context)
 
 @login_required
 def fridge(request):
     fridge = FridgeItem.objects.filter(user=request.user)
 
-    return render(request, 'taproot/fridgeitem_list.html', {'fridge' : fridge})
+    return render(request, 'home/fridgeitem_list.html', {'fridge' : fridge})
 ##/Fridge/##
 ##/Pantry/##
 
@@ -177,7 +164,7 @@ def pantryCreate(request):
         form = PantryItemForm()
 
     context={'form' : form}
-    return render(request, 'pantry_item_creation.html', context)
+    return render(request, 'components/pantry_item_creation.html', context)
 
 @login_required
 def updatePantry(request, item_name):
@@ -189,7 +176,7 @@ def updatePantry(request, item_name):
         return HttpResponseRedirect('/pantrylist/')
 
     context['form'] = form
-    return render(request, 'pantryupdate_view.html', context)
+    return render(request, 'components/pantryupdate_view.html', context)
 
 @login_required
 def pantryDelete(request, item_name):
@@ -202,13 +189,13 @@ def pantryDelete(request, item_name):
 
     context={'item_name': item_name}
     
-    return render(request, 'pantrydelete_view.html', context=context)
+    return render(request, 'components/pantrydelete_view.html', context=context)
 
 @login_required
 def pantry(request):
     pantry = PantryItem.objects.filter(user=request.user)
 
-    return render(request, 'taproot/pantryitem_list.html', {'pantry' : pantry})
+    return render(request, 'home/pantryitem_list.html', {'pantry' : pantry})
 ##/Pantry/##
 #class FridgeTestCreate(CreateView):
    # model = FridgeItem

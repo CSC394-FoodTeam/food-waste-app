@@ -19,5 +19,6 @@ urlpatterns = [
     path("pantrycreate/", views.pantryCreate, name = "pantrycreate"),
     path("pantryupdate/<item_name>/", views.pantryUpdate, name = "pantryupdate"),
     path("pantrydelete/<item_name>/", views.pantryDelete, name = "pantrydelete"),
+    path('faq/', views.faq, name='faq'),
     ###
 ]

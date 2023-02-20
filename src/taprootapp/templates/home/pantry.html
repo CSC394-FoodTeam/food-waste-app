@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html>
+{% extends 'main.html' %}
 
   <head>
       <meta charset="utf-8" />
@@ -89,10 +88,10 @@
         <td>  {{ i.category }} </td>
         <td>  {{ i.expiry_date }}  </td>
         <td>  {{ i.quantity }} </td>
-        <td><a href="{% url 'pantryupdate' i.item_name %}" id = 'qsPantryUpdateBtn'>Update</a></td>
-        <td><a href="{% url 'pantrydelete' i.item_name %}" id = 'qsPantryDeleteBtn'>Delete</a></td>
+        <td><a class="btn btn-outline-primary" href="{% url 'pantryupdate' i.item_name %}" role="button">Update</a></td>
+        <td><a class="btn btn-outline-danger" href="{% url 'pantrydelete' i.item_name %}" role="button">Delete</a></td>
     </tr>
     {% endfor %}
 </table>
-<a href="{% url 'pantrycreate' %}"><button class="btn">Add Pantry Item</button></a>
+<a class="btn btn-outline-light" href="{% url 'pantrycreate' %}" role="button">Add Pantry Item</a>
 {% endblock %}

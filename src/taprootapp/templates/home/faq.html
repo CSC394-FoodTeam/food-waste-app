@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark"></html>
 <head>
-	<title>Foodsies</title>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	{%include 'components/bootstrap_code.html'%}
+	<title>FAQ | Taproot</title>
 	<style>
 		body {
 			background-color: #000000;
@@ -58,9 +61,13 @@
 		}
 	</style>
 </head>
+
 <body>
-    {%include 'components/bootstrap_code.html'%}
-	{%include 'components/navbar.html' %}
+	{% if user.is_authenticated %}
+	{%include 'components/navbar_user.html' %}
+	{% else %}
+	{% include 'components/navbar_guest.html' %}
+	{% endif %}
 	<h1>Foodsies - FAQ</h1>
 	<h2>General Questions</h2>
 	<dl>
@@ -82,6 +89,6 @@
 	</dl>
 </body>
 <footer>
+	<!-- <p><a href="mailto:hege@example.com">hege@example.com</a></p> -->
 	<p>Credits: Uknown</p>
-	<p><a href="mailto:hege@example.com">hege@example.com</a></p>
 </footer>

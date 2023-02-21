@@ -1,36 +1,38 @@
-{%include 'components/main.html'%}
+{% include 'components/main.html'%}
 
   <head>
       <meta charset="utf-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Fridge | Taproot</title>
-
-
-</head>
-
+    <style>
+      body {
+      
+          font-family: Arial, sans-serif;
+          text-align: left;
+      }
+    </style>
+  </head>
 
 <body>
-  <!--bootstrap NavBar-->
-  
-  <!--end-->
-
 {% block content %}
 <h2>Fridge Items</h2>
 <table class="table">
   <tr>
-    <th>  Item  </th>
-    <th>  Category  </th>
-    <th>  Expiry Date </th>
-    <th>  Quantity  </th>
+      <th>  Item  </th>
+      <th>  Category  </th>
+      <th>  Expiry Date </th>
+      <th>  Quantity  </th>
   </tr>
   {% for i in fridge %}
   <tr>
-    <td>  {{ i.item_name }}  </td>
-    <td>  {{ i.category }} </td>
-    <td>  {{ i.expiry_date }}  </td>
-    <td>  {{ i.quantity }} </td>
-    <td><a class="btn btn-outline-primary" href="{% url 'fridgeupdate' i.item_name %}" role="button">Update</a></td>
-    <td><a class="btn btn-outline-danger" href="{% url 'fridgedelete' i.item_name %}" role="button">Delete</a></td>
+      <td>  {{ i.item_name }}  </td>
+      <td>  {{ i.category }} </td>
+      <td>  {{ i.expiry_date }}  </td>
+      <td>  {{ i.quantity }} </td>
+      <td>
+        <a class="btn btn-outline-primary" href="{% url 'fridgeupdate' i.item_name %}" role="button">Update</a>
+        <a class="btn btn-outline-danger" href="{% url 'fridgedelete' i.item_name %}" role="button">Delete</a>
+      </td>
   </tr>
   {% endfor %}
 </table>

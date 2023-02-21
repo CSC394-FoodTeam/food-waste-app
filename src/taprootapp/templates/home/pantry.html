@@ -1,4 +1,4 @@
-{% extends 'components/main.html' %}
+{% include 'components/main.html' %}
 
   <head>
       <meta charset="utf-8" />
@@ -7,72 +7,14 @@
 
     <style>
         body {
-            background-color: #212121;
-            color: rgb(97, 122, 196);
-            font-family: Arial, sans-serif;
             
-        }
-        
-        a {
-            color: #fff;
-            text-decoration: none;
-        }
-        
-        #profileDropDown, h1 {
-            color: #617ac4;
-        }
-        
-        #qsLogoutBtn, #qsLoginBtn, #qsProfileBtn {
-            background-color: #617ac4;
-            border: none;
-            border-radius: 4px;
-            color: #fff;
-            padding: 8px 16px;
-        }
-
-        #qsInventoryBtn {
-            background-color: #6dc461;
-            border: none;
-            border-radius: 4px;
-            color: #fff;
-            padding: 8px 16px;
-        }
-
-        #qsPantryUpdateBtn {
-            background-color: #617ac4;
-            border: none;
-            border-radius: 4px;
-            color: #fff;
-            padding: 2px 16px;
-        }
-
-        #qsPantryDeleteBtn {
-            background-color: #c11d1d;
-            border: none;
-            border-radius: 4px;
-            color: #fff;
-            padding: 2px 16px;
-        }
-        
-        pre {
-            background-color: #fff;
-            border: 1px solid #617ac4;
-            border-radius: 4px;
-            color: #212121;
-            padding: 16px;
-            margin-top: 16px;
-            white-space: pre-wrap;
-        }
-        
-        img {
-            border-radius: 50%;
-            height: 100px;
-            margin-bottom: 16px;
-            width: 100px;
+            font-family: Arial, sans-serif;
+            text-align: left;
         }
     </style>
 </head>
 
+<body>
 {% block content %}
 <h2>Pantry Items</h2>
 <table class= "table">
@@ -88,10 +30,13 @@
         <td>  {{ i.category }} </td>
         <td>  {{ i.expiry_date }}  </td>
         <td>  {{ i.quantity }} </td>
-        <td><a class="btn btn-outline-primary" href="{% url 'pantryupdate' i.item_name %}" role="button">Update</a></td>
-        <td><a class="btn btn-outline-danger" href="{% url 'pantrydelete' i.item_name %}" role="button">Delete</a></td>
+        <td>
+            <a class="btn btn-outline-primary" href="{% url 'pantryupdate' i.item_name %}" role="button">Update</a>
+            <a class="btn btn-outline-danger" href="{% url 'pantrydelete' i.item_name %}" role="button">Delete</a>
+        </td>
     </tr>
     {% endfor %}
 </table>
 <a class="btn btn-outline-light" href="{% url 'pantrycreate' %}" role="button">Add Pantry Item</a>
 {% endblock %}
+</body>

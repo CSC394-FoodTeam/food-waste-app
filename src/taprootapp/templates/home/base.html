@@ -5,7 +5,6 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
       {% include 'components/bootstrap_code.html' %}
-      {% include 'components/navbar.html' %}
       <title>Home | Taproot</title>
     <style>
         body {
@@ -84,6 +83,7 @@
     <!-- This page will render if user is authenticated by Auth0 -->
 
     {% if user.is_authenticated %}
+    {% include 'components/navbar_user.html' %}
     <!--Toast Test
     <button type="button" class="btn btn-primary" onclick="ToastFunction( )">Show live toast</button>
 
@@ -128,7 +128,7 @@
             <div class="text-bg-dark p-3">
               <h5 class="card-title">Add To Fridge</h5>
               <p class="card-text">Add or update your inventory that is in your fridge!</p>
-              <a href="{% url 'fridgelist' %}" class="btn btn-outline-success">Open Fridge!</a>
+              <a href="{% url 'fridgelist' %}" class="btn btn-outline-success">Open Fridge</a>
             </div>
           </div>
           <!--fridge_card_end-->
@@ -140,7 +140,7 @@
             <div class="text-bg-dark p-3">
             <h5 class="card-title">Add To Pantry</h5>
             <p class="card-text">Add or update your inventory that is in your pantry!</p>
-            <a href="{% url 'pantrylist' %}" class="btn btn-outline-success">Open Pantry!</a>
+            <a href="{% url 'pantrylist' %}" class="btn btn-outline-success">Open Pantry</a>
           </div>
         </div>
         <!--pantry_card_end-->
@@ -152,7 +152,7 @@
               <div class="text-bg-dark p-3">
               <h5 class="card-title">View Recipes</h5>
               <p class="card-text">View your favorite recipes that you saved! (Not Available)</p>
-              <button type="button" class="btn btn-outline-success" disabled>Open Recipe Book!</button>
+              <button type="button" class="btn btn-outline-success" disabled>Open Recipe Book</button>
             </div>
         </div>
   <!--end-->
@@ -204,7 +204,7 @@
  
     <!-- This will page will render as long as the user isn't authenticated  -->
     {% else %}
-    <img src="https://raw.githubusercontent.com/CSC394-FoodTeam/food-waste-app/feature/bootstrap/src/taproot/media/images/logo_placeholder.PNG" alt="Logo" id = "logo_placeholder"> 
+    {% include 'components/navbar_guest.html' %}
     <title>Welcome | Taproot</title>
     <h1 id="profileDropDown">Welcome to Taproot</h1> 
     <div id="goal-wrap">

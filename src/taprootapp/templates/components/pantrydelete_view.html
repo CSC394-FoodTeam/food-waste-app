@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark"></html>
-<html>
 
   <head>
       <meta charset="utf-8" />
@@ -8,9 +7,16 @@
       {% include 'components/bootstrap_code.html'%}
       {% include 'components/navbar.html' %}
       <title>Pantry | Taproot</title>
-
+      <style>
+        body {
+            
+            font-family: Arial, sans-serif;
+            text-align: left;
+        }
+    </style>
     
 </head>
+<body>
 {% block content %}
     <form method="POST">
         {% csrf_token %}
@@ -20,4 +26,3 @@
     </form>
 {% endblock %}
 </body>
-</html>

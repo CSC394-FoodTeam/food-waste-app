@@ -13,7 +13,7 @@
           <a class="nav-link{% if request.path == '/' %} active{% endif %}" aria-current="page" href="{% url 'index' %}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link{% if request.path == '/discover/' %} active{% endif %}" href="#">Discover</a>
+          <a class="nav-link{% if request.path == '/discover/' %} active{% endif %}" href="{% url 'discover' %}">Discover</a>
         </li>
         <li class="nav-item">
           <a class="nav-link{% if request.path == '/faq/' %} active{% endif %}" href="{% url 'faq' %}">FAQ</a>
@@ -23,7 +23,7 @@
               Account
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="{% url 'index' %}">Login</a></li>
+              <li><a class="dropdown-item" href="/login/auth0">Login</a></li>
             </ul>
           </li>
         </ul>

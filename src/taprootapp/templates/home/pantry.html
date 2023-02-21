@@ -1,28 +1,19 @@
+<!DOCTYPE html>
 {% include 'components/main.html' %}
-
-  <head>
-      <meta charset="utf-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<head>
     <title>Pantry | Taproot</title>
-
-    <style>
-        body {
-            
-            font-family: Arial, sans-serif;
-            text-align: left;
-        }
-    </style>
 </head>
 
 <body>
 {% block content %}
-<h2>Pantry Items</h2>
+<h2>Inventory: Pantry</h2>
 <table class= "table">
     <tr>
-        <th>  Item  </th>
-        <th>  Category  </th>
-        <th>  Expiry Date </th>
-        <th>  Quantity  </th>
+        <th> Item </th>
+        <th> Category </th>
+        <th> Expiry Date </th>
+        <th> Quantity </th>
+        <th> Manage </th>
     </tr>
     {% for i in pantry %}
     <tr>

@@ -1,24 +1,15 @@
+<!DOCTYPE html>
+{% include 'components/main.html' %}
 <head>
-  {% include 'components/main.html' %}
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>Fridge | Taproot</title>
-  {% block title %}Fridge:{% endblock %}
-  <style>
-    body {
-        
-        font-family: Arial, sans-serif;
-        text-align: left;
-    }
-  </style>
 </head>
 
 <body>
 {% block content %}
 <form action="" method="POST">
+<h3>Create</h3>
   {% csrf_token %}
   {{ form.as_p }}
-    <!--<div class="vstack gap-2 col-md-5 mx-auto">-->
     
         <button type="submit" class="btn btn-primary">Put in Fridge</button>
         <a class="btn btn-outline-warning" href="{% url 'fridgelist' %}" role="button">Cancel</a>

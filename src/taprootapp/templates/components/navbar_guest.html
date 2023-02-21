@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
       <a class="navbar-brand" href="{% url 'index' %}">Taproot</a>
@@ -5,16 +6,15 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Discover</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'faq' %}">FAQ</a>
-          </li>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <a class="nav-link{% if request.path == '/' %} active{% endif %}" aria-current="page" href="{% url 'index' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link{% if request.path == '/discover/' %} active{% endif %}" href="#">Discover</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link{% if request.path == '/faq/' %} active{% endif %}" href="{% url 'faq' %}">FAQ</a>
+        </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Account

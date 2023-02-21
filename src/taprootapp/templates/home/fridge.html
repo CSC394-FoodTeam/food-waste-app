@@ -1,27 +1,19 @@
+<!DOCTYPE html>
 {% include 'components/main.html'%}
-
-  <head>
-      <meta charset="utf-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<head>
     <title>Fridge | Taproot</title>
-    <style>
-      body {
-      
-          font-family: Arial, sans-serif;
-          text-align: left;
-      }
-    </style>
-  </head>
+</head>
 
 <body>
 {% block content %}
-<h2>Fridge Items</h2>
+<h2>Inventory: Fridge</h2>
 <table class="table">
   <tr>
-      <th>  Item  </th>
-      <th>  Category  </th>
-      <th>  Expiry Date </th>
-      <th>  Quantity  </th>
+      <th> Item </th>
+      <th> Category </th>
+      <th> Expiry Date </th>
+      <th> Quantity </th>
+      <th> Manage </th>
   </tr>
   {% for i in fridge %}
   <tr>

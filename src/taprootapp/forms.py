@@ -11,7 +11,7 @@ class PantryItemForm(forms.ModelForm):
         widgets = {
             'item_name': forms.TextInput(attrs={'class' : 'input', 'placeholder' : 'Write something'}),
             'category': forms.CheckboxSelectMultiple(),
-            'expiry_date': forms.SelectDateWidget(),
+            'expiry_date': forms.SelectDateWidget(attrs={'class':''}),
         }
 
 
@@ -24,7 +24,7 @@ class FridgeItemForm(forms.ModelForm):
         widgets = {
             'item_name': forms.TextInput(attrs={'class' : 'input', 'placeholder' : 'Write something...'}),
             'category': forms.CheckboxSelectMultiple(),
-            'expiry_date': forms.SelectDateWidget(),
+            'expiry_date': forms.SelectDateWidget(attrs={'class':''}),
         }
 ###
 # class FridgeTestForm(forms.ModelForm):

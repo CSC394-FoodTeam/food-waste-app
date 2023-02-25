@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="dark"></html>
-  <head>
-      {% include 'components/main.html'%}
-      <title>Home | Taproot</title>
+<head>
+  {% include 'components/main.html'%}
+    <title>Home | Taproot</title>
     <style>
         body {
             
@@ -107,7 +106,7 @@
     </script>
     Toast Test end-->
     <div style="padding: 10px;"></div>
-    <img src="https://raw.githubusercontent.com/CSC394-FoodTeam/food-waste-app/feature/bootstrap/src/taproot/media/images/logo_placeholder.PNG" alt="Logo" id = "logo_placeholder"> 
+    <img src="/static/logo_placeholder.PNG" alt="Logo" id = "logo_placeholder"> 
     <!--<img src="https://avatars.githubusercontent.com/u/124204103?s=200&v=4.png" alt="Logo">-->
     <h1>Welcome {{ user.username }}!</h1>
     <div style="padding: 10px;"></div>
@@ -117,7 +116,7 @@
         <div class="col">
           <!--fridge_card_start-->
           <div class="card" style="width: 18rem;">
-            <img src="https://raw.githubusercontent.com/CSC394-FoodTeam/food-waste-app/feature/bootstrap/src/taproot/media/images/fridge_card.PNG" class="card-img-top" alt="fridge_image">
+            <img src="/static/fridge_card.PNG" class="card-img-top" alt="fridge_image">
             <div class="text-bg-dark p-3">
               <h5 class="card-title">Add To Fridge</h5>
               <p class="card-text">Add or update your inventory that is in your fridge!</p>
@@ -129,7 +128,7 @@
         <div class="col">
           <!--pantry_card_start-->
           <div class="card" style="width: 18rem;">
-            <img src="https://raw.githubusercontent.com/CSC394-FoodTeam/food-waste-app/feature/bootstrap/src/taproot/media/images/pantry_card.PNG" class="card-img-top" alt="fridge_image">
+            <img src="/static/pantry_card.PNG" class="card-img-top" alt="fridge_image">
             <div class="text-bg-dark p-3">
             <h5 class="card-title">Add To Pantry</h5>
             <p class="card-text">Add or update your inventory that is in your pantry!</p>
@@ -141,7 +140,7 @@
         <div class="col">
           <!--card test-->
             <div class="card" style="width: 18rem;">
-              <img src="https://raw.githubusercontent.com/CSC394-FoodTeam/food-waste-app/feature/bootstrap/src/taproot/media/images/recipe_card.PNG" class="card-img-top" alt="fridge_image">
+              <img src="/static/recipe_card.PNG" class="card-img-top" alt="fridge_image">
               <div class="text-bg-dark p-3">
               <h5 class="card-title">View Recipes</h5>
               <p class="card-text">View your favorite recipes that you saved! (Not Available)</p>
@@ -198,7 +197,7 @@
     <!-- This will page will render as long as the user isn't authenticated  -->
     {% else %}
     <div style="padding: 10px;"></div>
-    <img src="https://raw.githubusercontent.com/CSC394-FoodTeam/food-waste-app/feature/bootstrap/src/taproot/media/images/logo_placeholder.PNG" alt="Logo" id = "logo_placeholder">
+    <img src="/static/logo_placeholder.PNG" alt="Logo" id = "logo_placeholder">
     <title>Welcome | Taproot</title>
     <h1 id="profileDropDown">Welcome to Taproot</h1> 
     <div id="goal-wrap">

@@ -1,5 +1,5 @@
 from django import forms 
-from .models import PantryItem, FridgeItem
+from .models import PantryItem, FridgeItem, Recipe
 
 
 class PantryItemForm(forms.ModelForm):
@@ -9,7 +9,7 @@ class PantryItemForm(forms.ModelForm):
         model = PantryItem
         fields = ['category', 'item_name', 'expiry_date', 'quantity']
         widgets = {
-            'item_name': forms.TextInput(attrs={'class' : 'input', 'placeholder' : 'Write something'}),
+            'item_name': forms.TextInput(attrs={'class' : 'input', 'placeholder' : 'Enter item name'}),
             'category': forms.CheckboxSelectMultiple(),
             'expiry_date': forms.SelectDateWidget(attrs={'class':''}),
         }
@@ -22,18 +22,23 @@ class FridgeItemForm(forms.ModelForm):
         model = FridgeItem
         fields = ['item_name', 'category', 'expiry_date', 'quantity']
         widgets = {
-            'item_name': forms.TextInput(attrs={'class' : 'input', 'placeholder' : 'Write something...'}),
+            'item_name': forms.TextInput(attrs={'class' : 'input', 'placeholder' : 'Enter item name'}),
             'category': forms.CheckboxSelectMultiple(),
             'expiry_date': forms.SelectDateWidget(attrs={'class':''}),
         }
-###
-# class FridgeTestForm(forms.ModelForm):
-#     class Meta:
-#         model = FridgeItem
-#         fields = ["item_name", "category", "expiry_date", "quantity"]
 
-# class PantryTestForm(forms.ModelForm):
-#     class Meta:
-#         model = PantryItem
-#         fields = ["item_name", "category", "expiry_date", "quantity"]
-###
+
+class RecipeForm(forms.ModelForm):
+    restrictions = forms.MultipleChoiceField(choices=Recipe.DIETARY_RESTRICTIONS, widget=forms.CheckboxSelectMultiple)
+    cuisine = forms.MultipleChoiceField(choices=Recipe.CUISINE_TYPES, widget=forms.CheckboxSelectMultiple)
+    flavor_profile = forms.MultipleChoiceField(choices=Recipe.FLAVOR_PROFILES, widget=forms.CheckboxSelectMultiple)
+
+    class Meta:
+        model = Recipe
+        fields = ['name', 'restrictions', 'cuisine', 'flavor_profile', 'ingredients', 'instructions', 'image']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter recipe name'}),
+            'ingredients': forms.Textarea(attrs={'class': 'form-control', 'rows': 5, 'placeholder': 'Enter ingredients separated by commas'}),
+            'instructions': forms.Textarea(attrs={'class': 'form-control', 'rows': 5, 'placeholder': 'Enter instructions'}),
+            'image': forms.FileInput(attrs={'class': 'form-control-file'}),
+        }

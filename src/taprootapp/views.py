@@ -208,7 +208,8 @@ def faq(request):
 
 
 def discover(request):
-    return render(request, 'home/discover.html')
+    form = RecipeForm()
+    return render(request, 'home/discover.html', {'form': form})
 ##/Pantry/##
 #class FridgeTestCreate(CreateView):
    # model = FridgeItem

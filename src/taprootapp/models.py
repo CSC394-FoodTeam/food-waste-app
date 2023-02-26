@@ -41,7 +41,7 @@ class FridgeItem(models.Model):
     ]
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     item_name = models.CharField(primary_key=True, max_length=100) #added primary key == True
-    category = models.CharField(max_length=20,choices=FRIDGE_TYPES,unique=False)   #throws Integrity error when same category exists in table
+    category = models.CharField(max_length=20, choices=FRIDGE_TYPES, unique=False)   #throws Integrity error when same category exists in table
     expiry_date = models.DateField()
     quantity = models.IntegerField(validators=[MinValueValidator(1)])
 
@@ -50,14 +50,52 @@ class FridgeItem(models.Model):
 
 
 class Recipe(models.Model):
+    DIETARY_RESTRICTIONS = [
+        ('None', 'None'),
+        ('Vegetarian', 'Vegetarian'),
+        ('Vegan', 'Vegan'),
+        ('Gluten-free', 'Gluten-free'),
+        ('Dairy-free', 'Dairy-free'),
+        ('Kosher', 'Kosher'),
+        ('Halal', 'Halal'),
+    ]
+    CUISINE_TYPES = [
+        ('None', 'None'),
+        ('Italian', 'Italian'),
+        ('Mexican', 'Mexican'),
+        ('Chinese', 'Chinese'),
+        ('Indian', 'Indian'),
+        ('French', 'French'),
+        ('Greek', 'Greek'),
+        ('Japanese', 'Japanese'),
+        ('Thai', 'Thai'),
+        ('Korean', 'Korean'),
+        ('Middle Eastern', 'Middle Eastern'),
+        ('Mediterranean', 'Mediterranean'),
+        ('Caribbean', 'Caribbean'),
+        ('African', 'African'),
+        ('American', 'American')
+    ]
+    FLAVOR_PROFILES = [
+        ('None', 'None'),
+        ('Sweet', 'Sweet'),
+        ('Sour', 'Sour'),
+        ('Salty', 'Salty'),
+        ('Bitter', 'Bitter'),
+        ('Umami', 'Umami'),
+        ('Spicy', 'Spicy'),
+        ('Herbaceous', 'Herbaceous'),
+        ('Nutty', 'Nutty'),
+        ('Smoky', 'Smoky')
+    ]
+    recipe_id = models.AutoField(primary_key=True, default=0)
     name = models.CharField(max_length=100)
+    restrictions = models.CharField(max_length=20, choices=DIETARY_RESTRICTIONS, default='None', unique=False)
+    cuisine = models.CharField(max_length=20, choices=CUISINE_TYPES, default='None', unique=False)
+    flavor_profile = models.CharField(max_length=20, choices=FLAVOR_PROFILES, default='None', unique=False)
     ingredients = models.TextField()
     instructions = models.TextField()
-    category = models.CharField(max_length=50)
     image = models.ImageField(upload_to='recipe_images/')
 
     def __str__(self):
         return self.name
-
-class Test(models.Model):
-    name = models.CharField(max_length=20)

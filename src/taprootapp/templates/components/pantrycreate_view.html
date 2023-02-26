@@ -9,7 +9,9 @@
 <h3>Create</h3>
 <form action="" method="POST">
     {% csrf_token %}
-    {{ form.as_p }}
+    <table class="table">
+    {{ form.as_table }}
+    </table>
     <button type="submit" class="btn btn-primary">Put in Pantry</button>
         <a class="btn btn-outline-warning" href="{% url 'pantrylist' %}" role="button">Cancel</a>
   </form>

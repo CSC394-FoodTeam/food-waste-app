@@ -33,6 +33,7 @@ jsdelivr
 kwvxxp
 labelledby
 popperjs
+bugreport
 Qlmh
 QOp
 RABd

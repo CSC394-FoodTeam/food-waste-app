@@ -202,6 +202,13 @@ def pantryDelete(request, item_name):
     return render(request, 'components/pantrydelete_view.html', context=context)
 
 
+##/FAQ/##
+def faq(request):
+    return render(request, 'home/faq.html')
+
+
+def discover(request):
+    return render(request, 'home/discover.html')
 ##/Pantry/##
 #class FridgeTestCreate(CreateView):
    # model = FridgeItem

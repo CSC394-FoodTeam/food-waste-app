@@ -1,7 +1,6 @@
-<!DOCTYPE html>
-<html>
 
 <head>
+    {% extends 'main.html'%}
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>Profile | Taproot</title>
@@ -41,7 +40,5 @@
 {% extends 'base.html' %}
 
 {% block body %}
-    {{auth0_user.nickname}}
+    {{user.username}}
 {% endblock body %}
-    
-</html>

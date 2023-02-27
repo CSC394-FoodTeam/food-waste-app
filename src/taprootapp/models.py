@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.conf import settings
+from django.core.validators import MinValueValidator
 
 class User(AbstractUser):
     pass
@@ -20,7 +21,7 @@ class PantryItem(models.Model):
     item_name = models.CharField(primary_key=True, max_length=100) #added primary key == True
     category = models.CharField(max_length=20,choices=PANTRY_TYPES, unique=False)
     expiry_date = models.DateField()
-    quantity = models.IntegerField()
+    quantity = models.IntegerField(validators=[MinValueValidator(1)])
 
     def __str__(self):
         return self.item_name
@@ -42,7 +43,7 @@ class FridgeItem(models.Model):
     item_name = models.CharField(primary_key=True, max_length=100) #added primary key == True
     category = models.CharField(max_length=20,choices=FRIDGE_TYPES,unique=False)   #throws Integrity error when same category exists in table
     expiry_date = models.DateField()
-    quantity = models.IntegerField()
+    quantity = models.IntegerField(validators=[MinValueValidator(1)])
 
     def __str__(self):
         return self.item_name

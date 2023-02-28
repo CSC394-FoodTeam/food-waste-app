@@ -1,15 +1,13 @@
 from django.urls import path
 from . import views
+from django.views.generic import CreateView
 
 urlpatterns = [
     path('', views.index, name='index'),
     path('logout/', views.logout, name='logout'),
 
-    # path('profile/', views.profile, name='profile'),
-
     path('fridgelist/', views.fridge, name = 'fridgelist'),
     path('pantrylist/', views.pantry, name = 'pantrylist'),
-    # # path('inventory/', RecipeListView.as_view(), name='inventory'),
 
     # ###
     path('fridgecreate/', views.fridgeCreate, name= 'fridgecreate'),
@@ -21,5 +19,7 @@ urlpatterns = [
     path('pantrydelete/<item_name>/', views.pantryDelete, name = 'pantrydelete'),
     path('faq/', views.faq, name='faq'),
     path('discover/', views.discover, name='discover'),
+    path('book/', views.BookView.as_view(), name='book'),
+    path('recipe/<name>/', views.recipe, name='recipe')
     ###
 ]

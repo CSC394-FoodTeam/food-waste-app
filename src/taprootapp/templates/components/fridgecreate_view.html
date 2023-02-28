@@ -7,13 +7,33 @@
 <body>
 {% block content %}
 <form action="" method="POST">
-<h3>Create</h3>
-  {% csrf_token %}
-  {{ form.as_p }}
-    
-        <button type="submit" class="btn btn-primary">Put in Fridge</button>
-        <a class="btn btn-outline-warning" href="{% url 'fridgelist' %}" role="button">Cancel</a>
-     
+
+
+
+<div class="container-lg">
+  <div class="text-center">
+    <h1> Add To Fridge <i class="bi bi-egg-fried"></i> </h1>
+    <p class="lead"> • Fill in details below </p>
+  </div>
+  
+  
+  <div class="card text-center">
+  <div class="card-header"></div>
+  <!-- <h5 class="card-title">Item Info</h5> -->
+  <div class="card-body">
+    <div class="form-group">
+      {% csrf_token %}
+      <table style="margin-left:auto;margin-right:auto;">
+        {{ form.as_table }}
+      </table>
+      <br>
+        <button type="submit" class="btn btn-primary">Add Item <i class="bi bi-plus-square"></i></button>
+        <a class="btn btn-warning" href="{% url 'fridgelist' %}" role="button">Cancel <i class="bi bi-x-octagon"></i></a>
+    </div>   
+  </div> 
+</div> 
+
+
 </form>
 {% endblock %}
 </body>

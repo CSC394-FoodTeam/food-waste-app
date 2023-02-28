@@ -1,14 +1,15 @@
 # import json
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.contrib.auth import logout as django_logout
+from django.conf import settings
 
-# from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.views.generic import CreateView, DeleteView, UpdateView
 # from django.views.generic import ListView
 
-from .models import *
-from .forms import *
+from .models import FridgeItem, PantryItem, Recipe
+from .forms import FridgeItemForm, PantryItemForm, RecipeForm
 
 # from django.contrib.auth import get_user_model
 
@@ -208,7 +209,24 @@ def faq(request):
 
 
 def discover(request):
-    return render(request, 'home/discover.html')
+    form = RecipeForm()
+
+    context={'form':form}
+
+    return render(request, 'home/discover.html', context)
+
+
+class BookView(CreateView):
+    model = Recipe
+    form_class = RecipeForm
+    template_name = 'home/book.html'
+
+
+def recipe(request, name):
+    context={'name': name}
+    return render(request, 'home/recipe.html', context)
+
+
 ##/Pantry/##
 #class FridgeTestCreate(CreateView):
    # model = FridgeItem

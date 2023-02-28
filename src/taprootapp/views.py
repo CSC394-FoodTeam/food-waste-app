@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.contrib.auth import logout as django_logout
+from django.conf import settings
 
 # from django.views.generic.edit import CreateView, DeleteView, UpdateView
 # from django.views.generic import ListView

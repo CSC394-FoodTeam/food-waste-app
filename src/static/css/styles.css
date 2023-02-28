@@ -1,0 +1,23 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+.content-wrapper {
+    padding-top: 80px;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+.navbar-nav .nav-link {
+    padding: 0.5rem 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    font-size: 18px;
+    /* margin-left: auto; */
+}
+.nav-link.active {
+    background-color: #617ac4;
+    border-radius: 5px;
+    padding: 8px 8px;
+}

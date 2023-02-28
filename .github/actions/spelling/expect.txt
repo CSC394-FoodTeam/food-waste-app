@@ -33,6 +33,7 @@ jsdelivr
 kwvxxp
 labelledby
 popperjs
+bugreport
 Qlmh
 QOp
 RABd
@@ -47,3 +48,13 @@ vib
 VMW
 website
 ZLl
+aeb
+ico
+contentinfo
+navbars
+Paleo
+recipecuisine
+recipeflavor
+reciperestriction
+uhf
+Umami

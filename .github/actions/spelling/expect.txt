@@ -50,3 +50,11 @@ website
 ZLl
 aeb
 ico
+contentinfo
+navbars
+Paleo
+recipecuisine
+recipeflavor
+reciperestriction
+uhf
+Umami

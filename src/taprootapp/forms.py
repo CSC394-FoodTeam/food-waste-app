@@ -20,11 +20,12 @@ class FridgeItemForm(forms.ModelForm):
 
     class Meta:
         model = FridgeItem
-        fields = ['item_name', 'category', 'expiry_date', 'quantity']
+        fields = ['category','item_name', 'expiry_date', 'quantity']
         widgets = {
             'item_name': forms.TextInput(attrs={'class' : 'input', 'placeholder' : 'Enter item name'}),
-            'category': forms.CheckboxSelectMultiple(),
-            'expiry_date': forms.SelectDateWidget(attrs={'class':''}),
+            'category': forms.Select(),
+            'quantity': forms.NumberInput(attrs={'placeholder' : 'Enter quantity'}),
+            'expiry_date': forms.SelectDateWidget(empty_label=("Choose Year", "Choose Month", "Choose Day")),
         }
 
 

@@ -1,11 +1,11 @@
 # import json
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.contrib.auth import logout as django_logout
 from django.conf import settings
 
-# from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.views.generic import CreateView, DeleteView, UpdateView
 # from django.views.generic import ListView
 
 from .models import FridgeItem, PantryItem, Recipe
@@ -216,8 +216,10 @@ def discover(request):
     return render(request, 'home/discover.html', context)
 
 
-def recipeBook(request):
-    return render(request, 'home/book.html')
+class BookView(CreateView):
+    model = Recipe
+    form_class = RecipeForm
+    template_name = 'home/book.html'
 
 
 def recipe(request, name):

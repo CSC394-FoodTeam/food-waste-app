@@ -11,12 +11,12 @@
 <div class="container-lg">
   <div class="text-center">
     <h1> Add To Pantry <i class="bi bi-egg-fried"></i> </h1>
-    <p class="lead"> Add item information below to add to your pantry! </p>
+    <p class="lead"> • Fill in details below </p>
   </div>
 
     <div class="card text-center">
   <div class="card-header"></div>
-  <h5 class="card-title">Item Info</h5>
+  <!-- <h5 class="card-title">Item Info</h5> -->
   <div class="card-body">
     <div class="form-group">
       {% csrf_token %}
@@ -24,11 +24,11 @@
         {{ form.as_table }}
       </table>
       <br>
-      <button type="submit" class="btn btn-primary">Put in Pantry <i class="bi bi-plus-square"></i></button>
+      <button value="Submit" type="submit" class="btn btn-primary">Add Item <i class="bi bi-plus-square"></i></button>
       <a class="btn btn-warning" href="{% url 'pantrylist' %}" role="button">Cancel <i class="bi bi-x-octagon"></i></a>
     </div>   
   </div> 
 </div> 
-    </form>
+</form>
 {% endblock %}
 </body>

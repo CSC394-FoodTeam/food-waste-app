@@ -1,22 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Recipe Book | Taproot</title>
-    {% include 'components/main.html' %}
-    <style>
-
-    </style>
-</head>
-<body>
+{% include 'components/main.html' %}
+{% block title %}<title>Recipe | Taproot</title>{% endblock %}
 {% block content %}
-	<h1>Generate Recipes</h1>
-	<form method="post">
-		{% csrf_token %}
-        <table class="table">
-            {{ form.as_table }}
-        </table>
+
+
+<h1>Generate Recipes</h1>
+<br><br/>
+<div class="form-group">
+    <form method="post">
+    	{% csrf_token %}
+        {{ form.as_table }}
         <button type="submit" class="btn btn-primary">Generate</button>
-	</form>
-</body>
-{% endblock %}
-</html>
+    </form>
+</div>
+
+
+{% endblock content %}

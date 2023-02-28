@@ -106,7 +106,7 @@
     </script>
     Toast Test end-->
     <div style="padding: 10px;"></div>
-    <img src="/static/logo_placeholder.PNG" alt="Logo" id = "logo_placeholder"> 
+    <img src="/static/images/logo_placeholder.PNG" alt="Logo" id = "logo_placeholder"> 
     <!--<img src="https://avatars.githubusercontent.com/u/124204103?s=200&v=4.png" alt="Logo">-->
     <h1>Welcome {{ user.username }}!</h1>
     <div style="padding: 10px;"></div>
@@ -116,10 +116,10 @@
         <div class="col">
           <!--fridge_card_start-->
           <div class="card" style="width: 18rem;">
-            <img src="/static/fridge_card.PNG" class="card-img-top" alt="fridge_image">
+            <img src="/static/images/fridge_card.PNG" class="card-img-top" alt="fridge_image">
             <div class="text-bg-dark p-3">
               <h5 class="card-title">Add To Fridge</h5>
-              <p class="card-text">Add or update your inventory that is in your fridge!</p>
+              <p class="card-text">Add or update your inventory from inside your fridge!</p>
               <a href="{% url 'fridgelist' %}" class="btn btn-outline-success">Open Fridge</a>
             </div>
           </div>
@@ -128,10 +128,10 @@
         <div class="col">
           <!--pantry_card_start-->
           <div class="card" style="width: 18rem;">
-            <img src="/static/pantry_card.PNG" class="card-img-top" alt="fridge_image">
+            <img src="/static/images/pantry_card.PNG" class="card-img-top" alt="fridge_image">
             <div class="text-bg-dark p-3">
             <h5 class="card-title">Add To Pantry</h5>
-            <p class="card-text">Add or update your inventory that is in your pantry!</p>
+            <p class="card-text">Add or update your inventory from inside your pantry!</p>
             <a href="{% url 'pantrylist' %}" class="btn btn-outline-success">Open Pantry</a>
           </div>
         </div>
@@ -140,11 +140,11 @@
         <div class="col">
           <!--card test-->
             <div class="card" style="width: 18rem;">
-              <img src="/static/recipe_card.PNG" class="card-img-top" alt="fridge_image">
+              <img src="/static/images/recipe_card.PNG" class="card-img-top" alt="fridge_image">
               <div class="text-bg-dark p-3">
               <h5 class="card-title">View Recipes</h5>
-              <p class="card-text">View your favorite recipes that you saved! (Not Available)</p>
-              <button type="button" class="btn btn-outline-success" disabled>Open Recipe Book</button>
+              <p class="card-text">Generate fresh recipes from what's inside your inventory!</p>
+              <a href="{% url 'book' %}" class="btn btn-outline-success">Open Recipe Book</a>
             </div>
         </div>
   <!--end-->
@@ -193,17 +193,17 @@
         </div>
       </div>
     end-->
- 
+
     <!-- This will page will render as long as the user isn't authenticated  -->
     {% else %}
     <div style="padding: 10px;"></div>
-    <img src="/static/logo_placeholder.PNG" alt="Logo" id = "logo_placeholder">
+    <img src="/static/images/logo_placeholder.PNG" alt="Logo" id = "logo_placeholder">
     <title>Welcome | Taproot</title>
-    <h1 id="profileDropDown">Welcome to Taproot</h1> 
+    <h1 id="profileDropDown">Welcome to Taproot</h1>
+    <!-- <div class="mainContainer  uhf-container has-body-background-dark uhf-container is-full  has-default-focus" data-bi-name="body"> -->
     <div id="goal-wrap">
         <p>"Our goal is to provide the necessary tools and knowledge so that every household can help reduce our collective food waste footprint. One food at a time."</p>
       </div>
-      
       <style>
         #goalContainer {
           text-align: center;
@@ -227,5 +227,8 @@
     <div style="padding: 10px;"></div>
     <p><a class="button is-primary" href="/login/auth0" id="qsLogoutBtn">Login</a></p>
     {% endif %}
-
+    <!-- </div> -->
 </body>
+<footer>
+
+</footer>

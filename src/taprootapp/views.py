@@ -7,8 +7,8 @@ from django.contrib.auth import logout as django_logout
 # from django.views.generic.edit import CreateView, DeleteView, UpdateView
 # from django.views.generic import ListView
 
-from .models import *
-from .forms import *
+from .models import FridgeItem, PantryItem, Recipe
+from .forms import FridgeItemForm, PantryItemForm, RecipeForm
 
 # from django.contrib.auth import get_user_model
 
@@ -208,7 +208,22 @@ def faq(request):
 
 
 def discover(request):
-    return render(request, 'home/discover.html')
+    form = RecipeForm()
+
+    context={'form':form}
+
+    return render(request, 'home/discover.html', context)
+
+
+def recipeBook(request):
+    return render(request, 'home/book.html')
+
+
+def recipe(request, name):
+    context={'name': name}
+    return render(request, 'home/recipe.html', context)
+
+
 ##/Pantry/##
 #class FridgeTestCreate(CreateView):
    # model = FridgeItem

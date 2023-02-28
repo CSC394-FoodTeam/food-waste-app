@@ -2,39 +2,12 @@
   <head> 
   {% load static %}
   {% include 'components/bootstrap_code.html' %}
-  <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+  <link rel="shortcut icon" type="image/png" href="{% static 'favicon/favicon.ico' %}"/>
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  {% if user.is_authenticated %}
-  {% include 'components/navbar_user.html'%}
-  {% else %}
-  {% include 'components/navbar_guest.html' %}
-  {% endif %}
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-    }
-    .content-wrapper {
-        padding-top: 80px; /* add some top padding to prevent content from overlapping with navbar */
-        padding: 20px;
-        max-width: 800px;
-        margin: 0 auto;
-        text-align: left;
-    }
-    .navbar-nav .nav-link {
-        padding: 0.5rem 1rem;
-        padding-left: 2rem;
-        padding-right: 2rem;
-        font-size: 18px;
-        /* margin-left: auto; */
-    }
-    .nav-link.active {
-        background-color: #617ac4;
-        border-radius: 5px;
-        padding: 8px 8px;
-    }
-  </style>
+  {% include 'components/navbar.html'%}
+  <style></style>
 </head>
 <body>
     <!--bootstrap NavBar-->
@@ -42,5 +15,12 @@
     {% block content %}
     <div style="padding: 10px;"></div>
     {% endblock %}
+
 </body>
+<!-- <section class="border-top has-default-focus is-hidden-interactive margin-top-sm  margin-top-none">
+	<footer id="footer" data-bi-name="footer" class="footer-layout uhf-container has-padding" role="contentinfo">
+	<div class="display-flex is-full-height padding-right-lg-desktop">
+	</div>
+  </footer>
+</section> -->
 </html>

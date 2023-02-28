@@ -1,7 +1,9 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
       <div class="navbar-brand">
-        <img src="/static/32x32_124204103.png" alt="Logo" class="logo">
+        <img src="/static/images/32x32_124204103.png" alt="Logo" class="logo">
         <b><a class="navbar-brand" href="{% url 'index' %}">Taproot</a></b>
       </div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,10 +25,23 @@
               Account
             </a>
             <ul class="dropdown-menu">
+              {% if user.is_authenticated %}
               <li><a class="dropdown-item" href="#">Profile</a></li>
               <li><a class="dropdown-item" href="#">Favorites</a></li>
+              {% if user.is_superuser %}
+              <li><a class="dropdown-item" href="#">Admin portal</a></li>
+              {% endif %}
               <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+              {% else %}
+              <li><a class="dropdown-item" href="/login/auth0">Login</a></li>
+              {% endif %}
             </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://taproot.canny.io/" target="_blank">
+              <i class="fa fa-comments" aria-hidden="true"></i>
+              <span>Give Feedback</span>
+            </a> 
           </li>
         </ul>
       </div>

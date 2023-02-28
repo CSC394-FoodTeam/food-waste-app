@@ -6,8 +6,11 @@
 
 <body>
 {% block content %}
-<h2>Inventory: Fridge</h2>
+<h2>Inventory: Fridge </h2>
+<br>
+<!--table class="table"-->
 <table class="table">
+  <thead class="table-secondary">
   <tr>
       <th> Item </th>
       <th> Category </th>
@@ -15,19 +18,25 @@
       <th> Quantity </th>
       <th> Manage </th>
   </tr>
+  </thead>
+  <tbody class="table-group-divider">
+  
   {% for i in fridge %}
+
   <tr>
       <td>  {{ i.item_name }}  </td>
       <td>  {{ i.category }} </td>
       <td>  {{ i.expiry_date }}  </td>
       <td>  {{ i.quantity }} </td>
       <td>
-        <a class="btn btn-outline-primary" href="{% url 'fridgeupdate' i.item_name %}" role="button">Update</a>
-        <a class="btn btn-outline-danger" href="{% url 'fridgedelete' i.item_name %}" role="button">Delete</a>
+        <a class="btn btn-outline-primary" href="{% url 'fridgeupdate' i.item_name %}" role="button">Update <i class="bi bi-arrow-clockwise"></i></a>
+        <a class="btn btn-outline-danger" href="{% url 'fridgedelete' i.item_name %}" role="button">Delete <i class="bi bi-trash3"></i></a>
       </td>
   </tr>
+  </tbody>
   {% endfor %}
 </table>
-<a class="btn btn-outline-light" href="{% url 'fridgecreate' %}" role="button">Add Fridge Item</a>
+<a class="btn btn-outline-light" href="{% url 'fridgecreate' %}" role="button">Add Fridge Item <i class="bi bi-plus-circle"></i></a>
+<a class="btn btn-outline-danger" href="#" role="button">Delete All <i class="bi bi-eraser-fill"></i></a>
 {% endblock %}
 </body>

@@ -6,10 +6,10 @@
 
 <body>
 {% block content %}
-<h1>Delete from Pantry</h1>
+<h3>Delete?</h3>
     <form method="POST">
         {% csrf_token %}
-        <p class="lead"> Do you want to delete {{ item_name }}? </p>
+        Do you want to delete {{ item_name }}?
         <button type="submit" class="btn btn-primary">Yes</button>
         <a class="btn btn-outline-warning" href="{% url 'pantrylist' %}" role="button">Cancel</a>
     </form>

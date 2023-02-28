@@ -5,24 +5,12 @@
 </head>
 <body>
 {% block content %}
-<form action="" method="POST">
-        <div class="container-md">
-        <div class="text-center">
-          <h1> Update Pantry Item <i class="bi bi-egg-fried"></i> </h1>
-          <p class="lead"> • Fill in details below </p>
-        </div>
-        <div class="card text-center">
-            <div class="card-header"></div>
-            <!-- <h5 class="card-title">Item Info</h5> -->
-            <div class="card-body">
-              <div class="form-group">
-                {% csrf_token %}
-                <table style="margin-left:auto;margin-right:auto;">
-                  {{ form.as_table }}
-                </table>
-                <br>
-        <button type="submit" class="btn btn-primary">Update Item <i class="bi bi-arrow-clockwise"></i></button>
-        <a class="btn btn-warning" href="{% url 'pantrylist' %}" role="button">Cancel <i class="bi bi-x-octagon"></i></a>
+<h3>Update</h3>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Update Item</button>
+        <a class="btn btn-outline-warning" href="{% url 'pantrylist' %}" role="button">Cancel</a>
     </form>
 {% endblock %}
 </body>

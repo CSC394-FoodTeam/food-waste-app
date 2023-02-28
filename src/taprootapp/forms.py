@@ -1,6 +1,6 @@
 from django import forms 
-from .models import PantryItem, FridgeItem, Recipe
-
+from .models import PantryItem, FridgeItem, Recipe, RecipeRestriction
+from django.contrib.auth.models import User
 
 class PantryItemForm(forms.ModelForm):
     category = forms.ChoiceField(choices=PantryItem.PANTRY_TYPES)
@@ -35,10 +35,11 @@ class RecipeForm(forms.ModelForm):
 
     class Meta:
         model = Recipe
-        fields = ['name', 'restrictions', 'cuisine', 'flavor_profile', 'ingredients', 'instructions', 'image']
+        fields = ['title', 'restrictions', 'cuisine', 'flavor_profile', 'ingredients', 'instructions', 'source', 'image']
         widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter recipe name'}),
+            'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter recipe name'}),
             'ingredients': forms.Textarea(attrs={'class': 'form-control', 'rows': 5, 'placeholder': 'Enter ingredients separated by commas'}),
             'instructions': forms.Textarea(attrs={'class': 'form-control', 'rows': 5, 'placeholder': 'Enter instructions'}),
+            'source': forms.URLInput(attrs={'class': 'form-control', 'placeholder': 'www.example.com'}),
             'image': forms.FileInput(attrs={'class': 'form-control-file'}),
         }

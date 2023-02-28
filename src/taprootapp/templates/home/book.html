@@ -1,17 +1,68 @@
-{% include 'components/main.html' %}
-{% block title %}<title>Recipe | Taproot</title>{% endblock %}
-{% block content %}
+<!DOCTYPE html>
+<head>
+    {%include 'bootstrap_code.html'%}
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Menu | Taproot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+        background-color: #212121;
+        color: #fff;
+        font-family: Arial, sans-serif;
+        text-align: left;
+    }
+    
+    a {
+        color: #fff;
+        text-decoration: none;
+    }
+    
+    pre {
+        background-color: #fff;
+        border: 1px solid #617ac4;
+        border-radius: 4px;
+        color: #212121;
+        padding: 16px;
+        margin-top: 16px;
+        white-space: pre-wrap;
+    }
+    
+    img {
+        border-radius: 50%;
+        height: 100px;
+        margin-bottom: 16px;
+        width: 100px;
+    }
+</style>
+</head>
 
 
-<h1>Generate Recipes</h1>
-<br><br/>
-<div class="form-group">
-    <form method="post">
-    	{% csrf_token %}
-        {{ form.as_table }}
-        <button type="submit" class="btn btn-primary">Generate</button>
-    </form>
-</div>
 
+<body>
+    {% csrf_token %}
+    <h1>My Recipe Book</h1>
 
-{% endblock content %}
+    
+    {% for i in recipes %}
+    
+    
+    <h2>{{ i.name}}</h2>
+    
+    <h6>
+        {{i.email}}
+    </h6>
+    <!-- ADD GENERATE RECIPE BUTTON HERE BASED ON THE CUISINE THE USER CHOOSES -->
+    <div style="text-align: left; border-radius: 5px; padding: 5px;">
+    <p>
+        {{ i.ingredients }}
+    </p>
+    </div>
+
+    <img src>'{{ i.image }}'>
+    
+    <p>{{ i.category}}</p>
+    
+    {% endfor %}
+
+</body>

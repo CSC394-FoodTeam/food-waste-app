@@ -33,7 +33,6 @@ jsdelivr
 kwvxxp
 labelledby
 popperjs
-bugreport
 Qlmh
 QOp
 RABd
@@ -50,15 +49,3 @@ website
 ZLl
 aeb
 ico
-contentinfo
-navbars
-Paleo
-recipecuisine
-recipeflavor
-reciperestriction
-uhf
-Umami
-Etfw
-tbody
-thead
-twsrc

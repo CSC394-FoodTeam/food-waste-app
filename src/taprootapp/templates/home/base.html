@@ -18,14 +18,13 @@
             color: #ffffff;
         }
         
-        #qsLoginBtn{
+        #qsLogoutBtn, #qsLoginBtn, #qsProfileBtn {
             background-color: #617ac4;
             background-size: 10px 10px;
             border: none;
             border-radius: 4px;
             color: #fff;
             padding: 10px 8px;
-            margin-top: 16px;
             font-size: 18px;
         }
 
@@ -69,6 +68,143 @@
             margin-bottom: 16px;
             width: 100px;
         }
+    </style>
+</head>
+
+<body>
+
+    <!-- This page will render if user is authenticated by Auth0 -->
+
+    {% if user.is_authenticated %}
+    <!--Toast Test
+    <button type="button" class="btn btn-primary" onclick="ToastFunction( )">Show live toast</button>
+
+    <div class="toast" role="alert" id = "FridgeNotification" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <strong class="me-auto">Notification</strong>
+        <small>  </small>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+        Item has been added to your Fridge.
+      </div>
+    </div>
+
+    <script>
+      var option = 
+      {
+        animation: true,
+       
+      };
+
+      function ToastFunction()
+      {
+        var toastHTMLElement = document.getElementById("FridgeNotification");
+        var toastElement = new bootstrap.Toast(toastHTMLElement, option);
+        toastElement.show()
+      }
+    </script>
+    Toast Test end-->
+    <div style="padding: 10px;"></div>
+    <img src="/static/logo_placeholder.PNG" alt="Logo" id = "logo_placeholder"> 
+    <!--<img src="https://avatars.githubusercontent.com/u/124204103?s=200&v=4.png" alt="Logo">-->
+    <h1>Welcome {{ user.username }}!</h1>
+    <div style="padding: 10px;"></div>
+    <!--Columns Test-->
+    <div class="container px-4 text-center">
+      <div class="row gx-5">
+        <div class="col">
+          <!--fridge_card_start-->
+          <div class="card" style="width: 18rem;">
+            <img src="/static/fridge_card.PNG" class="card-img-top" alt="fridge_image">
+            <div class="text-bg-dark p-3">
+              <h5 class="card-title">Add To Fridge</h5>
+              <p class="card-text">Add or update your inventory that is in your fridge!</p>
+              <a href="{% url 'fridgelist' %}" class="btn btn-outline-success">Open Fridge</a>
+            </div>
+          </div>
+          <!--fridge_card_end-->
+        </div>
+        <div class="col">
+          <!--pantry_card_start-->
+          <div class="card" style="width: 18rem;">
+            <img src="/static/pantry_card.PNG" class="card-img-top" alt="fridge_image">
+            <div class="text-bg-dark p-3">
+            <h5 class="card-title">Add To Pantry</h5>
+            <p class="card-text">Add or update your inventory that is in your pantry!</p>
+            <a href="{% url 'pantrylist' %}" class="btn btn-outline-success">Open Pantry</a>
+          </div>
+        </div>
+        <!--pantry_card_end-->
+        </div>
+        <div class="col">
+          <!--card test-->
+            <div class="card" style="width: 18rem;">
+              <img src="/static/recipe_card.PNG" class="card-img-top" alt="fridge_image">
+              <div class="text-bg-dark p-3">
+              <h5 class="card-title">View Recipes</h5>
+              <p class="card-text">View your favorite recipes that you saved! (Not Available)</p>
+              <button type="button" class="btn btn-outline-success" disabled>Open Recipe Book</button>
+            </div>
+        </div>
+  <!--end-->
+        </div>
+      </div>
+    </div>
+    <!--end-->
+
+    <!--accordian test
+    <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Accordion Item #1
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              Accordion Item #2
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              Accordion Item #3
+            </button>
+          </h2>
+          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+      </div>
+    end-->
+ 
+    <!-- This will page will render as long as the user isn't authenticated  -->
+    {% else %}
+    <div style="padding: 10px;"></div>
+    <img src="/static/logo_placeholder.PNG" alt="Logo" id = "logo_placeholder">
+    <title>Welcome | Taproot</title>
+    <h1 id="profileDropDown">Welcome to Taproot</h1> 
+    <div id="goal-wrap">
+        <p>"Our goal is to provide the necessary tools and knowledge so that every household can help reduce our collective food waste footprint. One food at a time."</p>
+      </div>
+      
+      <style>
         #goalContainer {
           text-align: center;
           font-size: 1.2em;
@@ -87,77 +223,9 @@
           padding: 20px;
           border: 1px solid rgba(0, 0, 0, 0.486);
         }
-        #feed-wrap {
-          width: 500px;
-          margin: 0 auto;
-          /* border: 1px solid rgba(0, 0, 0, 0.486); */
-        }
-    </style>
-</head>
-
-<body>
-    {% if user.is_authenticated %}
+      </style>
     <div style="padding: 10px;"></div>
-    <img src="/static/images/logo_placeholder.PNG" alt="Logo" id = "logo_placeholder"> 
-    <h1>Welcome {{ user.username }}!</h1>
-    <div style="padding: 10px;"></div>
-    <!--Columns Test-->
-    <div class="container px-4 text-center">
-      <div class="row gx-5">
-        <div class="col d-flex justify-content-center">
-          <!--fridge_card_start-->
-          <div class="card" style="width: 18rem;">
-            <img src="/static/images/fridge_card.PNG" class="card-img-top" alt="fridge_image">
-            <div class="text-bg-dark p-3">
-              <h5 class="card-title">Add To Fridge</h5>
-              <p class="card-text">Add or update your inventory from inside your fridge!</p>
-              <a href="{% url 'fridgelist' %}" class="btn btn-outline-success">Open Fridge</a>
-            </div>
-          </div>
-          <!--fridge_card_end-->
-        </div>
-        <div class="col d-flex justify-content-center">
-          <!--pantry_card_start-->
-          <div class="card" style="width: 18rem;">
-            <img src="/static/images/pantry_card.PNG" class="card-img-top" alt="fridge_image">
-            <div class="text-bg-dark p-3">
-            <h5 class="card-title">Add To Pantry</h5>
-            <p class="card-text">Add or update your inventory from inside your pantry!</p>
-            <a href="{% url 'pantrylist' %}" class="btn btn-outline-success">Open Pantry</a>
-          </div>
-        </div>
-        <!--pantry_card_end-->
-        </div>
-        <div class="col d-flex justify-content-center">
-          <!--card test-->
-            <div class="card" style="width: 18rem;">
-              <img src="/static/images/recipe_card.PNG" class="card-img-top" alt="fridge_image">
-              <div class="text-bg-dark p-3">
-              <h5 class="card-title">View Recipes</h5>
-              <p class="card-text">Generate fresh recipes from items inside your inventory!</p>
-              <a href="{% url 'book' %}" class="btn btn-outline-success">Open Recipe Book</a>
-            </div>
-        </div>
-  <!--end-->
-        </div>
-      </div>
-    </div>
-    <!--end-->
-    {% else %}
-    <div style="padding: 10px;"></div>
-    <img src="/static/images/logo_placeholder.PNG" alt="Logo" id = "logo_placeholder">
-    <title>Welcome | Taproot</title>
-    <h1 id="profileDropDown">Welcome to Taproot</h1>
-    <div id="goal-wrap">
-        <p>"Our goal is to provide the necessary tools and knowledge so that every household can help reduce our collective food waste footprint. One food at a time."</p>
-      </div>
-    <div style="padding: 10px;"></div>
-    <p><a class="button is-primary" href="/login/auth0" id="qsLoginBtn">Login</a></p>
-    <br>
-    <br>
-    <!--Twitter Timeline Script-->
-    <div id="feed-wrap">
-    <a class="twitter-timeline" data-width="auto" data-theme="dark" href="https://twitter.com/DeathToWaste?ref_src=twsrc%5Etfw">Tweets from DeathToWaste</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    </div>
+    <p><a class="button is-primary" href="/login/auth0" id="qsLogoutBtn">Login</a></p>
     {% endif %}
+
 </body>

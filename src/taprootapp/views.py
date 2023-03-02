@@ -146,6 +146,17 @@ def fridgeDelete(request, item_name):
     
     return render(request, 'components/fridgedelete_view.html', context=context)
 
+@login_required
+def fridgeDeleteAll(request):
+    userFridge = FridgeItem.objects.filter(user=request.user)
+
+    context = {}
+    if request.method == 'POST':
+        #FridgeItem.objects.get_queryset(user == user).delete()
+        userFridge.delete()
+        return HttpResponseRedirect('/fridgelist/')
+    #context={'user': user}
+    return render(request, 'components/fridgeDeleteAll_view.html')
 
 # <----- Fridge views above / Pantry views below ----->
 

@@ -10,8 +10,8 @@
     <form method="POST">
         {% csrf_token %}
         <p class="lead"> Do you want to delete {{ item_name }}? </p>
-        <button type="submit" class="btn btn-primary">Yes</button>
-        <a class="btn btn-outline-warning" href="{% url 'fridgelist' %}" role="button">Cancel</a>
+        <button type="submit" class="btn btn-primary">Yes <i class="bi bi-trash3"></i></button>
+        <a class="btn btn-warning" href="{% url 'fridgelist' %}" role="button">Cancel <i class="bi bi-x-octagon"></i></a>
     </form>
 {% endblock %}
 </body>

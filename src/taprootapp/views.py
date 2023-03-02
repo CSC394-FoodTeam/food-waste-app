@@ -1,12 +1,11 @@
-# import json
+import jwt
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.contrib.auth import logout as django_logout
 from django.conf import settings
 
-from django.views.generic import CreateView, DeleteView, UpdateView
-# from django.views.generic import ListView
+from django.views.generic import CreateView, DeleteView, UpdateView, ListView, DetailView
 
 from .models import FridgeItem, PantryItem, Recipe
 from .forms import FridgeItemForm, PantryItemForm, RecipeForm
@@ -121,30 +120,28 @@ def fridgeCreate(request):
 
 
 @login_required
-def fridgeUpdate(request, item_name):
-    context = {}
-    obj = get_object_or_404(FridgeItem, item_name = item_name)
+def fridgeUpdate(request, id):
+    obj = get_object_or_404(FridgeItem, id = id)
     form = FridgeItemForm(request.POST or None, instance = obj)
     if form.is_valid():
         form.save()
         return HttpResponseRedirect('/fridgelist/')
 
-    context['form'] = form
+    context={'form' : form}
     return render(request, 'components/fridgeupdate_view.html', context)
 
 
 @login_required
-def fridgeDelete(request, item_name):
-    context = {}
-    obj = get_object_or_404(FridgeItem, item_name = item_name)
+def fridgeDelete(request, id):
+    obj = get_object_or_404(FridgeItem, id = id)
     
     if request.method == 'POST':
         obj.delete()
         return HttpResponseRedirect('/fridgelist/')
 
-    context={'item_name': item_name}
+    context={'item_name': obj.item_name}
     
-    return render(request, 'components/fridgedelete_view.html', context=context)
+    return render(request, 'components/fridgedelete_view.html', context)
 
 
 # <----- Fridge views above / Pantry views below ----->
@@ -177,30 +174,29 @@ def pantryCreate(request):
 
 
 @login_required
-def pantryUpdate(request, item_name):
-    context = {}
-    obj = get_object_or_404(PantryItem, item_name = item_name)
+def pantryUpdate(request, id):
+    obj = get_object_or_404(PantryItem, id = id)
     form = PantryItemForm(request.POST or None, instance = obj)
+
     if form.is_valid():
         form.save()
         return HttpResponseRedirect('/pantrylist/')
 
-    context['form'] = form
+    context={'form': form}
     return render(request, 'components/pantryupdate_view.html', context)
 
 
 @login_required
-def pantryDelete(request, item_name):
-    context = {}
-    obj = get_object_or_404(PantryItem, item_name = item_name)
-    
+def pantryDelete(request, id):
+    obj = get_object_or_404(PantryItem, id = id)
+
     if request.method == 'POST':
         obj.delete()
         return HttpResponseRedirect('/pantrylist/')
 
-    context={'item_name': item_name}
+    context={'item_name': obj.item_name}
     
-    return render(request, 'components/pantrydelete_view.html', context=context)
+    return render(request, 'components/pantrydelete_view.html', context)
 
 
 ##/FAQ/##
@@ -211,7 +207,7 @@ def faq(request):
 def discover(request):
     form = RecipeForm()
 
-    context={'form':form}
+    context={'form' : form}
 
     return render(request, 'home/discover.html', context)
 
@@ -226,6 +222,20 @@ def recipe(request, name):
     context={'name': name}
     return render(request, 'home/recipe.html', context)
 
+
+# CANNY.IO WIDGET
+# def create_canny_token(user):
+#   private_key = settings.CANNYIO_PRIVATE_KEY
+#   user_data = {
+#     'email': user.email,
+#     'id': user.id,
+#     'username': user.username,
+#   }
+#   return jwt.encode(user_data, private_key, algorithm='HS256')
+
+def feedback(request):
+    # context = {'create_canny_token': create_canny_token(user=request.user)}
+    return render(request, 'home/feedback.html')
 
 ##/Pantry/##
 #class FridgeTestCreate(CreateView):
@@ -245,3 +255,33 @@ def recipe(request, name):
 #     model = PantryItem
 
 ###
+class RecipeListView(ListView):
+    model = Recipe
+    template_name = 'recipe_list.html'
+    context_object_name = 'recipes'
+
+
+class RecipeDetailView(DetailView):
+    model = Recipe
+    template_name = 'recipe_detail.html'
+    context_object_name = 'recipe'
+
+
+class RecipeCreateView(CreateView):
+    model = Recipe
+    template_name = 'home/book.html'
+    fields = ['title', 'restrictions', 'cuisine', 'flavor_profile', 'ingredients', 'instructions', 'source', 'image']
+    success_url = reverse_lazy('home/book.com')
+
+
+class RecipeUpdateView(UpdateView):
+    model = Recipe
+    template_name = 'recipe_form.html'
+    fields = ['title', 'restrictions', 'cuisine', 'flavor_profile', 'ingredients', 'instructions', 'source', 'image']
+    success_url = reverse_lazy('recipe_list')
+
+
+class RecipeDeleteView(DeleteView):
+    model = Recipe
+    template_name = 'recipe_confirm_delete.html'
+    success_url = reverse_lazy('recipe_list')

@@ -1,5 +1,6 @@
-<head>
-  {% include 'components/main.html'%}
+{% extends 'components/main.html'%}
+{% block content %}
+ <head>
   <title>Error 404 - Page Not Found</title>
     <style>
       body {
@@ -10,9 +11,8 @@
         font-size: 72px;
       }
     </style>
-</head>
-<body>
+ </head>
     <h1>Error 404</h1>
     <p>Page Not Found</p>
     <p>༼ つ ◕_◕ ༽つ</p>
-</body>
+{% endblock %}

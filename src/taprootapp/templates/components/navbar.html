@@ -12,7 +12,7 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link{% if request.path == '/' %} active{% endif %}" aria-current="page" href="{% url 'index' %}">Home</a>
+            <a class="nav-link{% if request.path == '/' %} active{% endif %}" href="{% url 'index' %}">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link{% if request.path == '/discover/' %} active{% endif %}" href="{% url 'discover' %}">Discover</a>
@@ -39,10 +39,10 @@
           </li>
         </ul>
       </div>
-      <div class="navbar-collapse collapse w-100 order-3 dual-collapse2, container-fluid"> 
-          <ul class="navbar-nav ms-auto"> 
+      <div class="navbar-collapse collapse" id="navbarNavDropdown"> 
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0"> 
             <li class="nav-item">
-              <a class="nav-link" href="https://taproot.canny.io/" target="_blank">
+              <a class="nav-link{% if request.path == '/feedback/' %} active{% endif %}" href="{% url 'feedback' %}">
                 <i class="fa fa-comments" aria-hidden="true"></i>
                 <span>Give Feedback</span>
               </a> 

@@ -3,9 +3,10 @@
     {% include 'components/main.html' %}
     <title>Pantry | Taproot</title>
 </head>
-<body>
 {% block content %}
+<div class="inventoryFunctions" />
 <form action="" method="POST">
+  <div class="form-group" />
         <div class="container-md">
         <div class="text-center">
           <h1> Update Pantry Item <i class="bi bi-egg-fried"></i> </h1>
@@ -18,11 +19,10 @@
               <div class="form-group">
                 {% csrf_token %}
                 <table style="margin-left:auto;margin-right:auto;">
-                  {{ form.as_table }}
+                  {{ form.as_p }}
                 </table>
                 <br>
         <button type="submit" class="btn btn-primary">Update Item <i class="bi bi-arrow-clockwise"></i></button>
         <a class="btn btn-warning" href="{% url 'pantrylist' %}" role="button">Cancel <i class="bi bi-x-octagon"></i></a>
     </form>
 {% endblock %}
-</body>

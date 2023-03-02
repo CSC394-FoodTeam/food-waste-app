@@ -18,7 +18,7 @@ class PantryItem(models.Model):
         ('Sweeteners','Sweeteners')
     ]
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    item_name = models.CharField(primary_key=True, max_length=100) #added primary key == True
+    item_name = models.CharField(max_length=100) #added primary key == True
     category = models.CharField(max_length=20,choices=PANTRY_TYPES, unique=False)
     expiry_date = models.DateField()
     quantity = models.IntegerField(validators=[MinValueValidator(1)])
@@ -40,7 +40,7 @@ class FridgeItem(models.Model):
         ('Beverages','Beverages')
     ]
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    item_name = models.CharField(primary_key=True, max_length=100) #added primary key == True
+    item_name = models.CharField(max_length=100) #added primary key == True
     category = models.CharField(max_length=20, choices=FRIDGE_TYPES, unique=False)   #throws Integrity error when same category exists in table
     expiry_date = models.DateField()
     quantity = models.IntegerField(validators=[MinValueValidator(1)])

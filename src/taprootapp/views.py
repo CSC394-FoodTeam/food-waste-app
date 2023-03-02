@@ -190,15 +190,17 @@ def pantryUpdate(request, item_name):
 
 
 @login_required
-def pantryDelete(request, item_name):
-    context = {}
-    obj = get_object_or_404(PantryItem, item_name = item_name)
-    
+def pantryDelete(request):
+    obj = PantryItem.objects.filter(id = request.id)
+    item_name = PantryItem.objects.filter(item_name = request.item_name)
+
     if request.method == 'POST':
         obj.delete()
         return HttpResponseRedirect('/pantrylist/')
 
-    context={'item_name': item_name}
+    context={
+        'item_name': item_name
+        }
     
     return render(request, 'components/pantrydelete_view.html', context=context)
 

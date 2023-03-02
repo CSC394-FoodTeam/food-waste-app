@@ -1,26 +1,32 @@
+<!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
-  <head> 
+
+<head>
   {% load static %}
   {% include 'components/bootstrap_code.html' %}
-  <link rel="shortcut icon" type="image/png" href="{% static 'favicon/favicon.ico' %}"/>
-  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   {% include 'components/navbar.html'%}
-  <style></style>
+  <link rel="shortcut icon" type="image/png" href="{% static 'favicon/favicon.ico' %}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  {% block header %}
+  {% endblock %}
+    
 </head>
-<body>
-    <!--bootstrap NavBar-->
-    <!--end-->
-    {% block content %}
-    <div style="padding: 10px;"></div>
-    {% endblock %}
 
-</body>
-<!-- <section class="border-top has-default-focus is-hidden-interactive margin-top-sm  margin-top-none">
-	<footer id="footer" data-bi-name="footer" class="footer-layout uhf-container has-padding" role="contentinfo">
-	<div class="display-flex is-full-height padding-right-lg-desktop">
-	</div>
+<body>
+  <div class="wrapper">
+  {% block content %}  
+  {% endblock %}
+  </div>
+  <footer>
+    <div class="footer" data-bm="27">
+      <section class="footer-section">
+        &copy;<span id="year"> </span><span> Taproot GmbH. All rights reserved.</span>
+      </section>
+    </div>
   </footer>
-</section> -->
+</body>
 </html>

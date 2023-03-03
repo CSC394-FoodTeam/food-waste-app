@@ -212,15 +212,28 @@ def discover(request):
     return render(request, 'home/discover.html', context)
 
 
-class BookView(CreateView):
-    model = Recipe
-    form_class = RecipeForm
-    template_name = 'home/book.html'
+# class BookView(CreateView):
+#     model = Recipe
+#     form_class = RecipeForm
+#     template_name = 'home/book.html'
 
+def recipe(request):
+    form = RecipeForm()
+    if request.method == 'POST':
+        form = RecipeForm(request.POST)
+        if form.is_valid():
+            recipe = form.save(commit=False)
+            recipe.user = request.user
+            recipe.save()
+            return redirect('/book/')
+        else:
+            print(form.errors)
+    else:
+        form = RecipeForm()
 
-def recipe(request, name):
-    context={'name': name}
-    return render(request, 'home/recipe.html', context)
+    context={'form' : form}
+    return render(request, 'home/book.html', context)
+
 
 
 # CANNY.IO WIDGET
@@ -237,51 +250,4 @@ def feedback(request):
     # context = {'create_canny_token': create_canny_token(user=request.user)}
     return render(request, 'home/feedback.html')
 
-##/Pantry/##
-#class FridgeTestCreate(CreateView):
-   # model = FridgeItem
-   # template_name = 'fridge_item_creation.html'
-   # form_class = FridgeTestForm
-
-# class PantryCreate(CreateView):
-#     model = PantryItem
-#     template_name = "pantry_item_create.html"
-#     form_class = PantryTestForm
-
-# class FridgeList(ListView):
-#     model = FridgeItem
-
-# class PantryList(ListView):
-#     model = PantryItem
-
 ###
-class RecipeListView(ListView):
-    model = Recipe
-    template_name = 'recipe_list.html'
-    context_object_name = 'recipes'
-
-
-class RecipeDetailView(DetailView):
-    model = Recipe
-    template_name = 'recipe_detail.html'
-    context_object_name = 'recipe'
-
-
-class RecipeCreateView(CreateView):
-    model = Recipe
-    template_name = 'home/book.html'
-    fields = ['title', 'restrictions', 'cuisine', 'flavor_profile', 'ingredients', 'instructions', 'source', 'image']
-    success_url = reverse_lazy('home/book.com')
-
-
-class RecipeUpdateView(UpdateView):
-    model = Recipe
-    template_name = 'recipe_form.html'
-    fields = ['title', 'restrictions', 'cuisine', 'flavor_profile', 'ingredients', 'instructions', 'source', 'image']
-    success_url = reverse_lazy('recipe_list')
-
-
-class RecipeDeleteView(DeleteView):
-    model = Recipe
-    template_name = 'recipe_confirm_delete.html'
-    success_url = reverse_lazy('recipe_list')

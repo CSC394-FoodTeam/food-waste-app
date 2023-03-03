@@ -9,14 +9,15 @@
 </style>
 
 <div class="inventory">
-<h1>Generate Recipes</h1>
+<h1>Create Recipes</h1>
+<p class="lead"> • Fill in details below </p>
 <div class="inventoryBook">
 <div class="form-group">
     <form method="post">
     	{% csrf_token %}
         {{ form.as_p }}
     </form>
-    <button type="submit" class="btn btn-primary">Generate</button>
+    <button type="Submit" type="submit" class="btn btn-primary">Post Recipe</button>
 </div>
 </div>
 </div>

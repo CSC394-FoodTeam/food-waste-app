@@ -63,7 +63,7 @@ a {
     padding: 20px;
     margin: auto auto auto;
     border-radius: 10px;
-    color: rgb(126, 158, 255) !important;
+    /* color: rgb(126, 158, 255) !important; */
     font-weight: bold;
 }
 /* .form-group {

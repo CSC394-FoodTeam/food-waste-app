@@ -18,7 +18,7 @@ urlpatterns = [
     path('pantrydelete/<id>/', views.pantryDelete, name = 'pantrydelete'),
     path('faq/', views.faq, name='faq'),
     path('discover/', views.discover, name='discover'),
-    path('book/', views.BookView.as_view(), name='book'),
+    path('book/', views.recipe, name='book'),
     path('recipe/<name>/', views.recipe, name='recipe'),
     path('feedback/', views.feedback, name='feedback'),
 

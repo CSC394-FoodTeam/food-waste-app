@@ -1,6 +1,6 @@
 from django import forms 
-from .models import PantryItem, FridgeItem, Recipe, RecipeRestriction
-from django.contrib.auth.models import User
+from .models import PantryItem, FridgeItem, Recipe
+# from django.contrib.auth.models import User
 
 class PantryItemForm(forms.ModelForm):
     class Meta:
@@ -29,12 +29,12 @@ class FridgeItemForm(forms.ModelForm):
 class RecipeForm(forms.ModelForm):
     class Meta:
         model = Recipe
-        fields = ['title', 'restrictions', 'cuisine', 'flavor_profile', 'ingredients', 'instructions', 'source', 'image']
+        fields = ['title', 'restrictions', 'cuisine', 'ingredients', 'instructions', 'source', 'image']
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter recipe name'}),
-            'restrictions': forms.CheckboxSelectMultiple(),
-            'cuisine': forms.CheckboxSelectMultiple(),
-            'flavor_profile': forms.CheckboxSelectMultiple(),
+            'restrictions': forms.Select(attrs={'class': 'form-control'}),
+            'cuisine': forms.Select(attrs={'class': 'form-control'}),
+            # 'flavor_profile': forms.SelectMultiple(),
             'ingredients': forms.Textarea(attrs={'class': 'form-control', 'rows': 5, 'placeholder': 'Enter ingredients separated by commas'}),
             'instructions': forms.Textarea(attrs={'class': 'form-control', 'rows': 5, 'placeholder': 'Enter instructions'}),
             'source': forms.URLInput(attrs={'class': 'form-control', 'placeholder': 'www.example.com'}),

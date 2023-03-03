@@ -1,26 +1,30 @@
+<!DOCTYPE html>
+{% load static %}
 <html lang="en" data-bs-theme="dark">
-  <head> 
-  {% load static %}
-  {% include 'components/bootstrap_code.html' %}
-  <link rel="shortcut icon" type="image/png" href="{% static 'favicon/favicon.ico' %}"/>
-  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  {% include 'components/navbar.html'%}
-  <style></style>
-</head>
-<body>
-    <!--bootstrap NavBar-->
-    <!--end-->
-    {% block content %}
-    <div style="padding: 10px;"></div>
-    {% endblock %}
+  <head>
+    {% include 'components/bootstrap_code.html' %} 
+    {% include 'components/navbar.html' %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon/favicon.ico' %}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"/>
+    {% block header %} <title>Home | Taproot</title> {% endblock %}
+  </head>
 
-</body>
-<!-- <section class="border-top has-default-focus is-hidden-interactive margin-top-sm  margin-top-none">
-	<footer id="footer" data-bi-name="footer" class="footer-layout uhf-container has-padding" role="contentinfo">
-	<div class="display-flex is-full-height padding-right-lg-desktop">
-	</div>
-  </footer>
-</section> -->
+  <body>
+    <div class="wrapper">
+      {% block content %}
+
+      {% endblock %}
+    </div>
+    <footer id="footer">
+      <div class="footer" data-bm="27">
+        <section class="footer-section">
+          &copy;<span id="year"> </span
+          ><span> Taproot GmbH. All rights reserved.</span>
+        </section>
+      </div>
+    </footer>
+  </body>
 </html>

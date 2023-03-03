@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<head>
-	{% include 'components/main.html'%}
-	<title>FAQ | Taproot</title>
+{% extends 'components/main.html'%}
+{% block header %}
+<title>FAQ | Taproot</title>
 	<style>
-		body {
+		.backgroundImage {
 			background-color: #212529;
 			color: #333333;
-			font-family: Arial, sans-serif;
-			margin: 0;
-			padding: 0;
-			background-image: url("/static/assets/AdobeStock_100875498.jpeg");
+			background-image: url("/static/images/AdobeStock_100875498.jpeg");
 			background-size: 75%;
 			background-position: center;
 			background-repeat: no-repeat;
@@ -41,8 +37,6 @@
 			color: #657bc6;
 		}
 		dd {
-			margin-left: 30px;
-			margin-bottom: 30px;
 			font-size: 20px;
 			line-height: 1.5;
 			color: #aeb5bd;
@@ -57,30 +51,31 @@
 			border-radius: 20px;
 		}
 	</style>
-</head>
+{% endblock %}
 
 <body>
-	<h1> <u>Foodies - FAQ</u> </h1>
-	<h2>General Questions</h2>
-	<dl>
-		<dt>What is food waste?</dt>
-		<dd>Food waste is the food that is discarded, whether or not it is still edible. This can include leftovers, spoiled or expired food, and food that is thrown away during preparation.</dd>
-		<dt>Why is reducing food waste important?</dt>
-		<dd>Reducing food waste can help us save money, reduce greenhouse gas emissions, and conserve natural resources. It can also help us tackle issues like hunger and food insecurity.</dd>
-		<dt>How can I reduce food waste?</dt>
-		<dd>You can reduce food waste by planning meals ahead, buying only what you need, using leftovers creatively, and storing food properly. You can also compost food scraps and donate excess food to those in need.</dd>
-	</dl>
-	<h2>Our Mission</h2>
-	<dl>
-		<dt>Why is home cooking important?</dt>
-		<dd>Home cooking can help us eat healthier, save money, and reduce food waste. It also allows us to have more control over what we eat and how it is prepared.</dd>
-		<dt>What are some tips for getting started with home cooking?</dt>
-		<dd>Start with simple recipes and build your confidence gradually. Use fresh ingredients and experiment with different flavors and cuisines. Make a meal plan and create a shopping list to avoid buying too much food.</dd>
-		<dt>Make It Fun and Enjoyable</dt>
-		<dd>Involve friends or family members in the cooking process, try new recipes or ingredients, and experiment with different cooking techniques. You can also listen to music, watch cooking shows, or make cooking a relaxing and enjoyable experience.</dd>
-	</dl>
+{% block content %}
+		<div class="backgroundImage">
+		<h1> <u>Foodies - FAQ</u> </h1>
+		<h2>General Questions</h2>
+		<dl>
+			<dt>What is food waste?</dt>
+			<dd>Food waste is the food that is discarded, whether or not it is still edible. This can include leftovers, spoiled or expired food, and food that is thrown away during preparation.</dd>
+			<dt>Why is reducing food waste important?</dt>
+			<dd>Reducing food waste can help us save money, reduce greenhouse gas emissions, and conserve natural resources. It can also help us tackle issues like hunger and food insecurity.</dd>
+			<dt>How can I reduce food waste?</dt>
+			<dd>You can reduce food waste by planning meals ahead, buying only what you need, using leftovers creatively, and storing food properly. You can also compost food scraps and donate excess food to those in need.</dd>
+		</dl>
+		<h2>Our Mission</h2>
+		<dl>
+			<dt>Why is home cooking important?</dt>
+			<dd>Home cooking can help us eat healthier, save money, and reduce food waste. It also allows us to have more control over what we eat and how it is prepared.</dd>
+			<dt>What are some tips for getting started with home cooking?</dt>
+			<dd>Start with simple recipes and build your confidence gradually. Use fresh ingredients and experiment with different flavors and cuisines. Make a meal plan and create a shopping list to avoid buying too much food.</dd>
+			<dt>Make It Fun and Enjoyable</dt>
+			<dd>Involve friends or family members in the cooking process, try new recipes or ingredients, and experiment with different cooking techniques. You can also listen to music, watch cooking shows, or make cooking a relaxing and enjoyable experience.</dd>
+		</dl>
+		</div>
+	<br>
+{% endblock %}
 </body>
-<footer>
-	<p></p>
-	<p>Credits</p>
-</footer>

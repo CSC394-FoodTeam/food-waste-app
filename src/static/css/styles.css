@@ -1,6 +1,29 @@
+html {
+    height: 100% !important;
+}
+
 body {
     font-family: Arial, sans-serif;
     text-align: center;
+    height: auto !important;
+    width: auto !important;
+    min-width: fit-content !important;
+    overflow: auto;
+    box-sizing: content-box;
+    margin: 0;
+    padding-bottom: 20px;
+}
+.wrapper {
+    min-height: 100vh !important;
+    position: relative;
+    line-height: 1.2em;
+    clear: both;
+    visibility: visible;
+    margin: 0 0 0 !important;
+}
+a {
+    color: #fff;
+    text-decoration: none;
 }
 .content-wrapper {
     padding-top: 80px;
@@ -14,10 +37,140 @@ body {
     padding-left: 2rem;
     padding-right: 2rem;
     font-size: 18px;
-    /* margin-left: auto; */
 }
 .nav-link.active {
     background-color: #617ac4;
     border-radius: 5px;
     padding: 8px 8px;
+}
+.feedback {
+    width: 100%;
+    min-height: 100vh;
+    padding: 20px;
+    margin: auto auto auto;
+    border-radius: 0px;
+    background: rgb(250, 250, 250);
+}
+.inventory {
+    padding: 20px 10% 20px;
+    margin: 0 0 0;
+    border-radius: 4px;
+    height: 100%;
+}
+.inventoryFunctions {
+    height: 100%;
+    width:fit-content;
+    padding: 20px;
+    margin: auto auto auto;
+    border-radius: 10px;
+    /* color: rgb(126, 158, 255) !important; */
+    font-weight: bold;
+}
+/* .form-group {
+    margin-bottom: 15px;
+    overflow-y: auto !important;
+} */
+/* .form-check {
+    width: 120px;
+    height: 40px;
+    background: #333;
+    margin: 20px 60px;
+    overflow-y: auto;
+    border-radius: 50px;
+    position: relative;
+} */
+select.form-control { appearance: auto; }
+
+/* Added from Base.html */
+
+#profileDropDown, h1 {
+    color: #ffffff;
+}
+
+#qsLoginBtn{
+    background-color: #617ac4;
+    background-size: 10px 10px;
+    border: none;
+    border-radius: 18px;
+    color: #fff;
+    padding: 12px 12px;
+    margin-top: 16px;
+    font-size: 18px;
+}
+
+#qsInventoryBtn {
+    background-color: #6dc461;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    padding: 8px 16px;
+}
+
+pre {
+    background-color: #fff;
+    border: 1px solid #617ac4;
+    border-radius: 4px;
+    color: #212121;
+    padding: 16px;
+    margin-top: 16px;
+    white-space: pre-wrap;
+}
+
+#logo_placeholder {
+    border-radius: 50%;
+    height: 100px;
+    margin-bottom: 16px;
+    width: 100px;
+}
+#goalContainer {
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 50px;
+}
+
+#goalText {
+    font-weight: bold;
+    color: #333;
+}
+#goal-wrap {
+    width:fit-content ;
+    padding: 30px;
+    margin: auto auto auto;
+    background-color: rgb(38, 20, 71);
+    border-radius: 20px;
+    border-color: #617ac4;
+}
+#feed-wrap {
+    box-sizing: border-box;
+    width: 80%;
+    margin: auto auto auto;
+    min-height: 5vh;
+    border-radius: 20px;
+}
+/* End */
+
+.footer {
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem;
+    background: #171a1d;
+    color: #cfd1d3;
+    font-weight: 500 !important;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    gap: 0.2rem;
+    border-top: 1px solid #333333;
+    line-height: 18px;
+    float: left;
+}
+#twitter-timeline {
+    padding-bottom: 24px; 
+    color: rgb(63, 156, 243) !important;
+}
+.card-title {
+    color: rgb(255, 255, 255) !important;
+    font-weight: bold;
 }

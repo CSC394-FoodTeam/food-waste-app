@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Recipe Book | Taproot</title>
-    {% include 'components/main.html' %}
-    <style>
+<title>Recipe Book | Taproot</title>
+{% {% extends 'extends' %} 'components/main.html' %}
 
-    </style>
-</head>
-<body>
+
 {% block content %}
+<div class="inventory">
 	<h1>Add a New Recipe</h1>
 	<form method="post">
 		{% csrf_token %}
@@ -17,6 +12,5 @@
         </table>
         <button type="submit" class="btn btn-primary">Submit</button>
 	</form>
-</body>
+</div>
 {% endblock %}
-</html>

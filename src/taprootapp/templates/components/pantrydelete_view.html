@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<head>
-    {% include 'components/main.html' %}
-    <title>Pantry | Taproot</title>
-</head>
-
-<body>
+{% extends 'components/main.html' %}
+{% block header %}Pantry | Taproot{% endblock %}
 {% block content %}
+<div class="inventoryFunctions">
 <h1>Delete from Pantry</h1>
     <form method="POST">
         {% csrf_token %}
@@ -13,5 +9,5 @@
         <button type="submit" class="btn btn-primary">Yes <i class="bi bi-trash3"></i></button>
         <a class="btn btn-warning" href="{% url 'pantrylist' %}" role="button">Cancel <i class="bi bi-x-octagon"></i></a>
     </form>
+</div>
 {% endblock %}
-</body>

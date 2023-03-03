@@ -1,22 +1,18 @@
 <!DOCTYPE html>
-<head>
-  {% include 'components/main.html'%}
-  <title>Fridge | Taproot</title>
-</head>
-
-<body>
+{% extends 'components/main.html'%}
+{% block header %}<title>Fridge | Taproot</title>{% endblock %}
 {% block content %}
+<div class="inventory">
 <h1>Inventory: Fridge </h1>
 <br>
-<!--table class="table"-->
-<table class="table">
+<table class="table" id="fridgeTable">
   <thead class="table-secondary">
   <tr>
-      <th> Item </th>
+      <th data-card-title> Item </th>
       <th> Category </th>
       <th> Expiry Date </th>
       <th> Quantity </th>
-      <th> Manage </th>
+      <th data-card-footer> Manage </th>
   </tr>
   </thead>
   <tbody class="table-group-divider">
@@ -29,8 +25,8 @@
       <td>  {{ i.expiry_date }}  </td>
       <td>  {{ i.quantity }} </td>
       <td>
-        <a class="btn btn-outline-primary" href="{% url 'fridgeupdate' i.item_name %}" role="button">Update <i class="bi bi-arrow-clockwise"></i></a>
-        <a class="btn btn-outline-danger" href="{% url 'fridgedelete' i.item_name %}" role="button">Delete <i class="bi bi-trash3"></i></a>
+        <a class="btn btn-outline-primary" href="{% url 'fridgeupdate' i.id %}" role="button">Update <i class="bi bi-arrow-clockwise"></i></a>
+        <a class="btn btn-outline-danger" href="{% url 'fridgedelete' i.id %}" role="button">Delete <i class="bi bi-trash3"></i></a>
       </td>
   </tr>
   </tbody>
@@ -39,4 +35,4 @@
 <a class="btn btn-outline-light" href="{% url 'fridgecreate' %}" role="button">Add Fridge Item <i class="bi bi-plus-circle"></i></a>
 <a class="btn btn-outline-danger" href="{% url 'fridgeDeleteAll' %}" role="button">Delete All <i class="bi bi-eraser-fill"></i></a>
 {% endblock %}
-</body>
+

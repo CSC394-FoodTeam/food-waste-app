@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<head>
-    {% include 'components/main.html' %}
-    <title>Pantry | Taproot</title>
-</head>
-<body>
+
+{% include 'components/main.html' %}
+<title>Pantry | Taproot</title>
 {% block content %}
+
+<div class="inventoryFunctions">
 <form action="" method="POST">
+  <div class="form-group">
         <div class="container-md">
         <div class="text-center">
           <h1> Update Pantry Item <i class="bi bi-egg-fried"></i> </h1>
@@ -13,16 +13,13 @@
         </div>
         <div class="card text-center">
             <div class="card-header"></div>
-            <!-- <h5 class="card-title">Item Info</h5> -->
-            <div class="card-body">
               <div class="form-group">
                 {% csrf_token %}
-                <table style="margin-left:auto;margin-right:auto;">
-                  {{ form.as_table }}
-                </table>
-                <br>
+                  {{ form.as_p }}
         <button type="submit" class="btn btn-primary">Update Item <i class="bi bi-arrow-clockwise"></i></button>
         <a class="btn btn-warning" href="{% url 'pantrylist' %}" role="button">Cancel <i class="bi bi-x-octagon"></i></a>
-    </form>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
-</body>

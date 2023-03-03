@@ -1,6 +1,5 @@
 from django.urls import path
 from . import views
-from django.views.generic import CreateView
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -19,9 +18,17 @@ urlpatterns = [
     path('pantryupdate/<item_name>/', views.pantryUpdate, name = 'pantryupdate'),
     path('pantrydelete/<item_name>/', views.pantryDelete, name = 'pantrydelete'),
     path('pantrydeleteall/', views.pantryDeleteAll, name = 'pantryDeleteAll'),
+
     path('faq/', views.faq, name='faq'),
     path('discover/', views.discover, name='discover'),
-    path('book/', views.BookView.as_view(), name='book'),
-    path('recipe/<name>/', views.recipe, name='recipe')
+    path('book/', views.recipe, name='book'),
+    path('recipe/<name>/', views.recipe, name='recipe'),
+    path('feedback/', views.feedback, name='feedback'),
+
+
+    # path('<int:pk>/', views.RecipeDetailView.as_view(), name='recipe_detail'),
+    # path('book/', views.RecipeCreateView.as_view(), name='book'),
+    # path('<int:pk>/update/', views.RecipeUpdateView.as_view(), name='recipe_update'),
+    # path('<int:pk>/delete/', views.RecipeDeleteView.as_view(), name='recipe_delete'),
     ###
 ]

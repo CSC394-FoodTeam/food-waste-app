@@ -1,32 +1,30 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en" data-bs-theme="dark">
+  <head>
+    {% include 'components/bootstrap_code.html' %} 
+    {% include 'components/navbar.html' %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon/favicon.ico' %}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"/>
+    {% block header %} <title>Home | Taproot</title> {% endblock %}
+  </head>
 
-<head>
-  {% load static %}
-  {% include 'components/bootstrap_code.html' %}
-  {% include 'components/navbar.html'%}
-  <link rel="shortcut icon" type="image/png" href="{% static 'favicon/favicon.ico' %}" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-  {% block header %}
-  {% endblock %}
-    
-</head>
+  <body>
+    <div class="wrapper">
+      {% block content %}
 
-<body>
-  <div class="wrapper">
-  {% block content %}  
-  {% endblock %}
-  </div>
-  <footer>
-    <div class="footer" data-bm="27">
-      <section class="footer-section">
-        &copy;<span id="year"> </span><span> Taproot GmbH. All rights reserved.</span>
-      </section>
+      {% endblock %}
     </div>
-  </footer>
-</body>
+    <footer id="footer">
+      <div class="footer" data-bm="27">
+        <section class="footer-section">
+          &copy;<span id="year"> </span
+          ><span> Taproot GmbH. All rights reserved.</span>
+        </section>
+      </div>
+    </footer>
+  </body>
 </html>

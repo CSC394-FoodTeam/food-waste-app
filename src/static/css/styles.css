@@ -79,7 +79,7 @@ a {
     border-radius: 50px;
     position: relative;
 } */
-/* select.form-control { appearance: auto; } */
+select.form-control { appearance: auto; }
 
 /* Added from Base.html */
 
@@ -165,4 +165,12 @@ pre {
     border-top: 1px solid #333333;
     line-height: 18px;
     float: left;
+}
+#twitter-timeline {
+    padding-bottom: 24px; 
+    color: rgb(63, 156, 243) !important;
+}
+.card-title {
+    color: rgb(255, 255, 255) !important;
+    font-weight: bold;
 }

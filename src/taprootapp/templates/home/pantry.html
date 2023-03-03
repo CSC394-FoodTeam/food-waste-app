@@ -1,40 +1,42 @@
-<!DOCTYPE html>
 <head>
-    {% extends 'components/main.html' %}
+  {% extends 'components/main.html'%}
+  
+  {% block header %}
     <title>Pantry | Taproot</title>
+  {% endblock %}
     
 </head>
 
-<body>
 {% block content %}
 <div class="inventory">
-<h1>Inventory: Pantry</h1>
+<h1>Inventory: Pantry </h1>
 <br>
-<table class= "table">
-    <thead class="table-secondary">
-    <tr>
-        <th> Item </th>
-        <th> Category </th>
-        <th> Expiry Date </th>
-        <th> Quantity </th>
-        <th> Manage </th>
-    </tr>
-    </thead>
+<table class="table" id="pantryTable">
+  <thead class="table-secondary">
+  <tr>
+      <th data-card-title> Item </th>
+      <th> Category </th>
+      <th> Expiry Date </th>
+      <th> Quantity </th>
+      <th data-card-footer> Manage </th>
+  </tr>
+  </thead>
+  <tbody class="table-group-divider">
+  
+  {% for i in pantry %}
 
-    <tbody class="table-group-divider">
-    {% for i in pantry %}
-    <tr>
-        <td>  {{ i.item_name }}  </td>
-        <td>  {{ i.category }} </td>
-        <td>  {{ i.expiry_date }}  </td>
-        <td>  {{ i.quantity }} </td>
-        <td>
-            <a class="btn btn-outline-primary" href="{% url 'pantryupdate' i.id %}" role="button">Update <i class="bi bi-arrow-clockwise"></i></a>
-            <a class="btn btn-outline-danger" href="{% url 'pantrydelete' i.id %}" role="button">Delete <i class="bi bi-trash3"></i></a>
-        </td>
-    </tr>
-    </tbody>
-    {% endfor %}
+  <tr>
+      <td>  {{ i.item_name }}  </td>
+      <td>  {{ i.category }} </td>
+      <td>  {{ i.expiry_date }}  </td>
+      <td>  {{ i.quantity }} </td>
+      <td>
+        <a class="btn btn-outline-primary" href="{% url 'pantryupdate' i.id %}" role="button">Update <i class="bi bi-arrow-clockwise"></i></a>
+        <a class="btn btn-outline-danger" href="{% url 'pantrydelete' i.id %}" role="button">Delete <i class="bi bi-trash3"></i></a>
+      </td>
+  </tr>
+  </tbody>
+  {% endfor %}
 </table>
 <a class="btn btn-outline-light" href="{% url 'pantrycreate' %}" role="button">Add Pantry Item <i class="bi bi-plus-circle"></i></a>
 <a class="btn btn-outline-danger" href="#" role="button">Delete All <i class="bi bi-eraser-fill"></i></a>

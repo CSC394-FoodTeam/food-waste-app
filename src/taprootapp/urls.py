@@ -1,19 +1,19 @@
 from django.urls import path
 from . import views
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('', views.index, name='index'),
     path('logout/', views.logout, name='logout'),
 
     path('fridgelist/', views.fridge, name = 'fridgelist'),
-    path('pantrylist/', views.pantry, name = 'pantrylist'),
-
-    # ###
     path('fridgecreate/', views.fridgeCreate, name= 'fridgecreate'),
     path('fridgeupdate/<item_name>/', views.fridgeUpdate, name = 'fridgeupdate'),
     path('fridgedelete/<item_name>/', views.fridgeDelete, name = 'fridgedelete'),
     path('fridgedeleteall/', views.fridgeDeleteAll, name = 'fridgeDeleteAll'),
 
+    path('pantrylist/', views.pantry, name = 'pantrylist'),
     path('pantrycreate/', views.pantryCreate, name = 'pantrycreate'),
     path('pantryupdate/<item_name>/', views.pantryUpdate, name = 'pantryupdate'),
     path('pantrydelete/<item_name>/', views.pantryDelete, name = 'pantrydelete'),
@@ -25,11 +25,13 @@ urlpatterns = [
     path('book/', views.recipe, name='book'),
     path('recipe/<name>/', views.recipe, name='recipe'),
     path('feedback/', views.feedback, name='feedback'),
-
-
+    
     # path('<int:pk>/', views.RecipeDetailView.as_view(), name='recipe_detail'),
     # path('book/', views.RecipeCreateView.as_view(), name='book'),
     # path('<int:pk>/update/', views.RecipeUpdateView.as_view(), name='recipe_update'),
     # path('<int:pk>/delete/', views.RecipeDeleteView.as_view(), name='recipe_delete'),
     ###
 ]
+
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 

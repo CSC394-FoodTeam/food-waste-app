@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<head>
+    {% include 'components/main.html' %}
+    <title>Fridge | Taproot</title>
+</head>
+
+<body>    
+{% block content %}
+<h1>Delete all from Fridge</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <p class="lead"> Are you sure you want to delete all of your items in your Fridge {{ user }}? </p>
+        <button type="submit" class="btn btn-primary">Yes <i class="bi bi-eraser-fill"></i></button>
+        <a class="btn btn-warning" href="{% url 'fridgelist' %}" role="button">Cancel <i class="bi bi-x-octagon"></i></a>
+    </form>
+{% endblock %}
+</body>

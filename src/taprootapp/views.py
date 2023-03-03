@@ -205,11 +205,10 @@ def faq(request):
 
 
 def discover(request):
-    form = RecipeForm()
+    #form = RecipeForm()
+    discover = Recipe.objects.all()
 
-    context={'form' : form}
-
-    return render(request, 'home/discover.html', context)
+    return render(request, 'home/discover.html', {'discover' : discover})
 
 
 # class BookView(CreateView):

@@ -182,3 +182,7 @@ woff
 xfull
 XReg
 youmightnotneedjquery
+discoverrecipe
+discoverview
+paleo
+umami

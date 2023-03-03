@@ -8,11 +8,11 @@
 <p class="lead"> • Fill in details below </p>
 <div class="inventoryBook">
 <div class="form-group">
-    <form method="post">
+    <form action="" method="POST">
     	{% csrf_token %}
         {{ form.as_p }}
+        <button type="Submit" type="submit" class="btn btn-primary">Post Recipe</button>
     </form>
-    <button type="Submit" type="submit" class="btn btn-primary">Post Recipe</button>
 </div>
 </div>
 </div>

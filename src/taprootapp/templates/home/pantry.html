@@ -39,6 +39,5 @@
   {% endfor %}
 </table>
 <a class="btn btn-outline-light" href="{% url 'pantrycreate' %}" role="button">Add Pantry Item <i class="bi bi-plus-circle"></i></a>
-<a class="btn btn-outline-danger" href="#" role="button">Delete All <i class="bi bi-eraser-fill"></i></a>
-</div>
+<a class="btn btn-outline-danger" href="{% url 'pantryDeleteAll' %}" role="button">Delete All <i class="bi bi-eraser-fill"></i></a>
 {% endblock %}

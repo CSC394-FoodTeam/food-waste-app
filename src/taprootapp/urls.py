@@ -21,6 +21,7 @@ urlpatterns = [
 
     path('faq/', views.faq, name='faq'),
     path('discover/', views.discover, name='discover'),
+    path('discover/<id>', views.discover, name='discoverview'),
     path('book/', views.recipe, name='book'),
     path('recipe/<name>/', views.recipe, name='recipe'),
     path('feedback/', views.feedback, name='feedback'),

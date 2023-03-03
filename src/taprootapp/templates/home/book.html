@@ -1,13 +1,8 @@
 {% extends 'components/main.html' %}
-<title>Recipe | Taproot</title>
+{% block header %}
+    <title>Recipe | Taproot</title>
+{% endblock header %}
 {% block content %}
-
-<style>
-    .inventoryBook{
-        text-align:justify !important;
-    }
-</style>
-
 <div class="inventory">
 <h1>Create Recipes</h1>
 <p class="lead"> • Fill in details below </p>
@@ -21,5 +16,4 @@
 </div>
 </div>
 </div>
-
 {% endblock %}

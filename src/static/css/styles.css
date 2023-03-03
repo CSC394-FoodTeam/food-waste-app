@@ -174,3 +174,6 @@ pre {
     color: rgb(255, 255, 255) !important;
     font-weight: bold;
 }
+.inventoryBook{
+    text-align:justify !important;
+}

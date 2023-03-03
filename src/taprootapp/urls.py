@@ -18,6 +18,7 @@ urlpatterns = [
     path('pantrycreate/', views.pantryCreate, name = 'pantrycreate'),
     path('pantryupdate/<item_name>/', views.pantryUpdate, name = 'pantryupdate'),
     path('pantrydelete/<item_name>/', views.pantryDelete, name = 'pantrydelete'),
+    path('pantrydeleteall/', views.pantryDeleteAll, name = 'pantryDeleteAll'),
     path('faq/', views.faq, name='faq'),
     path('discover/', views.discover, name='discover'),
     path('book/', views.BookView.as_view(), name='book'),

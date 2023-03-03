@@ -17,6 +17,7 @@ from decouple import config
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'taprootapp', 'templates')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+#MEDIA_ROOT = ''
 MEDIA_URL = ''
 
 # Quick-start development settings - unsuitable for production

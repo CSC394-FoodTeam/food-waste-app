@@ -111,7 +111,7 @@ def fridgeCreate(request):
             item = form.save(commit=False)
             item.user = request.user
             item.save()
-            return redirect('/fridgelist')
+            return redirect('/fridgelist/')
         else:
             print(form.errors)
     else:

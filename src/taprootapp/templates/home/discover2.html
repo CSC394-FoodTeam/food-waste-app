@@ -8,15 +8,7 @@
     <br>
     <table class="table" id="database_recipes_Table">
       <thead class="table-secondary">
-      <tr>
-          <th data-card-title> Title </th>
-          <th> Restrictions </th>
-          <th> Cuisine </th>
-          <th> Image </th>
-          <!--<th> Ingredients </th>-->
-
-          <th data-card-footer> Action </th>
-      </tr>
+      
       </thead>
       <tbody class="table-group-divider">
       
@@ -28,25 +20,20 @@
               <div class="col d-flex justify-content-center" style="padding-bottom: 24px;">
                 <!--fridge_card_start-->
                 <div class="card" style="width: 18rem;">
-                    <img style="max-width:200px" src={{ i.image.url }}>
+                    <img style="max-width:200px" src={{i.image.url}}>
                   <div class="text-bg-dark p-3">
                     <h5 class="card-title">{{ i.title }}</h5>
-                    <p class="card-text">{{ i.restrictions }}, {{ i.cuisine }}</p>
+                    <p class="card-text">Restrictions: {{ i.restrictions }}   | Cuisine: {{ i.cuisine }}</p>
                     <a href="#" class="btn btn-outline-info">View</a>
                   </div>
                 </div>
               </div>
             </div>
         </div>
-          <!--<td>  {{ i.title }}  </td>
-          <td>  {{ i.restrictions }} </td>
-          <td>  {{ i.cuisine }}  </td>
-          <td>  <img style="max-width:200px" src={{ i.image.url }}> </td>
-          <td>  {{ i.quantity }} </td>-->
-          <td>
-            <a class="btn btn-outline-primary" href="#" role="button">View <i class="bi bi-book-half"></i></a>
+          
+            <!--<a class="btn btn-outline-primary" href="#" role="button">View <i class="bi bi-book-half"></i></a>-->
             <!--<a class="btn btn-outline-danger" href="#" role="button">Delete <i class="bi bi-trash3"></i></a>-->
-          </td>
+          
       </tr>
       </tbody>
       {% endfor %}

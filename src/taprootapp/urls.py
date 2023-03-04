@@ -3,6 +3,16 @@ from . import views
 from django.conf.urls.static import static
 from django.conf import settings
 
+
+
+urlpatterns2 = [
+    path('discover/', views.discover, name='discover'),
+    path('discover/<id>', views.discoverInstance, name='discoverview'),
+]
+
+
+#urlpatterns2 += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
+
 urlpatterns = [
     path('', views.index, name='index'),
     path('logout/', views.logout, name='logout'),
@@ -31,14 +41,8 @@ urlpatterns = [
     # path('book/', views.RecipeCreateView.as_view(), name='book'),
     # path('<int:pk>/update/', views.RecipeUpdateView.as_view(), name='recipe_update'),
     # path('<int:pk>/delete/', views.RecipeDeleteView.as_view(), name='recipe_delete'),
-    ###
-]
-urlpatterns2 = [
-    path('discover/', views.discover, name='discover'),
-    path('discover/<id>', views.discoverInstance, name='discoverview'),
+    #
 ]
 
-
-#urlpatterns2 += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
 for i in urlpatterns2:
     urlpatterns.append(i)

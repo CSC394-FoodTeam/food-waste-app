@@ -6,6 +6,7 @@ from django.conf import settings
 urlpatterns = [
     path('', views.index, name='index'),
     path('logout/', views.logout, name='logout'),
+    #path('login/auth0/', None, name = 'login'),
 
     path('fridgelist/', views.fridge, name = 'fridgelist'),
     path('fridgecreate/', views.fridgeCreate, name= 'fridgecreate'),
@@ -20,8 +21,8 @@ urlpatterns = [
     path('pantrydeleteall/', views.pantryDeleteAll, name = 'pantryDeleteAll'),
 
     path('faq/', views.faq, name='faq'),
-    path('discover/', views.discover, name='discover'),
-    path('discover/<id>/', views.discoverInstance, name='discoverview'),
+    #path('discover/', views.discover, name='discover'),
+    #path('discover/<id>/', views.discoverInstance, name='discoverview'),
     path('book/', views.recipe, name='book'),
     path('recipe/<name>/', views.recipe, name='recipe'),
     path('feedback/', views.feedback, name='feedback'),
@@ -33,11 +34,11 @@ urlpatterns = [
     ###
 ]
 urlpatterns2 = [
-    path('discover', views.discover, name='discover'),
+    path('discover/', views.discover, name='discover'),
     path('discover/<id>', views.discoverInstance, name='discoverview'),
 ]
 
 
-urlpatterns2 += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
+#urlpatterns2 += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
 for i in urlpatterns2:
     urlpatterns.append(i)

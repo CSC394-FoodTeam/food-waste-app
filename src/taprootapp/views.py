@@ -227,8 +227,14 @@ def discover(request):
     #form = RecipeForm()
     discover = Recipe.objects.all()
 
-    return render(request, 'home/discover2.html', {'discover' : discover})
+    return render(request, 'home/discover.html', {'discover' : discover})
 
+def discoverInstance(request, id):
+    obj = get_object_or_404(Recipe, id = id)
+    form = RecipeForm(request.GET or None, instance = obj)
+
+    context={'form': form}
+    return render(request, 'components/discoverinstance_view.html', context)
 
 # class BookView(CreateView):
 #     model = Recipe

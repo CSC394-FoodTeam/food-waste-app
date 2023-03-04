@@ -1,0 +1,30 @@
+{% extends 'components/main.html' %}
+<title>Fridge | Taproot</title>
+
+
+{% block content %}
+
+<div class="dicoverInstanceFunctions">
+    <form action="" method="GET">
+      <div class="form-group">
+      <div class="container-md">
+        <div class="text-center">
+          <h1> Discover Instance Test<i class="bi bi-egg-fried"></i> </h1>
+          <p class="lead"> •  </p>
+        </div>
+        <div class="card text-center">
+          <div class="card-header"></div>
+          <div class="card-body">
+            <div class="form-group">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <!--<button type="submit" class="btn btn-primary">Update Item <i class="bi bi-arrow-clockwise"></i></button>-->
+              <a class="btn btn-warning" href="{% url 'discover' %}" role="button">Go Back </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+{% endblock %}

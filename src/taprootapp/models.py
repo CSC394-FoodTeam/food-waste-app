@@ -45,8 +45,8 @@ class FridgeItem(models.Model):
     expiry_date = models.DateField()
     quantity = models.IntegerField(validators=[MinValueValidator(1)])
 
-    #def __str__(self):
-        #return self.item_name
+    def __str__(self):
+        return self.item_name
 
 
 class Recipe(models.Model):

@@ -28,7 +28,7 @@ def logout(request):
     return_to = request.build_absolute_uri(reverse('index'))
     return redirect(f'https://{domain}/v2/logout?client_id={client_id}&returnTo={return_to}')
 
-###def image(request):
+
 
 
 # def profile(request):

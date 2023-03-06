@@ -1,6 +1,5 @@
 {% extends 'components/main.html' %}
-<title>Pantry | Taproot</title>
-
+{% block header %}<title>Pantry | Taproot</title>{% endblock %}
 {% block content %}
 <form action="" method="POST">
   <div class="inventoryFunctions">
@@ -16,7 +15,7 @@
               {{ form.as_p }}
               <br>
               <button value="Submit" type="submit" class="btn btn-primary">Add Item <i class="bi bi-plus-square"></i></button>
-              <a class="btn btn-warning" href="{% url 'pantrylist' %}" role="button">Cancel <i class="bi bi-x-octagon"></i></a>
+              <a class="btn btn-warning" href="{% url 'pantry' %}" role="button">Cancel <i class="bi bi-x-octagon"></i></a>
             </div>
           </div>
         </div>

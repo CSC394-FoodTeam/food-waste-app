@@ -6,26 +6,28 @@
 			background-color: #212529;
 			color: #333333;
 			background-image: url("/static/images/AdobeStock_100875498.jpeg");
-			background-size: 75%;
+			background-size: cover;
 			background-position: center;
 			background-repeat: no-repeat;
 			background-attachment: fixed;
+			border-radius: 20px;
 		}
 		h1 {
 			color: #ffffff;
 			text-align: center;
 			font-size: 48px;
 			font-weight: bold;
-			margin-top: 50px;
+			/* margin-top: 50px; */
 			margin-bottom: 30px;
 			text-shadow: 2px 2px 4px #333333;
+			line-height: 1.9;
 		}
 		h2 {
 			color: #e6e6e6;
 			text-align: center;
 			font-size: 36px;
 			font-weight: bold;
-			margin-top: 60px;
+			margin-top: 20px;
 			margin-bottom: 30px;
 			text-shadow: 2px 2px 4px #333333;
 		}
@@ -49,12 +51,15 @@
 			background-color: rgb(37, 20, 72, 0.9);
 			padding: 30px;
 			border-radius: 20px;
+			margin-bottom: 10px;
+			line-height: 1.2;
 		}
 	</style>
 {% endblock %}
 
 <body>
 {% block content %}
+	<br>
 		<div class="backgroundImage">
 		<h1> <u>Foodies - FAQ</u> </h1>
 		<h2>General Questions</h2>
@@ -75,7 +80,8 @@
 			<dt>Make It Fun and Enjoyable</dt>
 			<dd>Involve friends or family members in the cooking process, try new recipes or ingredients, and experiment with different cooking techniques. You can also listen to music, watch cooking shows, or make cooking a relaxing and enjoyable experience.</dd>
 		</dl>
+		<br>
 		</div>
-	<br>
+		<br>
 {% endblock %}
 </body>

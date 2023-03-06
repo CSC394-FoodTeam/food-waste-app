@@ -1,18 +1,20 @@
-<!DOCTYPE html>
-{% extends 'components/main.html'%}
-{% block header %}<title>Fridge | Taproot</title>{% endblock %}
+<head>
+  {% extends 'components/main.html' %}
+  {% block header %}<title>Fridge | Taproot</title>{% endblock %}
+</head>
 {% block content %}
 <div class="inventory">
-<h1>Inventory: Fridge </h1>
-<br>
+<h1>Inventory - Fridge </h1>
+<a class="btn btn-outline-light" style="margin-bottom: 10px;" href="{% url 'fridgecreate' %}" role="button">Add Item <i class="bi bi-plus-circle"></i></a>
+<a class="btn btn-outline-danger" style="margin-bottom: 10px;" href="{% url 'fridgeDeleteAll' %}" role="button">Delete All <i class="bi bi-eraser-fill"></i></a>
 <table class="table" id="fridgeTable">
   <thead class="table-secondary">
   <tr>
-      <th data-card-title> Item </th>
+      <th data-card-title style="border-top-left-radius: 5px;"> Item </th>
       <th> Category </th>
       <th> Expiry Date </th>
       <th> Quantity </th>
-      <th data-card-footer> Manage </th>
+      <th data-card-footer style="border-top-right-radius: 5px;"> Manage </th>
   </tr>
   </thead>
   <tbody class="table-group-divider">
@@ -20,8 +22,8 @@
   {% for i in fridge %}
 
   <tr>
-      <td>  {{ i.item_name }}  </td>
-      <td>  {{ i.category }} </td>
+      <td>  {{ i.item_name.capitalize }}  </td>
+      <td>  {{ i.get_category_display }} </td>
       <td>  {{ i.expiry_date }}  </td>
       <td>  {{ i.quantity }} </td>
       <td>
@@ -32,7 +34,4 @@
   </tbody>
   {% endfor %}
 </table>
-<a class="btn btn-outline-light" href="{% url 'fridgecreate' %}" role="button">Add Fridge Item <i class="bi bi-plus-circle"></i></a>
-<a class="btn btn-outline-danger" href="{% url 'fridgeDeleteAll' %}" role="button">Delete All <i class="bi bi-eraser-fill"></i></a>
 {% endblock %}
-

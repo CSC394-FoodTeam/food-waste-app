@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<head>
+  {% include 'components/main.html' %}
+  <title>Fridge | Taproot</title>
+</head>
+
+<body>
+{% block content %}
+<form action="" method="POST">
+<h3>Create</h3>
+  {% csrf_token %}
+  {{ form.as_p }}
+    
+        <button type="submit" class="btn btn-primary">Put in Fridge</button>
+        <a class="btn btn-outline-warning" href="{% url 'fridgelist' %}" role="button">Cancel</a>
+     
+</form>
+{% endblock %}
+</body>

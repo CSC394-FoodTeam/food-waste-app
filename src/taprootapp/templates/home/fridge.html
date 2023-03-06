@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<head>
+  {% include 'components/main.html'%}
+  <title>Fridge | Taproot</title>
+</head>
+
+<body>
+{% block content %}
+<h2>Inventory: Fridge</h2>
+<table class="table">
+  <tr>
+      <th> Item </th>
+      <th> Category </th>
+      <th> Expiry Date </th>
+      <th> Quantity </th>
+      <th> Manage </th>
+  </tr>
+  {% for i in fridge %}
+  <tr>
+      <td>  {{ i.item_name }}  </td>
+      <td>  {{ i.category }} </td>
+      <td>  {{ i.expiry_date }}  </td>
+      <td>  {{ i.quantity }} </td>
+      <td>
+        <a class="btn btn-outline-primary" href="{% url 'fridgeupdate' i.item_name %}" role="button">Update</a>
+        <a class="btn btn-outline-danger" href="{% url 'fridgedelete' i.item_name %}" role="button">Delete</a>
+      </td>
+  </tr>
+  {% endfor %}
+</table>
+<a class="btn btn-outline-light" href="{% url 'fridgecreate' %}" role="button">Add Fridge Item</a>
+{% endblock %}
+</body>

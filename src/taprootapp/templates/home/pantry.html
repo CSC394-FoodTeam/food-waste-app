@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<head>
+    {% include 'components/main.html' %}
+    <title>Pantry | Taproot</title>
+</head>
+
+<body>
+{% block content %}
+<h2>Inventory: Pantry</h2>
+<table class= "table">
+    <tr>
+        <th> Item </th>
+        <th> Category </th>
+        <th> Expiry Date </th>
+        <th> Quantity </th>
+        <th> Manage </th>
+    </tr>
+    {% for i in pantry %}
+    <tr>
+        <td>  {{ i.item_name }}  </td>
+        <td>  {{ i.category }} </td>
+        <td>  {{ i.expiry_date }}  </td>
+        <td>  {{ i.quantity }} </td>
+        <td>
+            <a class="btn btn-outline-primary" href="{% url 'pantryupdate' i.item_name %}" role="button">Update</a>
+            <a class="btn btn-outline-danger" href="{% url 'pantrydelete' i.item_name %}" role="button">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<a class="btn btn-outline-light" href="{% url 'pantrycreate' %}" role="button">Add Pantry Item</a>
+{% endblock %}
+</body>

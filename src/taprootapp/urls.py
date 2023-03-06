@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.urls import path
 from . import views
 from django.conf.urls.static import static
@@ -7,7 +8,8 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('logout/', views.logout, name='logout'),
 
-    path('fridgelist/', views.fridge, name = 'fridgelist'),
+    # ###
+    path('fridge/', views.fridge, name = 'fridge'),
     path('fridgecreate/', views.fridgeCreate, name= 'fridgecreate'),
     path('fridgeupdate/<id>/', views.fridgeUpdate, name = 'fridgeupdate'),
     path('fridgedelete/<id>/', views.fridgeDelete, name = 'fridgedelete'),
@@ -23,14 +25,14 @@ urlpatterns = [
     path('discover/', views.discover, name='discover'),
     path('discover/<id>/', views.discoverInstance, name='discoverview'),
     path('book/', views.recipe, name='book'),
-    path('recipe/<name>/', views.recipe, name='recipe'),
+    path('recipe/<title>/', views.recipe, name='recipe'),
+    path('recipecreate/', views.recipeCreate, name='recipecreate'),
     path('feedback/', views.feedback, name='feedback'),
     
     # path('<int:pk>/', views.RecipeDetailView.as_view(), name='recipe_detail'),
-    # path('book/', views.RecipeCreateView.as_view(), name='book'),
+    path('book/', login_required(views.BookView.as_view()), name='book'),
     # path('<int:pk>/update/', views.RecipeUpdateView.as_view(), name='recipe_update'),
     # path('<int:pk>/delete/', views.RecipeDeleteView.as_view(), name='recipe_delete'),
     #
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
-

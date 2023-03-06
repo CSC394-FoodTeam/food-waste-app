@@ -1,5 +1,9 @@
 {% extends 'components/main.html' %}
-<title>Fridge | Taproot</title>
+
+{% block header %}
+  <title>Fridge | Taproot</title>
+{% endblock %}
+  
 
 
 {% block content %}
@@ -17,12 +21,12 @@
         <div class="form-group">
           {% csrf_token %}
           {{ form.as_p }}
-          <button type="submit" class="btn btn-primary">Update Item <i class="bi bi-arrow-clockwise"></i></button>
-          <a class="btn btn-warning" href="{% url 'fridgelist' %}" role="button">Cancel <i
+          <button type="submit" class="btn btn-primary">Update <i class="bi bi-arrow-clockwise"></i></button>
+          <a class="btn btn-warning" href="{% url 'fridge' %}" role="button">Cancel <i
               class="bi bi-x-octagon"></i></a>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
   </div>
 </div>
 </div>

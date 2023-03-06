@@ -1,5 +1,9 @@
-{% extends 'components/main.html' %}
-<title>Pantry | Taproot</title>
+<head>
+  {% include 'components/main.html' %}
+  {% block header %}<title>Pantry | Taproot</title>{% endblock %}
+  {% block content %}
+
+</head>
 
 {% block content %}
 <div class="inventoryFunctions">
@@ -11,12 +15,13 @@
           <p class="lead"> • Fill in details below </p>
         </div>
         <div class="card text-center">
+                    <div class="card-body">
             <div class="card-header"></div>
               <div class="form-group">
                 {% csrf_token %}
                   {{ form.as_p }}
         <button type="submit" class="btn btn-primary">Update Item <i class="bi bi-arrow-clockwise"></i></button>
-        <a class="btn btn-warning" href="{% url 'pantrylist' %}" role="button">Cancel <i class="bi bi-x-octagon"></i></a>
+        <a class="btn btn-warning" href="{% url 'pantry' %}" role="button">Cancel <i class="bi bi-x-octagon"></i></a>
       </div>
     </div>
   </div>

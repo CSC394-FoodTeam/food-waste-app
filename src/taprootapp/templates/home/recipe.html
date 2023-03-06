@@ -1,16 +1,41 @@
-<title>Recipe Book | Taproot</title>
-{% {% extends 'extends' %} 'components/main.html' %}
-
+<head>
+  {% extends 'components/main.html' %}
+  {% block header %}<title>Discover | Taproot</title>{% endblock %}
+</head>
 
 {% block content %}
 <div class="inventory">
-	<h1>Add a New Recipe</h1>
-	<form method="post">
-		{% csrf_token %}
-        <table class="table">
-            {{ form.as_table }}
-        </table>
-        <button type="submit" class="btn btn-primary">Submit</button>
-	</form>
-</div>
+    <h1>Create Recipes</h1>
+    {% if user.is_superuser %}
+    <a class="btn btn-outline-light" style="margin-bottom: 10px;" href="{% url 'recipe' %}" role="button">Add Item <i class="bi bi-plus-circle"></i></a>
+    {% endif %}
+    <table class="table" id="database_recipes_Table">
+      <thead class="table-secondary">
+      <tr>
+          <th data-card-title style="border-top-left-radius: 5px;"> Title </th>
+          <th> Restrictions </th>
+          <th> Cuisine </th>
+          <th data-card-action-links > Source </th>
+          <th data-card-footer style="border-top-right-radius: 5px;"> Manage </th>
+      </tr>
+      </thead>
+      <tbody class="table-group-divider">
+      
+      {% for i in discover %}
+    
+      <tr>
+          <td>  {{ i.title.title|truncatechars:40 }}  </td>
+          <td>  {{ i.restrictions.capitalize }} </td>
+          <td>  {{ i.cuisine.capitalize }}  </td>
+          <td style="word-break: break-all;" target="_blank"> 
+            {{ i.source|urlizetrunc:30 }} 
+          </td>
+          <!--<td>  {{ i.quantity }} </td>-->
+          <td>
+            <a class="btn btn-outline-primary" href="#" role="button">View <i class="bi bi-book-half"></i></a>
+          </td>
+      </tr>
+      </tbody>
+      {% endfor %}
+    </table>
 {% endblock %}

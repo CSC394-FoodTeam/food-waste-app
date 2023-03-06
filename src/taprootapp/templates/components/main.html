@@ -4,7 +4,6 @@
   <head>
     {% include 'components/bootstrap_code.html' %} 
     {% include 'components/navbar.html' %}
-    <link rel="shortcut icon" type="image/png" href="{% static 'favicon/favicon.ico' %}"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
@@ -13,16 +12,13 @@
   </head>
 
   <body>
-    <div class="wrapper">
-      {% block content %}
-
-      {% endblock %}
+    <div class="container px-4 text-center">
+        <div class="wrapper">{% block content %}{% endblock %}</div>
     </div>
     <footer id="footer">
       <div class="footer" data-bm="27">
         <section class="footer-section">
-          &copy;<span id="year"> </span
-          ><span> Taproot GmbH. All rights reserved.</span>
+          &copy;<span id="year"> 2023 </span><span> Taproot GmbH. All rights reserved.</span>
         </section>
       </div>
     </footer>

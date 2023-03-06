@@ -1,5 +1,6 @@
 from django import forms 
 from .models import PantryItem, FridgeItem, Recipe
+from django.contrib.postgres.fields import ArrayField
 # from django.contrib.auth.models import User
 
 class PantryItemForm(forms.ModelForm):
@@ -27,6 +28,8 @@ class FridgeItemForm(forms.ModelForm):
 
 
 class RecipeForm(forms.ModelForm):
+    ingredients = ArrayField(forms.CharField(max_length=100))
+
     class Meta:
         model = Recipe
         fields = ['title', 'restrictions', 'cuisine', 'ingredients', 'instructions', 'source', 'image']

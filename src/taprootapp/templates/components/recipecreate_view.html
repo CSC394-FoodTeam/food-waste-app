@@ -1,0 +1,19 @@
+{% extends 'components/main.html' %}
+{% block header %}
+    <title>Recipe | Taproot</title>
+{% endblock header %}
+{% block content %}
+<div class="inventory">
+<h1>Create Recipes</h1>
+<p class="lead"> • Fill in details below </p>
+<div class="inventoryBook">
+<div class="form-group">
+    <form action="" method="POST">
+    	{% csrf_token %}
+        {{ form.as_p }}
+        <button type="Submit" type="submit" class="btn btn-primary">Post Recipe</button>
+    </form>
+</div>
+</div>
+</div>
+{% endblock %}

@@ -1,25 +1,22 @@
 {% extends 'components/main.html' %}
-<title>Recipe | Taproot</title>
+{% block header %}
+    <title>Book | Taproot</title>
+{% endblock header %}
 {% block content %}
-
-<style>
-    .inventoryBook{
-        text-align:justify !important;
-    }
-</style>
-
 <div class="inventory">
-<h1>Create Recipes</h1>
-<p class="lead"> • Fill in details below </p>
-<div class="inventoryBook">
-<div class="form-group">
-    <form action="" method="POST">
-    	{% csrf_token %}
-        {{ form.as_p }}
-        <button type="Submit" type="submit" class="btn btn-primary">Post Recipe</button>
-    </form>
+<h1>Recipe Book</h1>
+    <div class="inventoryBook">
+    {% if error_message %}
+        <p>{{ error_message }}</p>
+    {% else %}
+        <h2>Recommended Recipe: <wrap style="color: rgb(126, 158, 255)">"{{ recipe.title }}"</wrap></h2>
+        <p>Number of matching ingredients: {{ count }}</p>
+        <ul>
+            {% for ingredient in common_ingredients %}
+                <li>{{ ingredient.capitalize }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    </div>
 </div>
-</div>
-</div>
-
 {% endblock %}

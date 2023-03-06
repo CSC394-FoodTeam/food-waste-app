@@ -1,25 +1,30 @@
 {% extends 'components/main.html' %}
-
-<title>Discover2! | Taproot</title>
 {% block content %}
+<title>Discover2! | Taproot</title>
+<span>
+<h1>Discover Test Page </h1>
+</span>
+<br>
 
-<div class="database_recipes container">
-    <h1>Discover Test Page </h1>
-    <br>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-      {% for i in discover %}
-      <div class="col">
-        <div class="card" style="width: 25rem;">
-          <img style="max-width:500px" src={{i.image.url}} /> 
-          <div class="text-bg-dark p-3">
-            <h5 class="card-title">{{ i.title }}</h5>
-            <p class="card-text">Restrictions: {{ i.restrictions }}   | Cuisine: {{ i.cuisine }}</p>
-            <a href="{% url 'discoverview' i.id %}" class="btn btn-outline-info">View <i class="bi bi-book-half"></i></a>
-            <a href={{i.source}} class="btn btn-outline-warning">Source Website <i class="bi bi-box-arrow-in-up-right"></i></a>
+
+<div class="container px-4 text-center">
+  <div class="row gx-5">
+        {% for i in discover %}
+        <!--card start-->
+        <div class="col d-flex justify-content-center" style="padding-bottom: 24px;">
+          <div class="card" style="width: 25rem;">
+            <img style="max-width:500px" src={{i.image.url}} class="card-img-top" alt="discover_image">
+            <div class="text-bg-dark p-3">
+              <h5 class="card-title">{{ i.title }}</h5>
+              <p class="card-text">Restrictions: {{ i.restrictions }}   | Cuisine: {{ i.cuisine }}</p>
+              <a href="{% url 'discoverview' i.id %}" class="btn btn-outline-info">View <i class="bi bi-book-half"></i></a>
+              <a href={{i.source}} class="btn btn-outline-warning">Source Website <i class="bi bi-box-arrow-in-up-right"></i></a>
+            </div>
           </div>
         </div>
+        <!--card end-->
+          {% endfor %}
       </div>
-      {% endfor %}
-    </div>
-</div>
+  </div>
+<br>
 {% endblock %}

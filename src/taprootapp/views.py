@@ -221,7 +221,7 @@ def faq(request):
     return render(request, 'home/faq.html')
 
 
-def discover(request):
+def recipe(request):
     #form = RecipeForm()
     discover = Recipe.objects.all()
 

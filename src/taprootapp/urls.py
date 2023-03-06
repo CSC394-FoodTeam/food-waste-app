@@ -21,9 +21,9 @@ urlpatterns = [
     path('pantrydeleteall/', views.pantryDeleteAll, name = 'pantryDeleteAll'),
 
     path('faq/', views.faq, name='faq'),
-    path('discover/', views.discover, name='discover'),
-    path('discover/<name>', views.discover, name='discoverview'),
-    path('recipe/', views.recipeCreate, name='recipe'),
+    path('recipe/', views.recipe, name='recipe'),
+    # path('discover/<name>', views.discover, name='discoverview'),
+    path('recipecreate/', views.recipeCreate, name='recipecreate'),
     path('feedback/', views.feedback, name='feedback'),
 
 

@@ -12,6 +12,7 @@ class TestSite(unittest.TestCase):
     def test_title(self):
         self.driver.get("0.0.0.127")
         self.assertEqual(self.driver.title, "")
+<<<<<<< Updated upstream
         #Is the server up and running?
     def test_search(self):
         self.driver.get("http://www.example.com")
@@ -20,5 +21,8 @@ class TestSite(unittest.TestCase):
         search_box.send_keys(Keys.RETURN)
         self.assertNotIn("No results found.", self.driver.page_source)
 #Can we find the site while runnning given search criteria
+=======
+
+>>>>>>> Stashed changes
 if __name__ == '__main__':
     unittest.main()

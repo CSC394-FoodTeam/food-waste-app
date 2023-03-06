@@ -5,8 +5,8 @@ from django.urls import reverse, reverse_lazy
 from django.contrib.auth import logout as django_logout
 from django.conf import settings
 
-from django.views.generic import CreateView, DeleteView, UpdateView, ListView, DetailView
-
+from django.views.generic import View, CreateView, DeleteView, UpdateView, ListView, DetailView
+from django.db.models import Q
 from .models import FridgeItem, PantryItem, Recipe
 from .forms import FridgeItemForm, PantryItemForm, RecipeForm
 
@@ -49,12 +49,12 @@ def logout(request):
 
 # These are fast and flexible class-based views (refer to inventory.html to see how they're rendered) |-->
 
-# class FridgeListView(View):
+# class fridgeView(View):
 
 #     @method_decorator(login_required)
 
 #     def dispatch(self, *args, **kwargs):
-#         return super(FridgeListView, self).dispatch(*args, **kwargs)
+#         return super(fridgeView, self).dispatch(*args, **kwargs)
 
 #     def get(self, request):
 #         items = FridgeItem.objects.all()
@@ -109,7 +109,7 @@ def fridgeCreate(request):
             item = form.save(commit=False)
             item.user = request.user
             item.save()
-            return redirect('/fridgelist')
+            return redirect('/fridge')
         else:
             print(form.errors)
     else:
@@ -125,7 +125,7 @@ def fridgeUpdate(request, id):
     form = FridgeItemForm(request.POST or None, instance = obj)
     if form.is_valid():
         form.save()
-        return HttpResponseRedirect('/fridgelist/')
+        return HttpResponseRedirect('/fridge/')
 
     context={'form' : form}
     return render(request, 'components/fridgeupdate_view.html', context)
@@ -137,9 +137,9 @@ def fridgeDelete(request, id):
     
     if request.method == 'POST':
         obj.delete()
-        return HttpResponseRedirect('/fridgelist/')
+        return HttpResponseRedirect('/fridge/')
 
-    context={'item_name': obj.item_name}
+    context={'item_name': obj.item_name.capitalize()}
     
     return render(request, 'components/fridgedelete_view.html', context)
 
@@ -171,7 +171,7 @@ def pantryCreate(request):
             item = form.save(commit=False)
             item.user = request.user
             item.save()
-            return redirect('/pantrylist/')
+            return redirect('/pantry/')
         else:
             print(form.errors)
     else:
@@ -188,7 +188,7 @@ def pantryUpdate(request, id):
 
     if form.is_valid():
         form.save()
-        return HttpResponseRedirect('/pantrylist/')
+        return HttpResponseRedirect('/pantry/')
 
     context={'form': form}
     return render(request, 'components/pantryupdate_view.html', context)
@@ -200,7 +200,7 @@ def pantryDelete(request, id):
 
     if request.method == 'POST':
         obj.delete()
-        return HttpResponseRedirect('/pantrylist/')
+        return HttpResponseRedirect('/pantry/')
 
     context={'item_name': obj.item_name}
     
@@ -228,31 +228,51 @@ def discover(request):
     return render(request, 'home/discover.html', {'discover' : discover})
 
 
-# class BookView(CreateView):
-#     model = Recipe
-#     form_class = RecipeForm
-#     template_name = 'home/book.html'
+class BookView(View):
+    template_name = 'home/book.html'
+
+    def get(self, request):
+        user = request.user
+        fridge = FridgeItem.objects.filter(user=user)
+        pantry = PantryItem.objects.filter(user=user)
+        recipes = Recipe.objects.all()
+
+        inventory=set()
+
+        for item in fridge:
+            inventory.add(item.item_name.lower())
+        for item in pantry:
+            inventory.add(item.item_name.lower())
+
+        matching_recipes = []
+
+        for r in recipes:
+            recipe_ingredients = set(r.ingredients)
+            common_ingredients = recipe_ingredients.intersection(inventory)
+            if common_ingredients:
+                matching_recipes.append((r, len(common_ingredients)))
+
+        if matching_recipes:
+            r, count = max(matching_recipes, key=lambda x: x[1])
+            context = {'recipe': r, 'count': count}
+            return render(request, self.template_name, context)
+        else:
+            context = {'error_message': 'No matching recipes found'}
+            return render(request, self.template_name, context)
+
 
 def recipe(request):
     form = RecipeForm()
-    if request.method == 'POST':
-        form = RecipeForm(request.POST)
-        if form.is_valid():
-            recipe = form.save(commit=False)
-            recipe.user = request.user
-            recipe.save()
-            return redirect('/book/')
-        else:
-            print(form.errors)
-    else:
-        form = RecipeForm()
 
     context={'form' : form}
-    return render(request, 'home/book.html', context)
+    return render(request, 'home/recipe.html', context)
+
+#     matching_recipes = Recipe.objects.filter(ingredients = inventory).distinct()
+#     matching_ingredients = len(set(i for r in matching_recipes for i in r.ingredients.all()) & inventory)
+#     sorted_recipes = sorted(matching_recipes, key=matching_ingredients, reverse=True)
 
 
-
-# CANNY.IO WIDGET
+# CANNY.IO WIDGET - SSO
 # def create_canny_token(user):
 #   private_key = settings.CANNYIO_PRIVATE_KEY
 #   user_data = {

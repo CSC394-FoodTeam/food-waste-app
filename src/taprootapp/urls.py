@@ -23,7 +23,7 @@ urlpatterns = [
     path('faq/', views.faq, name='faq'),
     path('discover/', views.discover, name='discover'),
     path('discover/<name>', views.discover, name='discoverview'),
-    path('recipe/', views.recipe, name='recipe'),
+    path('recipe/', views.recipeCreate, name='recipe'),
     path('feedback/', views.feedback, name='feedback'),
 
 

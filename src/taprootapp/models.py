@@ -49,6 +49,13 @@ class FridgeItem(models.Model):
     def __str__(self):
         return self.item_name.capitalize()
 
+# Custom validator for ingredients field
+def arrayfield_regex_validator(regex):
+    regex_validator = RegexValidator(regex)
+    def validator(value):
+        for item in value:
+            regex_validator(item)
+    return validator
 
 class Recipe(models.Model):
     DIETARY_RESTRICTIONS = [
@@ -105,8 +112,7 @@ class Recipe(models.Model):
     restrictions = models.CharField(max_length=20, choices=DIETARY_RESTRICTIONS, unique=False, default='none')
     cuisine = models.CharField(max_length=20, choices=CUISINE_TYPES, unique=False)
     # flavor_profile = models.ManyToManyField(to='RecipeFlavor', choices=FLAVOR_PROFILES, default='none', unique=False)
-    ingredients = ArrayField(models.CharField(max_length=100), default=list, validators=[RegexValidator(r'^[a-z ,-]*$')])
-    # ingredients = models.CharField(validators=[RegexValidator(r'^[a-zA-Z ,-]*$')])
+    ingredients = ArrayField(models.CharField(max_length=100), default=list, validators=[arrayfield_regex_validator(r'^[a-z, -]*$')])
     instructions = models.TextField()
     source = models.URLField(blank=True)
     image = models.ImageField(upload_to='recipe_images/', blank=True)

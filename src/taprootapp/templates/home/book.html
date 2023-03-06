@@ -4,16 +4,16 @@
 {% endblock header %}
 {% block content %}
 <div class="inventory">
-<h1>Recipes</h1>
+<h1>Recipe Book</h1>
     <div class="inventoryBook">
     {% if error_message %}
         <p>{{ error_message }}</p>
     {% else %}
-        <h2>Recommended Recipe: {{ recipe.name }}</h2>
+        <h2>Recommended Recipe: <wrap style="color: rgb(126, 158, 255)">"{{ recipe.title }}"</wrap></h2>
         <p>Number of matching ingredients: {{ count }}</p>
         <ul>
-            {% for ingredient in recipe.ingredients.all %}
-                <li>{{ ingredient.name }}</li>
+            {% for ingredient in common_ingredients %}
+                <li>{{ ingredient.capitalize }}</li>
             {% endfor %}
         </ul>
     {% endif %}

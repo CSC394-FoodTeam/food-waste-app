@@ -246,22 +246,22 @@ class BookView(View):
 
         matching_recipes = []
 
-        for r in recipes:
-            recipe_ingredients = set(r.ingredients)
+        for recipe in recipes:
+            recipe_ingredients = set(recipe.ingredients)
             common_ingredients = recipe_ingredients.intersection(inventory)
             if common_ingredients:
-                matching_recipes.append((r, len(common_ingredients)))
+                matching_recipes.append((recipe, len(common_ingredients)))
 
         if matching_recipes:
-            r, count = max(matching_recipes, key=lambda x: x[1])
-            context = {'recipe': r, 'count': count}
+            recipe, count = max(matching_recipes, key=lambda x: x[1])
+            context = {'recipe': recipe, 'count': count, 'common_ingredients': common_ingredients}
             return render(request, self.template_name, context)
         else:
             context = {'error_message': 'No matching recipes found'}
             return render(request, self.template_name, context)
 
 
-def recipe(request):
+def recipeCreate(request):
     form = RecipeForm()
 
     context={'form' : form}

@@ -186,3 +186,8 @@ discoverrecipe
 discoverview
 paleo
 umami
+buttonload
+discoverinstance
+recipecreate
+timetofly
+Website

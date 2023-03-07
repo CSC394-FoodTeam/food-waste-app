@@ -4,9 +4,9 @@
 </head>
 {% block content %}
 <div class="inventory">
-<h1>Inventory - Fridge </h1>
-<a class="btn btn-outline-light" style="margin-bottom: 10px;" href="{% url 'fridgecreate' %}" role="button">Add Item <i class="bi bi-plus-circle"></i></a>
-<a class="btn btn-outline-danger" style="margin-bottom: 10px;" href="{% url 'fridgeDeleteAll' %}" role="button">Delete All <i class="bi bi-eraser-fill"></i></a>
+<h1>Inventory - Fridge <i class="fa fa-columns" aria-hidden="true"></i></h1>
+<a class="btn btn-outline-light" style="margin-bottom: 10px;" href="{% url 'fridgecreate' %}" role="button"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add Item </a> 
+<a class="btn btn-outline-danger" style="margin-bottom: 10px;" href="{% url 'fridgedeleteall' %}" role="button"><i class="fa fa-trash" aria-hidden="true"></i> Delete All </a>
 <table class="table" id="fridgeTable">
   <thead class="table-secondary">
   <tr>
@@ -27,11 +27,12 @@
       <td>  {{ i.expiry_date }}  </td>
       <td>  {{ i.quantity }} </td>
       <td>
-        <a class="btn btn-outline-primary" href="{% url 'fridgeupdate' i.id %}" role="button">Update <i class="bi bi-arrow-clockwise"></i></a>
-        <a class="btn btn-outline-danger" href="{% url 'fridgedelete' i.id %}" role="button">Delete <i class="bi bi-trash3"></i></a>
+        <a class="btn btn-outline-primary" href="{% url 'fridgeupdate' i.id %}" role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Update </a>
+        <a class="btn btn-outline-danger" href="{% url 'fridgedelete' i.id %}" role="button"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete </a>
       </td>
   </tr>
   </tbody>
   {% endfor %}
 </table>
+</div>
 {% endblock %}

@@ -4,18 +4,31 @@
 {% endblock header %}
 {% block content %}
 <div class="inventory">
-<h1>Recipe Book</h1>
+<h1>Recipe Book <i class="fa fa-book" aria-hidden="true"></i></h1>
     <div class="inventoryBook">
     {% if error_message %}
-        <p>{{ error_message }}</p>
+        <p style="text-align: center;">{{ error_message }}</p>
     {% else %}
-        <h2>Recommended Recipe: <wrap style="color: rgb(126, 158, 255)">"{{ recipe.title }}"</wrap></h2>
+        <h2 style="word-spacing: -4px;">Recommended Recipe: <span style="color: rgb(126, 158, 255); font-style: italic;">"{{ recipe.title }}"</span></h2>
         <p>Number of matching ingredients: {{ count }}</p>
         <ul>
             {% for ingredient in common_ingredients %}
                 <li>{{ ingredient.capitalize }}</li>
             {% endfor %}
         </ul>
+        <br>
+        <br>
+        <div class="col d-flex justify-content-left" style="padding-bottom: 24px; text-align: center !important;">
+            <div class="card" style="width: 25rem;">
+              <img style="max-width:500px" src={{recipe.image.url}} class="card-img-top" alt="discover_image">
+              <div class="text-bg-dark p-3">
+                <h5 class="card-title">{{ recipe.title }}</h5>
+                <p class="card-text" style="font-weight: 540;">Restrictions: <span style="color: brown;">{{ recipe.restrictions.capitalize }}</span> • Cuisine: <span style="color: brown;">{{ recipe.cuisine.capitalize }}</span></p>
+                <a href="{% url 'discoverview' recipe.id %}" class="btn btn-outline-info"><i class="bi bi-book-half"></i> View </a>
+                <a href={{recipe.source}} class="btn btn-outline-warning"><i class="fa fa-external-link" aria-hidden="true"></i> Source </a>
+              </div>
+            </div>
+          </div>
     {% endif %}
     </div>
 </div>

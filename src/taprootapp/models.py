@@ -16,13 +16,14 @@ class PantryItem(models.Model):
         ('snacks','Snacks'),
         ('sauces','Sauces'),
         ('oil and vinegars','Oil and Vinegars'),
-        ('sweeteners','Sweeteners')
+        ('sweeteners','Sweeteners'),
+        ('other', 'Other')
     ]
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    item_name = models.CharField(max_length=100, validators=[RegexValidator(r'^[a-z ]*$')]) 
+    item_name = models.CharField(max_length=100, validators=[RegexValidator(r'^[a-zA-Z ]*$')]) 
     category = models.CharField(max_length=20,choices=PANTRY_TYPES, unique=False)
     expiry_date = models.DateField()
-    quantity = models.IntegerField(validators=[MinValueValidator(1)])
+    quantity = models.IntegerField(validators=[MinValueValidator(1)], default=1)
 
     def __str__(self):
         return self.item_name.capitalize()
@@ -38,13 +39,14 @@ class FridgeItem(models.Model):
         ('seafood','Seafood'),
         ('dessert','Dessert'),
         ('snacks','Snacks'),
-        ('beverages','Beverages')
+        ('beverages','Beverages'),
+        ('other', 'Other')
     ]
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     item_name = models.CharField(max_length=100, validators=[RegexValidator(r'^[a-zA-Z ]*$')])
     category = models.CharField(max_length=20, choices=FRIDGE_TYPES, unique=False)   #throws Integrity error when same category exists in table
     expiry_date = models.DateField()
-    quantity = models.IntegerField(validators=[MinValueValidator(1)])
+    quantity = models.IntegerField(validators=[MinValueValidator(1)], default=1)
 
     def __str__(self):
         return self.item_name.capitalize()

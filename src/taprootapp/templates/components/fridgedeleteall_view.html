@@ -1,14 +1,14 @@
 {% extends 'components/main.html' %}
-{% header %}<title>Fridge | Taproot</title>{% endblock %} 
+{% block header %}<title>Fridge | Taproot</title>{% endblock %} 
  
 {% block content %}
-<div>
-<h1>Delete all from Fridge</h1>
+<div class="inventoryFunctions">
+<h1>Delete all items from Fridge</h1>
     <form method="POST">
         {% csrf_token %}
-        <p class="lead"> Are you sure you want to delete all of your items in your Fridge {{ user }}? </p>
-        <button type="submit" class="btn btn-primary">Yes <i class="bi bi-eraser-fill"></i></button>
-        <a class="btn btn-warning" href="{% url 'fridge' %}" role="button">Cancel <i class="bi bi-x-octagon"></i></a>
+        <p class="lead"> Are you sure you want to delete all "Fridge" items linked to account <b style="color: rgb(126, 158, 255) !important; font-weight: bold;">{{ user.username.capitalize }}</b>?</p>
+        <button type="submit" class="btn btn-primary"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete All </button>
+        <a class="btn btn-warning" href="{% url 'fridge' %}" role="button"><i class="fa fa-ban" aria-hidden="true"></i> Cancel</a>
     </form>
 </div>
 {% endblock %}

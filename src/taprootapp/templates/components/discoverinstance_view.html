@@ -12,15 +12,15 @@ p {
 
 <div class="inventoryFunctions">
   <h1>{{obj.title}}</h1>
-  <img style="max-width:600px" src={{obj.image.url}} alt="discover_image">
+  <img style="max-width:600px; border-radius: 5px; border-color: rgb(255, 255, 255); border-style: ridge;" src={{obj.image.url}} alt="discover_image">
   <br>
   <br>
   <h3>Ingredients:</h3>
   <p class="lead"><br>{{obj.ingredients}} </p>
   <h3>Instructions:</h3>
-  <p > <br>{{obj.instructions}} </p>
+  <ol > <br>{{obj.instructions}} </ol>
   <br>
-  <a class="btn btn-warning" href="{% url 'discover' %}" role="button">Go Back <i class="bi bi-skip-backward-fill"></i></a>
+  <a class="btn btn-warning" href="{% url 'discover' %}" role="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Go Back </a>
 </div>
 
 {% endblock %}

@@ -1,43 +1,18 @@
+{% extends 'components/main.html' %}
 
-<head>
-    {% extends 'main.html'%}
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Profile | Taproot</title>
-  <style>
-    body {
-        background-color: #212121;
-        color: #fff;
-        font-family: Arial, sans-serif;
-        text-align: left;
-    }
+{% block header %}
+    <title>Profile | Taproot</title>
+{% endblock %}
     
-    a {
-        color: #fff;
-        text-decoration: none;
-    }
+
+{% block content %}
+<h1 class="card-body" style="border-style:double; margin: 5%; padding: 20px; border-radius: 20px; max-width: auto; text-align: center !important; justify-content: center !important;">
+
+    UID: {{ user.id }}
+    <br>
+    Username: {{ user.username.capitalize }}
+    <br>
+    Email: {{ user.email|urlize }}
     
-    pre {
-        background-color: #251448;
-        border: 1px solid #617ac4;
-        border-radius: 4px;
-        color: #212121;
-        padding: 16px;
-        margin-top: 16px;
-        white-space: pre-wrap;
-    }
-
-    img {
-        border-radius: 50%;
-        height: 100px;
-        margin-bottom: 16px;
-        width: 100px;
-    }
-</style>
-</head>
-
-{% extends 'base.html' %}
-
-{% block body %}
-    {{user.username}}
-{% endblock body %}
+</h1>
+{% endblock %}

@@ -7,26 +7,27 @@ from django.conf import settings
 urlpatterns = [
     path('', views.index, name='index'),
     path('logout/', views.logout, name='logout'),
+    path('profile/', views.profile, name='profile'),
 
     # ###
     path('fridge/', views.fridge, name = 'fridge'),
     path('fridgecreate/', views.fridgeCreate, name= 'fridgecreate'),
     path('fridgeupdate/<id>/', views.fridgeUpdate, name = 'fridgeupdate'),
     path('fridgedelete/<id>/', views.fridgeDelete, name = 'fridgedelete'),
-    path('fridgedeleteall/', views.fridgeDeleteAll, name = 'fridgeDeleteAll'),
+    path('fridgedeleteall/', views.fridgeDeleteAll, name = 'fridgedeleteall'),
 
     path('pantry/', views.pantry, name = 'pantry'),
 
     path('pantrycreate/', views.pantryCreate, name = 'pantrycreate'),
     path('pantryupdate/<id>/', views.pantryUpdate, name = 'pantryupdate'),
     path('pantrydelete/<id>/', views.pantryDelete, name = 'pantrydelete'),
-    path('pantrydeleteall/', views.pantryDeleteAll, name = 'pantryDeleteAll'),
+    path('pantrydeleteall/', views.pantryDeleteAll, name = 'pantrydeleteall'),
 
     path('faq/', views.faq, name='faq'),
     path('discover/', views.discover, name='discover'),
     path('discover/<id>/', views.discoverInstance, name='discoverview'),
-    path('book/', views.recipe, name='book'),
-    path('recipe/<title>/', views.recipe, name='recipe'),
+    # path('book/', views.recipe, name='book'),
+    path('recipe/', views.recipe, name='recipe'),
     path('recipecreate/', views.recipeCreate, name='recipecreate'),
     path('feedback/', views.feedback, name='feedback'),
     

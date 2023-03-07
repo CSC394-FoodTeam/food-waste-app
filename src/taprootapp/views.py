@@ -1,4 +1,4 @@
-import jwt
+import json
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse, reverse_lazy
@@ -7,7 +7,7 @@ from django.conf import settings
 
 from django.views.generic import View, CreateView, DeleteView, UpdateView, ListView, DetailView
 from django.db.models import Q
-from .models import FridgeItem, PantryItem, Recipe
+from .models import FridgeItem, PantryItem, Recipe, User
 from .forms import FridgeItemForm, PantryItemForm, RecipeForm
 
 # from django.contrib.auth import get_user_model
@@ -31,22 +31,20 @@ def logout(request):
 
 
 
-# def profile(request):
-#     user = request.user
-
-#     auth0_user = user.social_auth.get(provider='auth0')
+def profile(request):
+    # auth0_user = User.objects.get()
     
-#     user_data = {
-#         'nickname': auth0_user.username,
-#         'email': auth0_user.email,
-#     }
+    # user_data = {
+    #     'nickname': auth0_user.username,
+    #     'email': auth0_user.email,
+    # }
 
-#     context = {
-#         'user_data':json.dumps(user_data, indent=4),
-#         'auth0_user': auth0_user,
-#     }
+    # context = {
+    #     'user_data':json.dumps(user_data, indent=4),
+    #     'auth0_user': auth0_user,
+    # }
 
-#     return render(request, 'profile.html')
+    return render(request, 'home/profile.html')
 
 
 # These are fast and flexible class-based views (refer to inventory.html to see how they're rendered) |-->
@@ -152,7 +150,7 @@ def fridgeDeleteAll(request):
     if request.method == 'POST':
         userFridge.delete()
         return HttpResponseRedirect('/fridgelist/')
-    return render(request, 'components/fridgeDeleteAll_view.html')
+    return render(request, 'components/fridgedeleteall_view.html')
 
 # <----- Fridge views above / Pantry views below ----->
 
@@ -215,7 +213,7 @@ def pantryDeleteAll(request):
     if request.method == 'POST':
         userPantry.delete()
         return HttpResponseRedirect('/pantrylist/')
-    return render(request, 'components/pantryDeleteAll_view.html')
+    return render(request, 'components/pantrydeleteall_view.html')
 
 
 ##/FAQ/##
@@ -285,7 +283,7 @@ def recipeCreate(request):
     form = RecipeForm()
 
     context={'form' : form}
-    return render(request, 'home/recipe.html', context)
+    return render(request, 'components/recipecreate_view.html', context)
 
 #     matching_recipes = Recipe.objects.filter(ingredients = inventory).distinct()
 #     matching_ingredients = len(set(i for r in matching_recipes for i in r.ingredients.all()) & inventory)

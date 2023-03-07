@@ -1,13 +1,12 @@
-<head>
-  {% extends 'components/main.html'%}
-  {% block header %}<title>Pantry | Taproot</title>{% endblock %}
-</head>
-<body>
+
+{% extends 'components/main.html'%}
+{% block header %}<title>Pantry | Taproot</title>{% endblock %}
+
 {% block content %}
 <div class="inventory">
-<h1>Inventory - Pantry </h1>
-<a class="btn btn-outline-light" style="margin-bottom: 10px;" href="{% url 'pantrycreate' %}" role="button">Add Item <i class="bi bi-plus-circle"></i></a>
-<a class="btn btn-outline-danger" style="margin-bottom: 10px;" href="{% url 'pantryDeleteAll' %}" role="button">Delete All <i class="bi bi-eraser-fill"></i></a>
+<h1>Inventory - Pantry <i class="fa fa-columns" aria-hidden="true"></i></h1>
+<a class="btn btn-outline-light" style="margin-bottom: 10px;" href="{% url 'pantrycreate' %}" role="button"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add Item </a>
+<a class="btn btn-outline-danger" style="margin-bottom: 10px;" href="{% url 'pantrydeleteall' %}" role="button"><i class="fa fa-trash" aria-hidden="true"></i> Delete All</a>
 <table class="table" id="pantryTable">
   <thead class="table-secondary">
   <tr>
@@ -28,12 +27,12 @@
       <td>  {{ i.expiry_date }}  </td>
       <td>  {{ i.quantity }} </td>
       <td>
-        <a class="btn btn-outline-primary" href="{% url 'pantryupdate' i.id %}" role="button">Update <i class="bi bi-arrow-clockwise"></i></a>
-        <a class="btn btn-outline-danger" href="{% url 'pantrydelete' i.id %}" role="button">Delete <i class="bi bi-trash3"></i></a>
+        <a class="btn btn-outline-primary" href="{% url 'pantryupdate' i.id %}" role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Update </a>
+        <a class="btn btn-outline-danger" href="{% url 'pantrydelete' i.id %}" role="button"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete </a>
       </td>
   </tr>
   </tbody>
   {% endfor %}
 </table>
+</div>
 {% endblock %}
-</body>

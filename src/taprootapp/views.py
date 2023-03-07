@@ -225,6 +225,12 @@ def faq(request):
 
 def recipe(request):
     #form = RecipeForm()
+    recipe = Recipe.objects.all()
+
+    return render(request, 'home/recipe.html', {'recipe' : recipe})
+
+def discover(request):
+    #form = RecipeForm()
     discover = Recipe.objects.all()
 
     return render(request, 'home/discover.html', {'discover' : discover})

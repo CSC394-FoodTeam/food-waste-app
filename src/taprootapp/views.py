@@ -29,6 +29,8 @@ def logout(request):
     return redirect(f'https://{domain}/v2/logout?client_id={client_id}&returnTo={return_to}')
 
 
+
+
 # def profile(request):
 #     user = request.user
 
@@ -227,6 +229,18 @@ def recipe(request):
 
     return render(request, 'home/discover.html', {'discover' : discover})
 
+def discoverInstance2(request, id):
+    obj = get_object_or_404(Recipe, id = id)
+    form = RecipeForm(request.GET or None, instance = obj)
+
+    context={'form': form}
+    return render(request, 'components/discoverinstance_view.html', context)
+
+
+def discoverInstance(request, id):
+    obj = get_object_or_404(Recipe, id = id)
+    context={'obj': obj}
+    return render(request, 'components/discoverinstance_view.html', context)
 
 class BookView(View):
     template_name = 'home/book.html'

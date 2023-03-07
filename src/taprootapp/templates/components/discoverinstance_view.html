@@ -1,0 +1,26 @@
+{% extends 'components/main.html' %}
+<title>Fridge | Taproot</title>
+<style>
+p {
+  word-wrap: word-wrap;
+  width: 100px;
+  margin-left: 100;
+}
+</style>
+
+{% block content %}
+
+<div class="inventoryFunctions">
+  <h1>{{obj.title}}</h1>
+  <img style="max-width:600px" src={{obj.image.url}} alt="discover_image">
+  <br>
+  <br>
+  <h3>Ingredients:</h3>
+  <p class="lead"><br>{{obj.ingredients}} </p>
+  <h3>Instructions:</h3>
+  <p > <br>{{obj.instructions}} </p>
+  <br>
+  <a class="btn btn-warning" href="{% url 'discover' %}" role="button">Go Back <i class="bi bi-skip-backward-fill"></i></a>
+</div>
+
+{% endblock %}

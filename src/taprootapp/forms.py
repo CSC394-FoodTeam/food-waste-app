@@ -41,7 +41,8 @@ class RecipeForm(forms.ModelForm):
             'ingredients': forms.Textarea(attrs={'class': 'form-control', 'rows': 5, 'placeholder': 'Enter ingredients separated by commas'}),
             'instructions': forms.Textarea(attrs={'class': 'form-control', 'rows': 5, 'placeholder': 'Enter instructions'}),
             'source': forms.URLInput(attrs={'class': 'form-control', 'placeholder': 'www.example.com'}),
-            'image': forms.FileInput(attrs={'class': 'form-control-file'}),
+            #'image': forms.FileInput(attrs={'class': 'form-control-file'}),
+            #"image": forms.ImageField(upload_to='recipe_images/', blank=True),
         }
 
 class RecipeView(forms.ModelForm):

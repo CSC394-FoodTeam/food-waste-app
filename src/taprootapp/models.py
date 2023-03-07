@@ -116,7 +116,7 @@ class Recipe(models.Model):
     instructions = models.TextField()
     source = models.URLField(blank=True)
     image = models.ImageField(upload_to='recipe_images/', blank=True)
-
+    
     def __str__(self):
         return self.title.title()
     

@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<head>
-    {% include 'components/main.html' %}
-    <title>Fridge | Taproot</title>
-</head>
-
-<body>    
+{% extends 'components/main.html' %}
+{% header %}<title>Fridge | Taproot</title>{% endblock %} 
+ 
 {% block content %}
+<div>
 <h1>Delete all from Fridge</h1>
     <form method="POST">
         {% csrf_token %}
@@ -13,5 +10,5 @@
         <button type="submit" class="btn btn-primary">Yes <i class="bi bi-eraser-fill"></i></button>
         <a class="btn btn-warning" href="{% url 'fridge' %}" role="button">Cancel <i class="bi bi-x-octagon"></i></a>
     </form>
+</div>
 {% endblock %}
-</body>

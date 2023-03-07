@@ -1,4 +1,3 @@
-
 <head>
   {% include 'components/main.html' %}
   {% block header %}<title>Pantry | Taproot</title>{% endblock %}
@@ -6,6 +5,7 @@
 
 </head>
 
+{% block content %}
 <div class="inventoryFunctions">
 <form action="" method="POST">
   <div class="form-group">
@@ -25,5 +25,6 @@
       </div>
     </div>
   </div>
+</div>
 </div>
 {% endblock %}

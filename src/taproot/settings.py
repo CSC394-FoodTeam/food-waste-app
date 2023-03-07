@@ -17,7 +17,7 @@ from decouple import config
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'taprootapp', 'templates')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-
+MEDIA_URL = '/media/'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -84,7 +84,9 @@ DATABASES = {
         'NAME': 'postgres',
         'USER': 'postgres',
         'PASSWORD': config('POSTGRES_PASS'),
-        'HOST': '0.0.0.0',
+
+        'HOST': '0.0.0.0'
+
         'PORT': '5432',
     }
 }
@@ -159,4 +161,4 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),] # new
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CANNYIO_PRIVATE_KEY = config('CANNYIO_PRIVATE_KEY')
+#CANNYIO_PRIVATE_KEY = config('CANNYIO_PRIVATE_KEY')

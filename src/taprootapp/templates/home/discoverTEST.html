@@ -1,0 +1,44 @@
+{% extends 'components/main.html' %}
+{% load static %}
+
+<title>Discover | Taproot</title>
+
+{% block content %}
+<div class="database_recipes">
+    <h1>Discover Recipes! </h1>
+    <br>
+    <table class="table" id="database_recipes_Table">
+      <thead class="table-secondary">
+      <tr>
+          <th data-card-title> Title </th>
+          <th> Restrictions </th>
+          <th> Cuisine </th>
+          <th> Image </th>
+          <!--<th> Ingredients </th>-->
+
+          <th data-card-footer> Manage </th>
+      </tr>
+      </thead>
+      <tbody class="table-group-divider">
+      
+      {% for i in discover %}
+    
+      <tr>
+          <td>  {{ i.title }}  </td>
+          <td>  {{ i.restrictions }} </td>
+          <td>  {{ i.cuisine }}  </td>
+          
+          <td>  <img style="max-width:200px" src={{ i.image.url }}> </td>
+          <!--<td>  {{ i.quantity }} </td>-->
+          <td>
+            <a class="btn btn-outline-primary" href="{% url 'discover' i.id %}" role="button">View <i class="bi bi-book-half"></i></a>
+            <!--<a class="btn btn-outline-danger" href="#" role="button">Delete <i class="bi bi-trash3"></i></a>-->
+          </td>
+      </tr>
+      </tbody>
+      {% endfor %}
+    </table>
+    <!--<a class="btn btn-outline-light" href="#" role="button">Add Fridge Item <i class="bi bi-plus-circle"></i></a>
+    <a class="btn btn-outline-danger" href="#" role="button">Delete All <i class="bi bi-eraser-fill"></i></a>-->
+    </div>
+{% endblock %}
